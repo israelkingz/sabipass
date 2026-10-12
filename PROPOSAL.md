@@ -85,18 +85,33 @@ the qualification. SabiPass is throughput for a framework that already exists, n
 
 ## How I built it
 
-I used Claude Code as an engineering partner, from concept through implementation and testing,
-organised around instruction files that gave it a consistent foundation:
+I used two agents and gave them one shared foundation. **Codex** did the planning: refining the
+concept, choosing the architecture, deciding scope, and writing the specification I then built
+against. **Claude Code** did the implementation, the testing and the debugging.
+
+That split only worked because both read the same instruction files. The files, not the tool,
+carried the project's rules from planning into code — the constraint that competence is never
+assessed by multiple choice was written during planning and was still being enforced by a test
+weeks later. I would make the same choice again: write the rules down somewhere an agent reads
+before it writes, and you can change agents without losing the argument.
+
+The files:
 
 - **`AGENTS.md`** — setup, testing, privacy, safety and coding standards, including eight hard
   rules that count as bugs even when the tests pass. No ungrounded generation about safety.
   Distractors only from retrieved standard text. Competence never assessed by multiple choice.
   Never the word *certificate*.
 - **`CAPSTONE_SPEC.md`** — product vision, architecture, the seven-step demo script, roadmap.
+- **`SKILLS.md`** — the reusable workflows: add a language, add a trade, write a safety rule, fix a
+  bad translation, debug retrieval, verify before a demo. Each one ends in a script that runs, so
+  the guidance cannot drift away from the code.
 - **`BUILD_PLAN.md`** — scope, the fourteen-day schedule, and an explicit cut-first list.
-- **`tools/`** — reusable workflows: `check-pack` for citations, safety rules, retrieval behaviour
-  and locale completeness; `localize` for building a language; `diag` for probing what the speech
-  provider actually supports.
+- **`DEMO.md`** — the three-minute script, on the rule that every claim is demonstrated rather than
+  asserted.
+- **`tools/`** — what `SKILLS.md` points at: `check-pack` for citations, safety rules, retrieval
+  behaviour and locale completeness; `localize` for building a language; `check-audio` for proving
+  each language speaks its own content; `review-queue` for ranking translations by likelihood of
+  error; `diag` for probing what the speech provider actually supports.
 
 The governing principle throughout is **build for N, validate for 1.** Languages and trades are
 registry entries, never code branches: adding a language is a row in `config/languages.json`,

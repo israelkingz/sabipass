@@ -150,10 +150,15 @@ Fast. One line each.
 
 Judges in this programme are scoring the engineering process, so have this ready and keep it tight:
 
-> "Everything is orchestrated through instruction files. `AGENTS.md` holds the rules that count as
-> bugs even when the tests pass — no ungrounded generation about safety, competence never assessed
-> by multiple choice, never the word *certificate*. `CAPSTONE_SPEC.md` holds the architecture.
-> `SKILLS.md` holds the workflows, and each one is executable rather than described.
+> "I used two agents. Codex did the planning — concept, architecture, scope, the specification.
+> Claude Code did the implementation and the testing. That worked because both read the same
+> instruction files, so the rules survived the handoff: *competence is never assessed by multiple
+> choice* was decided during planning and was still being enforced by a test weeks later. The
+> files are the interface; the agent is swappable.
+>
+> `AGENTS.md` holds the rules that count as bugs even when the tests pass. `CAPSTONE_SPEC.md`
+> holds the architecture. `SKILLS.md` holds the workflows, and each one is executable rather than
+> described.
 >
 > Three of those checks exist because I shipped the bug first. A Yoruba build came back a hundred
 > percent English while looking structurally perfect, because the batch separator didn't survive

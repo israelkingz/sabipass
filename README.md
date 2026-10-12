@@ -217,5 +217,7 @@ Each of these shipped once and is now a check:
 Content is drafted from NESIS 2015, NIS IEC 60364 and NBTE NSQ unit standards, which remain the
 property of their publishers. Speech and translation by [Spitch](https://spitch.app).
 
-Built with Claude Code as an engineering partner, organised around the instruction files in this
-repository.
+Planned and specified with **OpenAI Codex**; implemented, tested and hardened with **Claude Code**.
+Both worked from the same instruction files in this repository — [AGENTS.md](AGENTS.md),
+[CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) and [SKILLS.md](SKILLS.md) — which is what made handing work
+between two different tools possible. The files are the interface; the agent is swappable.
