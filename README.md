@@ -169,7 +169,7 @@ Adding a language is a row in `config/languages.json`. Adding a trade is a folde
 
 Project documents: [CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) (architecture, demo script),
 [PROPOSAL.md](PROPOSAL.md), [BUILD_PLAN.md](BUILD_PLAN.md) (scope and schedule),
-[CONCEPT.md](CONCEPT.md) (market thesis), [CLAUDE.md](CLAUDE.md) (the rules that count as bugs even
+[CONCEPT.md](CONCEPT.md) (market thesis), [AGENTS.md](AGENTS.md) (the rules that count as bugs even
 when the tests pass).
 
 ---

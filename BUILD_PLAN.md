@@ -135,10 +135,11 @@ then the photo-evidence path (keep voice viva).
 The Kenya winner named its instruction files in the pitch. The accelerator is explicitly about
 *using AI software development tools*, so this is a scoring dimension, not plumbing.
 
-- `CLAUDE.md` — setup, test commands, privacy rules, safety rules, coding standards.
+- `AGENTS.md` — setup, test commands, privacy rules, safety rules, coding standards.
 - `CAPSTONE_SPEC.md` — product vision, architecture, roadmap, the operating-constraints mapping.
-- `.claude/skills/` — reusable workflows: ingest-and-review-a-content-pack, add-a-language,
-  validate-citations, generate-grounded-MCQ, run-the-demo-script.
+- `tools/` — reusable workflows: `check-pack` (citations, safety rules, retrieval, locales),
+  `localize` (build a language), `check-audio` (every language speaks its own content),
+  `review-queue` (rank translations by likelihood of error), `server/diag` (provider coverage).
 
 Show these in the deck. Most teams will not.
 

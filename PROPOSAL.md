@@ -88,7 +88,7 @@ the qualification. SabiPass is throughput for a framework that already exists, n
 I used Claude Code as an engineering partner, from concept through implementation and testing,
 organised around instruction files that gave it a consistent foundation:
 
-- **`CLAUDE.md`** — setup, testing, privacy, safety and coding standards, including eight hard
+- **`AGENTS.md`** — setup, testing, privacy, safety and coding standards, including eight hard
   rules that count as bugs even when the tests pass. No ungrounded generation about safety.
   Distractors only from retrieved standard text. Competence never assessed by multiple choice.
   Never the word *certificate*.
