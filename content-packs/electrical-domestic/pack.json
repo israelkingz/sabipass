@@ -1,0 +1,609 @@
+{
+  "id": "electrical-domestic",
+  "schemaVersion": 1,
+  "trade": "Domestic Electrical Installation",
+  "nsqLevel": "NSQ 1-3",
+  "manifest": {
+    "reviewer": null,
+    "reviewerRole": "Practising trainer, to be named at sign-off",
+    "reviewed": false,
+    "status": "Demo pack — technical content drafted from the sources below. Clause references require trainer countersignature before any learner is served.",
+    "sources": [
+      { "key": "NESIS", "title": "Nigerian Electricity Supply and Installation Standards Regulations 2015", "authority": "NEMSA" },
+      { "key": "NIS-60364", "title": "NIS IEC 60364 — Low-voltage electrical installations", "authority": "Standards Organisation of Nigeria" },
+      { "key": "NSQ-EIM", "title": "NSQ Unit Standards — Electrical Installation & Maintenance Work", "authority": "NBTE" },
+      { "key": "BS7671", "title": "IEE Wiring Regulations 18th Edition (BS 7671)", "authority": "Reference practice widely used in Nigeria" }
+    ]
+  },
+  "conductorColours": [
+    { "role": "Line", "term": "line conductor", "colour": "brown", "hex": "#8A5A3C" },
+    { "role": "Neutral", "term": "neutral conductor", "colour": "blue", "hex": "#2366A8" },
+    { "role": "Earth", "term": "circuit protective conductor (CPC)", "colour": "green-and-yellow", "hex": "#B4CF00" }
+  ],
+  "lexicon": {
+    "_comment": "Nigerian trade vernacular to standard terminology. Doubles as the ASR bias list and as retrieval query expansion.",
+    "sabi": ["know", "competent"],
+    "no sabi": ["not competent", "gap"],
+    "wire": ["install", "wiring", "cable"],
+    "waya": ["wire", "cable"],
+    "point": ["lighting point", "socket outlet"],
+    "soka": ["socket", "socket outlet"],
+    "plug point": ["socket outlet"],
+    "change over": ["changeover switch", "transfer switch"],
+    "changeover": ["changeover switch", "transfer switch"],
+    "earth wire": ["circuit protective conductor", "cpc", "earth"],
+    "netural": ["neutral"],
+    "neutra": ["neutral"],
+    "breaker": ["mcb", "circuit breaker", "overcurrent device"],
+    "leakage": ["rcd", "rccb", "residual current device"],
+    "earth leakage": ["rcd", "rccb", "residual current device"],
+    "db": ["distribution board", "consumer unit"],
+    "board": ["distribution board", "consumer unit"],
+    "phase": ["line conductor", "live"],
+    "live": ["line conductor"],
+    "gen": ["generator"],
+    "nepa": ["utility supply", "mains", "disco"],
+    "light": ["utility supply", "mains", "lighting"],
+    "pumping machine": ["water pump", "motor load"],
+    "ac": ["air conditioner", "inductive load", "motor load"],
+    "two bedroom": ["domestic installation", "final circuit"],
+    "flat": ["domestic installation"],
+    "casing": ["surface conduit", "casing and capping"],
+    "surface": ["surface conduit"],
+    "1.5": ["1.5mm2", "cable size"],
+    "2.5": ["2.5mm2", "cable size"],
+    "tester": ["socket tester", "verification"],
+    "megger": ["insulation resistance test", "insulation tester"],
+    "trip": ["operate", "disconnect"],
+    "shock": ["electric shock", "shock protection"],
+    "inverter": ["inverter", "alternative supply"],
+    "solar": ["pv", "inverter", "alternative supply"]
+  },
+  "passages": [
+    {
+      "id": "p-cable-01",
+      "lesson": 1,
+      "ref": "NIS IEC 60364-5-52 · cl. 523",
+      "source": "NIS-60364",
+      "topic": "cable size for socket and lighting circuits",
+      "cues": ["cable size", "1.5", "2.5", "socket", "lighting", "which wire", "what size", "run wire", "mm2"],
+      "answer": "For a domestic installation, socket outlet final circuits use 2.5mm² copper and lighting final circuits use 1.5mm² copper. The rule behind it is Ib ≤ In ≤ Iz: the design current of the load must not exceed the rating of the protective device, and that rating must not exceed the current-carrying capacity of the cable. A 2.5mm² cable is chosen for sockets because a 16A or 20A protective device sits comfortably below its capacity. Never run 1.5mm² to a socket outlet.",
+      "spoken": "For socket, use two point five. For light, use one point five. The reason: the cable must carry more current than the breaker allows through. One point five to a socket is wrong."
+    },
+    {
+      "id": "p-cable-02",
+      "lesson": 1,
+      "ref": "NIS IEC 60364-5-52 · cl. 523.6, Table B.52",
+      "source": "NIS-60364",
+      "topic": "derating by installation method",
+      "cues": ["derate", "conduit", "insulation", "grouping", "ambient", "hot", "bunched", "capacity"],
+      "answer": "A cable's current-carrying capacity is not a single number. It drops when the cable runs inside conduit, when it is bunched with other cables, when it is surrounded by thermal insulation, and when ambient temperature is high. The same 2.5mm² cable clipped directly to a wall carries more than the same cable pulled through a crowded conduit on a hot roof. Apply the correction factors for installation method, grouping and ambient temperature before accepting a size.",
+      "spoken": "The same cable no carry the same current everywhere. Inside conduit, bunched together, inside ceiling where heat dey — the cable carry less. You must apply correction factor before you accept any size."
+    },
+    {
+      "id": "p-cable-03",
+      "lesson": 1,
+      "ref": "NIS IEC 60364-5-52 · cl. 525",
+      "source": "NIS-60364",
+      "topic": "voltage drop",
+      "cues": ["voltage drop", "long run", "far", "dim", "weak", "distance"],
+      "answer": "Voltage drop limits are 3% of nominal voltage for lighting circuits and 5% for other circuits, measured from the origin of the installation. On long runs a cable that passes the current-carrying check can still fail on voltage drop, and the fix is to increase the cable size, not to accept dim lamps or a motor that struggles to start.",
+      "spoken": "Voltage drop: three percent for light, five percent for other circuit. If the run long, the cable can pass current test but fail voltage drop. The answer is bigger cable, no be to accept weak light."
+    },
+    {
+      "id": "p-cable-04",
+      "lesson": 1,
+      "ref": "NSQ EIM L2 · U04 · PC 3",
+      "source": "NSQ-EIM",
+      "topic": "air conditioner circuit",
+      "cues": ["ac", "air conditioner", "1.5 for ac", "aircon", "motor", "starting current"],
+      "answer": "An air conditioner is an inductive motor load with a starting current several times its running current. It requires its own dedicated final circuit, correctly sized for the unit's rated current with the motor starting characteristic accounted for, and protected by a device with the right tripping curve. Running 1.5mm² to an air conditioner socket is a fire risk: the cable can be overloaded for long periods without the protective device ever operating.",
+      "spoken": "AC na motor load. Him starting current plenty pass him running current. He need him own circuit, correct cable, and correct breaker curve. One point five for AC na fire waiting to happen — the cable go overload and the breaker no go even trip."
+    },
+    {
+      "id": "p-earth-01",
+      "lesson": 2,
+      "ref": "NIS IEC 60364-4-41 · cl. 411",
+      "source": "NIS-60364",
+      "topic": "why earth and neutral must stay separate",
+      "cues": ["earth to neutral", "join earth neutral", "bridge earth", "connect earth to neutral", "earth neutral same"],
+      "answer": "The circuit protective conductor and the neutral conductor must remain separate throughout every final circuit. Bridging them at a socket makes a socket tester show a correct result while creating a lethal installation. The protective conductor becomes a current-carrying conductor, and if the neutral is interrupted anywhere upstream, every earthed metal appliance casing on that circuit rises towards line potential. Anyone touching a fridge, a pump or a washing machine then becomes the path to earth.",
+      "spoken": "Earth and neutral must never join in the final circuit. If you join them, socket tester go show correct — but the installation na death trap. If neutral break anywhere before, every appliance body go carry current. The person who touch the fridge become the earth path."
+    },
+    {
+      "id": "p-earth-02",
+      "lesson": 2,
+      "ref": "NIS IEC 60364-5-54 · cl. 543",
+      "source": "NIS-60364",
+      "topic": "green-and-yellow is reserved",
+      "cues": ["green yellow", "earth colour", "colour code", "use earth wire as live"],
+      "answer": "Green-and-yellow is reserved exclusively for protective conductors and must never be used as a line or neutral conductor anywhere in the installation. Brown identifies the line conductor and blue the neutral. The colour is a safety instruction to the next person who opens that board, and reusing it for a live conductor removes their only warning.",
+      "spoken": "Green and yellow na for earth alone. Never use am for live or neutral. Brown for line, blue for neutral. That colour na message to the next electrician who open the board. If you change it, you remove his only warning."
+    },
+    {
+      "id": "p-earth-03",
+      "lesson": 2,
+      "ref": "NIS IEC 60364-4-41 · cl. 411.5.3",
+      "source": "NIS-60364",
+      "topic": "TT earth electrode and bonding",
+      "cues": ["earth rod", "electrode", "bonding", "water pipe", "earth resistance", "tt"],
+      "answer": "In a TT installation the earth electrode must give a resistance low enough that Ra × IΔn does not exceed 50V, which is why an RCD is required rather than relying on overcurrent protection. Main protective bonding connects incoming metallic services and structural metalwork to the main earthing terminal. Bonding a water pipe is not the same as providing an earth electrode: bonding equalises potential, the electrode provides the earth reference. One does not substitute for the other.",
+      "spoken": "For TT system, the earth rod resistance must be low enough that Ra times the RCD rating no pass fifty volts. Na why you need RCD. And note well: bonding water pipe no be the same thing as earth rod. Bonding equalise potential. The rod give you earth reference. One no replace the other."
+    },
+    {
+      "id": "p-earth-04",
+      "lesson": 2,
+      "ref": "NSQ EIM L2 · U06 · PC 1-2",
+      "source": "NSQ-EIM",
+      "topic": "continuity of the protective conductor",
+      "cues": ["earth continuity", "cpc broken", "test earth", "r1 r2"],
+      "answer": "Every socket outlet, every lighting point and every item of Class I equipment must have a continuous protective conductor back to the main earthing terminal. Continuity is verified by measurement before the installation is energised, not assumed from the fact that a green-and-yellow wire is present. A protective conductor that is connected at the socket but broken at the board offers no protection at all.",
+      "spoken": "Every socket, every light point, every metal-body appliance need unbroken earth back to the main earthing terminal. You measure am before you put current. No assume because you see green and yellow wire. Earth that connect at socket but break at board protect nobody."
+    },
+    {
+      "id": "p-protect-01",
+      "lesson": 3,
+      "ref": "NIS IEC 60364-4-43 · cl. 433",
+      "source": "NIS-60364",
+      "topic": "what an MCB does and does not do",
+      "cues": ["mcb", "breaker protect", "breaker shock", "what breaker do", "overload"],
+      "answer": "A miniature circuit breaker protects the cable against overload and short circuit. It does not protect a person against electric shock. This is the single most common and most dangerous misconception in domestic installation work. A 16A MCB will carry 16A through a human being indefinitely without operating. Shock protection comes from a residual current device, correct earthing, and correct insulation.",
+      "spoken": "Breaker protect the cable from overload and short circuit. Breaker no protect person from shock. This na the most dangerous mistake in this work. Sixteen amp breaker go pass sixteen amp through human being and never trip. Shock protection na RCD, correct earthing, and correct insulation."
+    },
+    {
+      "id": "p-protect-02",
+      "lesson": 3,
+      "ref": "NIS IEC 60364-5-53 · cl. 536",
+      "source": "NIS-60364",
+      "topic": "MCB curve selection",
+      "cues": ["b curve", "c curve", "curve", "mcb trip", "nuisance trip", "motor breaker"],
+      "answer": "A Type B curve trips at three to five times rated current and suits resistive and lighting loads. A Type C curve trips at five to ten times rated current and suits inductive loads such as motors, air conditioners and transformers, whose inrush current would cause nuisance tripping on a Type B. Choosing a higher rating to stop nuisance tripping instead of choosing the correct curve leaves the cable unprotected.",
+      "spoken": "Type B trip at three to five times the rating — na for light and resistive load. Type C trip at five to ten times — na for motor, AC, transformer, because of inrush. If breaker dey trip anyhow, change the curve. No increase the rating — if you increase rating, the cable no get protection again."
+    },
+    {
+      "id": "p-protect-03",
+      "lesson": 3,
+      "ref": "NIS IEC 60364-4-41 · cl. 411.3.3",
+      "source": "NIS-60364",
+      "topic": "RCD requirement for socket outlets",
+      "cues": ["rcd", "30ma", "earth leakage", "rccb", "no rcd", "shock protection"],
+      "answer": "Socket outlets in a domestic installation require additional protection by a residual current device with a rated residual operating current not exceeding 30mA. A distribution board fitted with MCBs alone provides no protection against electric shock from a line-to-earth fault through a person. Where a board has no RCD, that is a defect to be reported, not a condition to work around.",
+      "spoken": "Socket outlet need RCD not more than thirty milliamp. If the board get only breaker, nobody get shock protection on that installation. Board without RCD na defect you must report — no be something you manage."
+    },
+    {
+      "id": "p-protect-04",
+      "lesson": 3,
+      "ref": "NIS IEC 60364-5-53 · cl. 536.4",
+      "source": "NIS-60364",
+      "topic": "discrimination between RCDs",
+      "cues": ["discrimination", "whole house trip", "one rcd", "selectivity", "freezer", "nuisance"],
+      "answer": "Putting every circuit behind a single 30mA RCD means one fault anywhere disconnects the whole installation, including the freezer. Discrimination is achieved by dividing final circuits across multiple 30mA devices, and where an upstream device is used it must be time-delayed selective type so that the downstream device operates first. This matters practically as well as technically: an installation that blacks out completely on any fault gets its RCD bypassed by the occupant.",
+      "spoken": "If you put everything behind one thirty milliamp RCD, one small fault go kill light for the whole house, freezer included. Split the circuits across more than one device. If you use one upstream, make it the time-delay selective type so the downstream one trip first. If the whole house dey black out, the owner go bypass the RCD — then nobody get protection."
+    },
+    {
+      "id": "p-change-01",
+      "lesson": 4,
+      "ref": "NESIS 2015 · Pt. IV · installation of alternative supply",
+      "source": "NESIS",
+      "topic": "changeover must break line and neutral",
+      "cues": ["change over", "changeover", "generator connect", "backfeed", "transfer switch", "gen direct"],
+      "answer": "A changeover arrangement between the utility supply and a generator or inverter must break both the line and the neutral conductor, and must be mechanically interlocked so the two sources can never be connected at the same time. Switching only the line leaves the neutrals connected, which allows the alternative supply to backfeed onto the utility network. A distribution company linesman working on a line he has isolated and proved dead can be killed by a generator backfeeding through a neutral that was never switched.",
+      "spoken": "Changeover must break line and neutral — both. And it must be mechanically interlocked so the two supply can never close together. If you switch only line, the neutral still connected and your gen go backfeed on NEPA line. The linesman who already prove that line dead can die from your generator."
+    },
+    {
+      "id": "p-change-02",
+      "lesson": 4,
+      "ref": "NESIS 2015 · Pt. IV",
+      "source": "NESIS",
+      "topic": "prohibited connection methods",
+      "cues": ["suicide cord", "male to male", "two head plug", "plug into socket", "direct connect gen"],
+      "answer": "Connecting a generator or inverter to an installation through a plug-to-plug lead, through a socket outlet, or through any arrangement without an interlocked changeover device is prohibited. A lead with a plug at both ends exposes live pins whenever one end is connected, and provides no isolation from the utility supply. There is no circumstance in domestic installation work where this is acceptable, including temporarily.",
+      "spoken": "Male to male cord, connecting gen through socket, any arrangement without interlocked changeover — all of it prohibited. That cord with plug on both side get live pin exposed the moment one end enter. No temporary, no small time. Never."
+    },
+    {
+      "id": "p-change-03",
+      "lesson": 4,
+      "ref": "NIS IEC 60364-5-55 · cl. 551",
+      "source": "NIS-60364",
+      "topic": "inverter neutral earthing and load scheduling",
+      "cues": ["inverter neutral", "inverter earth", "floating neutral", "inverter load", "solar", "essential load"],
+      "answer": "An inverter supplying an installation as an alternative source must have its output neutral earthed in accordance with the manufacturer's instructions and the earthing arrangement of the installation. A floating output neutral causes residual current devices to misoperate and can leave appliance casings at an indeterminate potential. Load scheduling is a separate requirement: essential circuits belong on a dedicated sub-board, and high-current loads such as air conditioners and water heaters should not be placed on the inverter leg.",
+      "spoken": "Inverter output neutral must be earthed according to the manufacturer and the earthing arrangement of the house. If the neutral floating, RCD go misbehave and appliance body can carry unknown voltage. Separate matter: put essential load on him own sub-board, and keep AC and water heater off the inverter leg."
+    },
+    {
+      "id": "p-test-01",
+      "lesson": 5,
+      "ref": "NIS IEC 60364-6 · cl. 61",
+      "source": "NIS-60364",
+      "topic": "dead tests before live tests, in order",
+      "cues": ["test order", "before energise", "dead test", "sequence", "commissioning", "verification"],
+      "answer": "Verification follows a fixed order, and the dead tests come first: continuity of protective conductors and bonding, continuity of ring final conductors where a ring is used, insulation resistance, polarity, and earth electrode resistance where the installation is TT. Only then are the live tests carried out: earth fault loop impedance, RCD operating time, and functional testing. The order exists because a fault found by a dead test would be dangerous to find by a live one.",
+      "spoken": "The order fixed and the dead test come first. Continuity of earth and bonding. Ring continuity if na ring. Insulation resistance. Polarity. Earth electrode if TT. Only after all that you do live test: loop impedance, RCD timing, then functional test. The order exist because any fault you find dead would be dangerous to find live."
+    },
+    {
+      "id": "p-test-02",
+      "lesson": 5,
+      "ref": "NIS IEC 60364-6 · cl. 61.3.3",
+      "source": "NIS-60364",
+      "topic": "insulation resistance values",
+      "cues": ["insulation resistance", "megger", "1 megohm", "500v", "ir test"],
+      "answer": "Insulation resistance for a 230/400V installation is measured at 500V DC and must be not less than 1.0 MΩ between live conductors and between live conductors and earth. A reading that is low but not zero is still a failure and usually indicates moisture ingress, a damaged cable, or an appliance left connected. Disconnect sensitive equipment before testing rather than skipping the test.",
+      "spoken": "Insulation resistance: test at five hundred volt DC, and the reading must not be less than one megohm. If the reading low but no be zero, that one still fail — usually water, damaged cable, or appliance still connected. Remove the sensitive equipment, no skip the test."
+    },
+    {
+      "id": "p-test-03",
+      "lesson": 5,
+      "ref": "NIS IEC 60364-6 · cl. 61.3.6",
+      "source": "NIS-60364",
+      "topic": "polarity verification",
+      "cues": ["polarity", "switch on neutral", "fuse in neutral", "lampholder", "centre contact"],
+      "answer": "Polarity must be verified before energising. Every protective device and every single-pole switch must be connected in the line conductor only, never in the neutral. The centre contact of an Edison screw lampholder must be connected to the line conductor. A switch wired into the neutral leaves the lamp live when it is off, and the next person to change a bulb discovers it.",
+      "spoken": "Check polarity before you put current. Every breaker and every single-pole switch must sit on the line, never on the neutral. The centre contact of the lampholder must be line. If you switch the neutral, the lamp still live when the switch off — and the person who change bulb go find out."
+    },
+    {
+      "id": "p-test-04",
+      "lesson": 5,
+      "ref": "NIS IEC 60364-6 · cl. 61.3.7",
+      "source": "NIS-60364",
+      "topic": "RCD operating times",
+      "cues": ["rcd test", "trip time", "300ms", "40ms", "rcd timing", "test button"],
+      "answer": "A 30mA RCD providing additional protection must operate within 300ms at its rated residual current and within 40ms at five times its rated residual current. The integral test button confirms only the mechanism, not the operating time, so it is not a substitute for instrument testing. An RCD that operates but operates slowly has failed.",
+      "spoken": "Thirty milliamp RCD must trip within three hundred millisecond at him rated current, and within forty millisecond at five times. The test button on the device only confirm the mechanism — e no tell you the timing. You must test with instrument. RCD that trip slow don fail."
+    },
+    {
+      "id": "p-test-05",
+      "lesson": 5,
+      "ref": "NSQ EIM L3 · U09 · PC 4",
+      "source": "NSQ-EIM",
+      "topic": "energising before testing",
+      "cues": ["switch on and see", "test by switching", "energise first", "just put light"],
+      "answer": "Energising an installation to see whether it works is not a test. It cannot detect a reversed polarity, a broken protective conductor, or insulation that has degraded, and each of those presents as a working installation until someone is injured. Insulation resistance and polarity must be confirmed dead before the supply is connected.",
+      "spoken": "To put current and see whether e work no be test. That one no go show you reverse polarity, broken earth, or bad insulation — and all three go look like working installation until somebody get injured. Confirm insulation and polarity dead before you connect supply."
+    }
+  ],
+  "lessons": [
+    {
+      "n": 1,
+      "title": "Cable sizing for socket and lighting circuits",
+      "subtitle": "Why 2.5 and 1.5, and what changes the answer",
+      "minutes": 4,
+      "audioKb": 186,
+      "passages": ["p-cable-01", "p-cable-02", "p-cable-03", "p-cable-04"],
+      "unit": "NSQ EIM L2 · U04",
+      "keyPoints": [
+        "Socket circuits 2.5mm², lighting circuits 1.5mm²",
+        "Ib ≤ In ≤ Iz — load, device, cable, in that order",
+        "Derate for conduit, grouping, insulation and ambient heat",
+        "Voltage drop: 3% lighting, 5% other",
+        "An air conditioner needs its own correctly sized circuit"
+      ],
+      "practice": {
+        "type": "voice-viva",
+        "prompt": "Record yourself explaining why you would run 2.5mm² to a socket outlet and not 1.5mm².",
+        "spokenPrompt": "Talk to me. Why you go run two point five to socket, and why one point five no go do?",
+        "rubric": [
+          { "point": "Names 2.5mm² as the correct size for sockets", "keywords": ["2.5", "two point five", "two five"] },
+          { "point": "Links cable capacity to the protective device rating", "keywords": ["breaker", "mcb", "device", "rating", "amp", "16", "20", "protect"] },
+          { "point": "Identifies overload or overheating as the risk", "keywords": ["overload", "overheat", "hot", "fire", "burn", "melt", "too much current"] },
+          { "point": "Mentions a factor that changes the answer", "keywords": ["conduit", "group", "bunch", "ambient", "heat", "voltage drop", "distance", "long", "insulation"] }
+        ]
+      }
+    },
+    {
+      "n": 2,
+      "title": "Earthing, and why bridging earth to neutral kills",
+      "subtitle": "The shortcut that makes a tester read correct and a house lethal",
+      "minutes": 5,
+      "audioKb": 214,
+      "passages": ["p-earth-01", "p-earth-02", "p-earth-03", "p-earth-04"],
+      "unit": "NSQ EIM L2 · U06",
+      "keyPoints": [
+        "CPC and neutral stay separate in every final circuit",
+        "Bridging them makes appliance casings live if the neutral opens upstream",
+        "Green-and-yellow is reserved for protective conductors only",
+        "Bonding a water pipe is not the same as an earth electrode",
+        "Earth continuity is measured, never assumed"
+      ],
+      "practice": {
+        "type": "voice-viva",
+        "prompt": "Record yourself explaining what happens to a fridge casing if earth is bridged to neutral and the neutral then breaks upstream.",
+        "spokenPrompt": "Tell me. If somebody join earth to neutral, and then the neutral break before that point — what happen to the body of the fridge?",
+        "rubric": [
+          { "point": "States the casing rises towards line potential", "keywords": ["live", "line", "potential", "voltage", "current", "carry current", "230", "240"] },
+          { "point": "Identifies the person touching it as the fault path", "keywords": ["shock", "person", "touch", "kill", "death", "body", "path", "earth path"] },
+          { "point": "Notes a socket tester would still read correct", "keywords": ["tester", "test", "show correct", "look correct", "read correct", "pass"] },
+          { "point": "States the correct practice: separate CPC throughout", "keywords": ["separate", "own wire", "independent", "never join", "no join", "cpc", "back to board", "main earthing"] }
+        ]
+      }
+    },
+    {
+      "n": 3,
+      "title": "MCB and RCD selection",
+      "subtitle": "A breaker protects the cable. It does not protect the person.",
+      "minutes": 5,
+      "audioKb": 221,
+      "passages": ["p-protect-01", "p-protect-02", "p-protect-03", "p-protect-04"],
+      "unit": "NSQ EIM L2 · U07",
+      "keyPoints": [
+        "MCBs protect against overload and short circuit, not shock",
+        "Type B for resistive and lighting, Type C for motors and AC",
+        "Socket outlets require 30mA RCD additional protection",
+        "Never raise the rating to stop nuisance tripping — change the curve",
+        "Split circuits across RCDs so one fault does not black out the house"
+      ],
+      "practice": {
+        "type": "voice-viva",
+        "prompt": "Record yourself explaining to a customer why their MCB-only board does not protect them from shock.",
+        "spokenPrompt": "The customer say him board get breaker so him safe. Answer him. Why the breaker alone no protect him from shock?",
+        "rubric": [
+          { "point": "States the MCB protects the cable, not the person", "keywords": ["cable", "wire", "not person", "no protect person", "overload", "short circuit"] },
+          { "point": "Explains the current through a person is below the trip threshold", "keywords": ["small current", "milliamp", "below", "no reach", "not enough", "never trip", "no trip", "16 amp"] },
+          { "point": "Names the RCD as the shock protection device", "keywords": ["rcd", "rccb", "earth leakage", "leakage", "30ma", "thirty"] },
+          { "point": "States the 30mA requirement for socket outlets", "keywords": ["30", "thirty", "socket", "milliamp", "additional protection"] }
+        ]
+      }
+    },
+    {
+      "n": 4,
+      "title": "Changeover and inverter tie-in",
+      "subtitle": "Switch the neutral too, or you can kill a linesman",
+      "minutes": 5,
+      "audioKb": 209,
+      "passages": ["p-change-01", "p-change-02", "p-change-03"],
+      "unit": "NSQ EIM L3 · U11",
+      "keyPoints": [
+        "Break line and neutral, both, on every changeover",
+        "Mechanical interlock so two sources can never close together",
+        "Unswitched neutral allows backfeed onto the utility network",
+        "Plug-to-plug leads and socket-fed generators are prohibited outright",
+        "Inverter output neutral must be earthed; essential loads on their own sub-board"
+      ],
+      "practice": {
+        "type": "photo-evidence",
+        "prompt": "Send a photo of a changeover installation showing the neutral terminals and the interlock.",
+        "spokenPrompt": "Snap the changeover for me. Make sure I can see the neutral terminal and the interlock.",
+        "checklist": [
+          "Both line and neutral terminals visible and switched",
+          "Mechanical interlock present between the two sources",
+          "No plug-to-plug or socket-fed connection anywhere in the arrangement",
+          "Earthing conductor terminated at the changeover enclosure"
+        ]
+      }
+    },
+    {
+      "n": 5,
+      "title": "Testing before you energise",
+      "subtitle": "Switching it on to see if it works is not a test",
+      "minutes": 6,
+      "audioKb": 238,
+      "passages": ["p-test-01", "p-test-02", "p-test-03", "p-test-04", "p-test-05"],
+      "unit": "NSQ EIM L3 · U09",
+      "keyPoints": [
+        "Dead tests first, in order, then live tests",
+        "Insulation resistance ≥ 1.0 MΩ measured at 500V DC",
+        "Polarity: devices and single-pole switches in the line only",
+        "30mA RCD: ≤300ms at IΔn, ≤40ms at 5×IΔn",
+        "The RCD test button confirms the mechanism, not the timing"
+      ],
+      "practice": {
+        "type": "voice-viva",
+        "prompt": "Record yourself listing the dead tests in the order you would carry them out, and say why that order matters.",
+        "spokenPrompt": "List the dead test for me, in order. Then tell me why the order matter.",
+        "rubric": [
+          { "point": "Names continuity of protective conductors first", "keywords": ["continuity", "earth continuity", "cpc", "bonding", "r1", "r2"] },
+          { "point": "Names insulation resistance", "keywords": ["insulation", "megger", "megohm", "500", "ir"] },
+          { "point": "Names polarity", "keywords": ["polarity", "line", "switch", "centre contact", "lampholder"] },
+          { "point": "Explains the order protects the tester", "keywords": ["dangerous", "safe", "dead", "before current", "before energise", "injury", "shock", "risk"] }
+        ]
+      }
+    }
+  ],
+  "recall": [
+    {
+      "lesson": 1,
+      "question": "For a socket outlet final circuit in a two-bedroom flat, which cable?",
+      "spoken": "Quick one. For socket outlet circuit inside two bedroom flat — which cable you go use?",
+      "options": ["2.5mm² copper", "1.5mm² copper"],
+      "correct": 0,
+      "because": "p-cable-01"
+    },
+    {
+      "lesson": 2,
+      "question": "A socket tester shows correct at every outlet. Does that prove the earth is sound?",
+      "spoken": "Socket tester show correct for every outlet. That one prove say the earth correct?",
+      "options": ["No — a bridged earth-neutral reads correct too", "Yes — the tester checks the earth"],
+      "correct": 0,
+      "because": "p-earth-01"
+    },
+    {
+      "lesson": 3,
+      "question": "Which device protects a person against electric shock?",
+      "spoken": "Which device protect person from electric shock?",
+      "options": ["A 30mA RCD", "A 16A MCB"],
+      "correct": 0,
+      "because": "p-protect-01"
+    },
+    {
+      "lesson": 4,
+      "question": "A changeover switch must break which conductors?",
+      "spoken": "Changeover switch must break which conductor?",
+      "options": ["Line and neutral, both", "Line only — the neutral is common"],
+      "correct": 0,
+      "because": "p-change-01"
+    },
+    {
+      "lesson": 5,
+      "question": "Minimum insulation resistance for a 230V installation, tested at 500V DC?",
+      "spoken": "Minimum insulation resistance for two thirty volt installation, test at five hundred volt DC?",
+      "options": ["1.0 MΩ", "0.5 MΩ"],
+      "correct": 0,
+      "because": "p-test-02"
+    }
+  ],
+  "assertionGuard": {
+    "_comment": "A safety flag may only be raised when the learner is describing what they DID, never when they are asking what to do. Asking 'socket, 1.5 or 2.5?' must not flag the learner to their trainer — that false positive destroys trust faster than a missed flag. Readable by the reviewing trainer on purpose.",
+    "question": "\\?|\\babi\\b|\\bwhich\\b|\\bwhat\\b|\\bhow\\b|\\bshould i\\b|\\bis it\\b|\\bwetin\\b|\\bor\\b",
+    "assertion": "\\bi (just |don |already |bin )?(run|join|connect|put|use|used|do|did|wire|bridge|remove|removed|switch|switched|off)\\b|\\bi no (put|off|do|test|get)\\b|\\bmy customer\\b|\\b(board|db) (get|na|dey)\\b|\\bna only\\b|\\bi been\\b"
+  },
+  "safetyRules": [
+    {
+      "id": "s-earth-neutral-bridge",
+      "severity": "critical",
+      "escalate": true,
+      "label": "Earth bridged to neutral",
+      "patterns": [
+        "join (the )?earth to (the )?(neutral|netural|neutra)",
+        "(earth|earth wire).{0,20}(to|and|with).{0,10}(neutral|netural|neutra)",
+        "(neutral|netural|neutra).{0,20}(to|and|with).{0,10}earth",
+        "bridge.{0,15}(earth|neutral)",
+        "earth and neutral.{0,15}(same|together|one)",
+        "use (the )?neutral as (the )?earth"
+      ],
+      "correction": "Disconnect that bridge. The CPC and neutral must be separate in every final circuit. Bridged, a break in the neutral upstream puts line potential on every appliance casing on the circuit.",
+      "ref": "NIS IEC 60364-4-41 · cl. 411",
+      "unit": "NSQ EIM L2 · U06"
+    },
+    {
+      "id": "s-undersized-socket",
+      "severity": "critical",
+      "escalate": true,
+      "label": "Undersized cable on a socket or AC circuit",
+      "patterns": [
+        "1\\.5.{0,25}(ac|air ?cond|socket|soka|point|plug)",
+        "(ac|air ?cond|socket|soka|plug point).{0,25}1\\.5",
+        "one point five.{0,25}(ac|socket|air ?cond)",
+        "(ac|air ?cond).{0,20}(1\\.5|one five|one point five)"
+      ],
+      "correction": "Replace that run. A socket circuit takes 2.5mm², and an air conditioner takes its own dedicated circuit sized for the unit's rated current with motor starting accounted for. 1.5mm² can sit overloaded for hours without the device operating.",
+      "ref": "NIS IEC 60364-5-52 · cl. 523",
+      "unit": "NSQ EIM L2 · U04"
+    },
+    {
+      "id": "s-bridged-protection",
+      "severity": "critical",
+      "escalate": true,
+      "label": "Protective device bridged or bypassed",
+      "patterns": [
+        "(bridge|bypass|jump).{0,20}(fuse|breaker|mcb|rcd|leakage)",
+        "(coin|wire|nail|foil).{0,15}(in|for|inside).{0,10}fuse",
+        "remove.{0,15}(rcd|leakage).{0,20}(so|because|make)",
+        "(rcd|leakage).{0,15}(dey disturb|disturb|too much trip).{0,20}(remove|bypass|off)"
+      ],
+      "correction": "Restore the device. Bridging overcurrent or residual protection removes the only thing standing between a fault and a fire or a fatality. If a device trips repeatedly, find the fault or correct the curve selection.",
+      "ref": "NIS IEC 60364-4-43 · cl. 433",
+      "unit": "NSQ EIM L2 · U07"
+    },
+    {
+      "id": "s-live-working",
+      "severity": "critical",
+      "escalate": true,
+      "label": "Working on a live circuit",
+      "patterns": [
+        "work.{0,20}(live|current dey|without off|no off)",
+        "(no|never) (off|switch off|kill).{0,15}(the )?(main|supply|breaker|current)",
+        "while (the )?(current|light|supply).{0,10}(dey|on)",
+        "change.{0,15}(socket|switch|point).{0,20}(without|no).{0,10}off"
+      ],
+      "correction": "Isolate, lock off, and prove dead before you touch it. Safe isolation is the first competency in this trade and there is no domestic job that justifies skipping it.",
+      "ref": "NESIS 2015 · Pt. IV · safe isolation",
+      "unit": "NSQ EIM L1 · U02"
+    },
+    {
+      "id": "s-generator-direct",
+      "severity": "critical",
+      "escalate": true,
+      "label": "Generator connected without interlocked changeover",
+      "patterns": [
+        "(connect|join).{0,20}gen.{0,20}(direct|straight|socket)",
+        "male to male",
+        "suicide cord",
+        "two head (plug|cord)",
+        "(no|without).{0,10}change ?over",
+        "plug (the )?gen.{0,15}(into|inside).{0,10}socket"
+      ],
+      "correction": "Fit an interlocked changeover that breaks line and neutral. A plug-to-plug lead exposes live pins, and an unswitched neutral backfeeds the utility line a linesman has already proved dead.",
+      "ref": "NESIS 2015 · Pt. IV",
+      "unit": "NSQ EIM L3 · U11"
+    },
+    {
+      "id": "s-no-rcd",
+      "severity": "high",
+      "escalate": true,
+      "label": "Socket outlets with no RCD protection",
+      "patterns": [
+        "(no|without|never).{0,15}(rcd|rccb|earth leakage|leakage)",
+        "(rcd|leakage).{0,10}(no dey|not there|absent)",
+        "only (breaker|mcb).{0,20}(board|db)",
+        "board.{0,15}(get|na).{0,10}(breaker|mcb) (alone|only)"
+      ],
+      "correction": "Socket outlets need 30mA RCD additional protection. An MCB-only board leaves the household with no protection against shock from a line-to-earth fault. Report it as a defect rather than working around it.",
+      "ref": "NIS IEC 60364-4-41 · cl. 411.3.3",
+      "unit": "NSQ EIM L2 · U07"
+    },
+    {
+      "id": "s-colour-misuse",
+      "severity": "high",
+      "escalate": true,
+      "label": "Green-and-yellow used as a live or neutral conductor",
+      "patterns": [
+        "(green.{0,10}yellow|earth wire).{0,25}(as|for).{0,15}(live|line|phase|neutral|netural)",
+        "use.{0,10}(earth|green).{0,15}(wire).{0,15}(as|for).{0,15}(live|neutral|line)",
+        "(no|i no get).{0,10}(blue|brown).{0,20}(use|take).{0,15}(green|earth)"
+      ],
+      "correction": "Pull that conductor out. Green-and-yellow is reserved for protective conductors. Reusing it as a live or neutral removes the next electrician's only warning before they open the board.",
+      "ref": "NIS IEC 60364-5-54 · cl. 543",
+      "unit": "NSQ EIM L2 · U06"
+    },
+    {
+      "id": "s-water-pipe-earth",
+      "severity": "high",
+      "escalate": true,
+      "label": "Water pipe used as the earth electrode",
+      "patterns": [
+        "(water|metal) pipe.{0,20}(as|for).{0,15}earth",
+        "earth.{0,15}(to|on).{0,10}(water|metal) pipe",
+        "(use|take).{0,10}pipe.{0,15}(as|for).{0,10}(earth|earthing)"
+      ],
+      "correction": "A pipe is bonded, not used as the electrode. Bonding equalises potential; the electrode provides the earth reference. Install an electrode and verify that Ra × IΔn does not exceed 50V.",
+      "ref": "NIS IEC 60364-4-41 · cl. 411.5.3",
+      "unit": "NSQ EIM L2 · U06"
+    },
+    {
+      "id": "s-energise-before-test",
+      "severity": "medium",
+      "escalate": false,
+      "label": "Energising before verification",
+      "patterns": [
+        "(just|only).{0,15}(switch|put|on).{0,15}(on|light|current).{0,15}(see|check|test)",
+        "test.{0,10}(am|it|by).{0,15}(switch|put).{0,10}on",
+        "(no|never|i no).{0,10}(do|run).{0,10}(insulation|megger|polarity)",
+        "energise.{0,15}(before|without).{0,15}test"
+      ],
+      "correction": "Energising is not a test. It cannot find reversed polarity, a broken CPC, or degraded insulation, and each of those looks like a working installation until somebody is hurt. Confirm insulation resistance and polarity dead first.",
+      "ref": "NIS IEC 60364-6 · cl. 61",
+      "unit": "NSQ EIM L3 · U09"
+    },
+    {
+      "id": "s-rating-up",
+      "severity": "medium",
+      "escalate": false,
+      "label": "Protective device rating increased to stop tripping",
+      "patterns": [
+        "(increase|change|put bigger|upgrade).{0,20}(breaker|mcb|fuse).{0,25}(trip|disturb|stop)",
+        "(breaker|mcb).{0,15}(dey trip|trip too much).{0,25}(so i|i put|change to).{0,15}(bigger|higher|32|40)",
+        "put (32|40|63).{0,20}(instead|because).{0,20}trip"
+      ],
+      "correction": "Raising the rating leaves the cable unprotected. Repeated tripping means either a real fault or the wrong tripping curve — a Type C where an inductive load needs it. Fix the cause, keep the rating correct for the cable.",
+      "ref": "NIS IEC 60364-5-53 · cl. 536",
+      "unit": "NSQ EIM L2 · U07"
+    }
+  ],
+  "examples": [
+    { "lang": "pcm", "text": "I wan run wire for socket, 1.5 abi 2.5?", "note": "Cable sizing — the most common question" },
+    { "lang": "pcm", "text": "For the AC socket I just run 1.5, and I join the earth to the neutral so the tester go show correct.", "note": "Two critical safety flags" },
+    { "lang": "pcm", "text": "My customer board get only breaker, no earth leakage. Him say him safe because breaker dey.", "note": "Shock protection misconception" },
+    { "lang": "pcm", "text": "I connect the gen direct, I no put change over. Na only line I switch.", "note": "Backfeed risk" },
+    { "lang": "en", "text": "What insulation resistance should I get before energising?", "note": "Testing and verification" },
+    { "lang": "pcm", "text": "How I go fix generator carburettor?", "note": "Outside the pack — should refuse" }
+  ]
+}

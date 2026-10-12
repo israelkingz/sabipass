@@ -1,0 +1,611 @@
+{
+ "code": "ig",
+ "name": "Igbo",
+ "endonym": "Asụsụ Igbo",
+ "generated": "2026-10-08T18:14:20.768Z",
+ "source": "en",
+ "provider": "spitch",
+ "target": "ig",
+ "reviewed": false,
+ "reviewer": null,
+ "reviewNote": "Machine translation from the English pack. A trainer who speaks this language must read it before a learner is served. The English wording is the authority.",
+ "safetyDetectionNote": "Corrections below are translated. Detection still matches the English and Pidgin patterns in pack.json, which holds up because the technical terms (earth, neutral, socket, 1.5) stay English in code-switched speech. Validate per language before relying on it.",
+ "ui": {
+  "nav.ask": "Jụọ",
+  "nav.learn": "Mụta",
+  "nav.recall": "Cheta",
+  "nav.passport": "Paspọtụ",
+  "nav.trainer": "Onye nkuzi",
+  "common.online": "N'ịntanetị",
+  "common.offline": "Na-enweghị ịntanetị",
+  "common.preview": "Nlele — onye nkuzi akwadoghị",
+  "common.close": "Mechie",
+  "common.delete": "Hichapụ",
+  "pack.demo": "Ngwugwu ọdịnaya ngosi. E depụtara ọdịnaya teknụzụ site na NESIS, NIS IEC 60364 na ụkpụrụ ngalaba NBTE. Ntụaka nkebi na-eche mbinye aka nkwado sitere n'aka onye nkuzi na-enyocha tupu e nye onye mmụta ọ bụla.",
+  "locale.machine": "Asụsụ a bụ nke a sụgharịrị site na Bekee site n'igwe, onye nkuzi enyochabeghị ya. Okwu Bekee bụ nke a na-atụkwasị obi.",
+  "ask.eyebrow": "Jụọ n'asụsụ gị",
+  "ask.title": "Kedu ihe ị chọrọ ịma gbasara ọrụ ahụ?",
+  "ask.sub": "Kwuo otu i si ekwu n'ebe ọrụ. Azịza ọ bụla sitere n'ụkpụrụ enyochala ma gosi gị nkebi ahụ.",
+  "ask.tap": "Kpatụ ma kwuo",
+  "ask.listening": "Na-ege ntị — kwuo ugbu a, wee kpatụ ka ịkwụsị",
+  "ask.transcribing": "Na-edegharị...",
+  "ask.unavailable": "Ntinye olu adịghị ebe a — kpatụ ihe atụ dị n'okpuru",
+  "ask.answer": "Azịza",
+  "ask.play": "Kpọọ",
+  "ask.retrieved": "E weghachiri ya n’akụkụ {n} a nyochara · netwọk 0 KB · ihe ọmụmụ {lesson}",
+  "ask.norefsource": "Enweghị isi mmalite a nyochara",
+  "ask.refuse": "Ọ nweghị ihe dị na ngwugwu {trade} na-ekwu maka nke ahụ. Agaghị m aza site n’ihe na-abụghị ụkpụrụ a nyochara — azịza ezighi ezi nke a ji obi ike kwuo gbasara ọrụ a nwere ike imerụ mmadụ ahụ.",
+  "ask.refuseHint": "Jụọ onye nkuzi gị, ma ọ bụ jụọ m gbasara ịhọrọ nha waya, ịgba ụwa, ngwaọrụ nchebe, mgbanwe ọkụ, ma ọ bụ nnwale.",
+  "ask.examples": "Ihe atụ nke ndekọ olu",
+  "ask.examplesSub": "Pịa otu ka ị kpọọ ya dịka a ga-asị na e kwuru ya. Ụzọ ngosi dị nchebe: ngosi dị ndụ anaghị adabere n’okwu ọ bụla a na-amụghị tupu oge eruo.",
+  "ask.clear": "Kpochapụ mkparịta ụka",
+  "ask.notified": "{trainer}, onye nkuzi gị, anatala ozi na nzuzo. Ọ dịghị onye ọzọ a gwara.",
+  "ask.seeSent": "Lee ihe e zigara",
+  "ask.deleteRecord": "Hichapụ ndekọ a",
+  "ask.deleted": "E hichapụla ndekọ ahụ. Ewepụla oyiri onye nkuzi gị.",
+  "ask.sentTitle": "Ihe a gwara onye nkuzi gị",
+  "ask.sentNote": "Nke a bụ ozi kpọmkwem e zigara onye nkuzi gị. Ọ nweghị ihe ọzọ gbasara gị etinyere — enweghị ndekọ, enweghị ebe ị nọ, enweghị ajụjụ ndị ọzọ.",
+  "ask.needsSupervision": "Ọ chọrọ nlekọta na {unit}.",
+  "ask.withdraw": "Hichapụ ma wepụ",
+  "learn.title": "Nkuzi ise",
+  "learn.sub": "Nke ọ bụla dị mkpirikpi, enwere ike ibudata ya, ma na-ejedebe n'ọrụ omume ị na-eme site n'olu ma ọ bụ foto. Ọ dịghị mkpa ịgụ ihe.",
+  "learn.completed": "Nkuzi emechara",
+  "learn.downloaded": "Ebudatara",
+  "learn.downloadAll": "Budata ha ise niile",
+  "learn.savedAll": "Edebere nkuzi ise niile maka iji na-enweghị ịntanetị.",
+  "learn.offline": "Na-enweghị ịntanetị",
+  "learn.min": "nkeji",
+  "learn.play": "Kpọọ nkuzi",
+  "learn.save": "Chekwa",
+  "learn.saved": "Echekwara",
+  "learn.mustDo": "Ihe ị ga-enwe ike ime",
+  "learn.sources": "Isi mmalite maka nkuzi a",
+  "learn.conductors": "Nchọpụta onye ndu ọkụ eletrik",
+  "learn.conductorNote": "A na-edobe akwụkwọ ndụ akwụkwọ ndụ na odo maka ndị na-eduzi nchebe. Ọ bụ ozi nye onye ọzọ ga-emeghe bọọdụ ahụ.",
+  "learn.lesson": "Nkuzi",
+  "learn.listen": "Gee nkuzi a ntị n’asụsụ gị",
+  "learner.year": "Onye mmụta afọ nke atọ",
+  "trainer.role": "Onye omenkà ukwu · afọ 19",
+  "evidence.recall": "Nlele ncheta",
+  "practice.title": "Omume",
+  "practice.voiceViva": "Ajụjụ ọnụ n’olu",
+  "practice.photo": "Ihe akaebe foto",
+  "practice.hear": "Nụrụ ajụjụ ahụ",
+  "practice.record": "Dekọọ azịza gị",
+  "practice.listening": "Na-ege ntị… kpatụ ka ọ kwụsị",
+  "practice.typePlaceholder": "Ma ọ bụ dee ihe ị ga-ekwu…",
+  "practice.submitTyped": "Nyefee azịza e dere ede",
+  "practice.noMcqNote": "A naghị atụle ikike site n’ajụjụ nhọrọ ọtụtụ. Ọ dịghị mkpa ịgụ na ide — igbe a na-ede naanị dị n’ihi na ihe nchọgharị a nwere ike igbochi igwe okwu.",
+  "practice.result": "Nsonaazụ",
+  "practice.points": "{score} n'ime {total} isi rubric",
+  "practice.youSaid": "I kwuru",
+  "practice.again": "Dekọọ ọzọ",
+  "practice.mustShow": "Foto ahụ ga-egosi",
+  "practice.addPhoto": "Tinye foto sitere na ekwentị gị",
+  "practice.photoNote": "Foto gị na-anọ n’ọrụ gị ruo mgbe ị họrọ iziga ya maka nkwado aka ọzọ.",
+  "practice.submitted": "Ihe akaebe ezitere",
+  "practice.awaiting": "Na-eche nkwado aka nke onye nkuzi. Ị nwere ike ihichapụ ihe akaebe a mgbe ọ bụla.",
+  "practice.deleteEvidence": "Hichapụ ihe akaebe",
+  "recall.eyebrow": "Ncheta ugboro ugboro",
+  "recall.title": "Ị ka na-echeta ya?",
+  "recall.sub": "Ụbọchị atọ ka nkuzi gachara, emesịa ụbọchị iri, emesịa ụbọchị iri atọ — ozi olu na-abịa na WhatsApp. Zaa site n’ịpị otu igodo. Enweghị ngwa ị ga-emeghe, enweghị data ị ga-azụ.",
+  "recall.clock": "Elekere ngosi",
+  "recall.forward": "+ ụbọchị 3",
+  "recall.clockNote": "Njikwa elekere dị naanị maka ngosi. N’ọrụ n’ezi ndụ, oge na-aga n’onwe ya.",
+  "recall.empty": "Mechaa ọrụ omume nke nkuzi, a ga-ahazi nyocha ncheta ya maka ụbọchị atọ ka e mesịrị.",
+  "recall.step": "Ncheta nkuzi {lesson} · nzọụkwụ {step} n’ime 3",
+  "recall.reply": "Zaa 1 ma ọ bụ 2",
+  "recall.featurePhone": "Ọ na-arụ ọrụ na ekwentị bọtịnụ: ajụjụ ahụ bụ ọdịyo, azịza ya bụ ịpị otu bọtịnụ, mkparịta ụka dum erughị 10 KB.",
+  "recall.history": "Akụkọ ncheta",
+  "recall.scheduled": "Ahaziri",
+  "recall.retained": "E chetara ya n’ime nyocha atọ niile — ụbọchị 3, 10 na 30",
+  "recall.missed": "A tụfuru ya n’ụbọchị {day} — a ga-emegharị ya echi, nkuzi ahụ alaghachila na ndepụta gị",
+  "recall.correctOn": "Ziri ezi n’ụbọchị {day} · ụbọchị nyocha ọzọ {next}",
+  "recall.outcome": "Edobere na mbido mbụ: {hits} n'ime nyocha {total}. Nyocha a tụfuru na-eweghachi ihe ọmụmụ ahụ n'ahịrị — nke ahụ bụ nsonaazụ mmụta a tụrụ, ọ bụghị ọnụ ọgụgụ usoro.",
+  "passport.record": "Ndekọ ọganihu",
+  "passport.countersigned": "Onye ọzọ bịanyere aka",
+  "passport.evidenceItems": "Ihe akaebe",
+  "passport.notCert": "Nke a bụ ndekọ ọganihu na pọtụfoliyo ihe akaebe kwekọrọ na NSQF, ọ bụghị asambodo. Onye nyocha akwadoro ka na-abịanye aka na ntozu. SabiPass bụ usoro nnabata maka ụzọ Nkwado Mmụta Gara Aga dị ugbu a.",
+  "passport.competencies": "Nkà",
+  "passport.notStarted": "Ebubeghị",
+  "passport.started": "Amalitere ihe akaebe",
+  "passport.assessed": "Atụlela — na-eche mbinye aka nkwado",
+  "passport.signed": "Onye nkuzi bịanyere aka nkwado",
+  "passport.verify": "Nyocha — na-arụ ọrụ n’enweghị ịntanetị",
+  "passport.verifyNote": "Onye ahịa nwere ekwentị ọ bụla nwere ike kwado ndekọ a. Pịa eriri USSD ma ọ bụ gụọ koodu ahụ n’olu.",
+  "passport.showQr": "Gosi koodu QR (chọrọ njikọ)",
+  "passport.qrOffline": "QR chọrọ njikọ. Koodu na eriri USSD dị n’elu na-arụ ọrụ n’enweghị ịntanetị.",
+  "passport.portfolio": "Lelee pọtụfoliyo ihe akaebe",
+  "passport.portfolioNote": "Nke a bụ ngwugwu onye nyocha akwadoro na-enweta. Ọ na-eme ka ọrụ ha si n’ịgba ebe nyocha gaa n’ịtụle na ịkwado.",
+  "passport.noEvidence": "Enwebeghị ihe akaebe.",
+  "passport.manifest": "Ndepụta ngwugwu",
+  "passport.reviewer": "Onye nyocha",
+  "passport.notSignedOff": "akwadobeghị ya ugbu a",
+  "trainer.eyebrow": "Nlele onye nkuzi",
+  "trainer.reviewing": "na-enyocha onye mmụta 1",
+  "trainer.privacy": "Ị na-ahụ naanị ihe ndị mmụta gị zitere gị, na naanị ndị ha na-ehichapụghị. Ọ nweghị ụlọ ọrụ ma ọ bụ onye nke atọ na-anata ndị a.",
+  "trainer.flags": "Akara nchekwa",
+  "trainer.noFlags": "Ọ nweghị ihe akara. A na-ebuli akara na-akpaghị aka mgbe onye mmụta kọwara omume na-adịghị mma — ha ekwesịghị ịjụ.",
+  "trainer.awaiting": "Na-eche mbinye aka gị",
+  "trainer.queue": "Ahịrị nchere maka nkwenye mbinye aka",
+  "trainer.noQueue": "Ọ nweghị ihe na-eche. Mezue ọrụ omume dịka onye mmụta, ọ ga-apụta ebe a.",
+  "trainer.sign": "Kwenye ikike a",
+  "trainer.signed": "Ekwenyela. Emelitere ndekọ {name}.",
+  "trainer.said": "{name} kwuru",
+  "settings.textOnly": "Naanị ederede",
+  "settings.textOnlyNote": "Gbanyụọ mmepụta olu. A na-egosi nhọrọ ederede mgbe niile n’agbanyeghị nke ahụ.",
+  "settings.why": "Ihe kpatara nke a ji dị",
+  "settings.whyBody": "Usoro Mba Naịjirịa Maka Nka na Uru Ọrụ amatala nkà a mụtara n’enweghị usoro iwu, site na Nkwenye Maka Mmụta Gara Aga, nke ebidoro na 2025. Kemgbe ahụ, e nyochala ihe dị ka ndị omenkà 500 n’ala niile, n’ihi na nyocha na-adabere n’aka mmadụ, na-eme ya n’ihu mmadụ ma dịkwa ụkọ.",
+  "settings.whyBody2": "SabiPass na-eme ka nyocha ahụ bụrụ nke a pụrụ ime n’ebe dị anya, nke dabere n’olu ma fọrọ nke nta ka ọ bụrụ n’efu. Usoro ahụ dị. Ike ịrụ ọtụtụ ọrụ adịghị.",
+  "settings.notBuilt": "Ihe e kpachapụrụ anya ghara iwulite",
+  "settings.notBuiltBody": "Ịkwụ ụgwọ, ijikọta ndị mmadụ na ọrụ, itinye nkuzi ọha, asambodo. Ndebanye aha ụlọ ọrụ ọzụzụ bụ echiche azụmahịa a ga-anwale, ọ bụghị atụmatụ.",
+  "settings.data": "Data ejiri n’oge a",
+  "settings.engine": "Igwe okwu",
+  "settings.reset": "Tọgharịa ngosi",
+  "settings.resetDone": "Tọgharịa ngosi."
+ },
+ "passages": {
+  "p-cable-01": {
+   "answer": "Maka nrụnye ụlọ, sekit njedebe nke soket na-eji ọla kọpa 2.5mm², ebe sekit njedebe nke ọkụ na-eji ọla kọpa 1.5mm². Iwu dị n’azụ ya bụ Ib ≤ In ≤ Iz: ọkụ eletrik e mere atụmatụ ka ibu ahụ jiri agaghị akarị ogo ngwaọrụ nchebe, ogo ahụ agaghịkwa akarị ikike waya ibu ọkụ eletrik. A na-ahọrọ waya 2.5mm² maka soket n’ihi na ngwaọrụ nchebe 16A ma ọ bụ 20A dị n’okpuru ikike ya nke ọma. Ekwela ka ị jiri 1.5mm² gaa na soket.",
+   "spoken": "Maka soket, jiri abụọ ntụpọ ise. Maka ọkụ, jiri otu ntụpọ ise. Ihe kpatara ya bụ: waya ga-eburịrị ọkụ eletrik karịa ihe breeka na-ekwe ka ọ gafee. Iji otu ntụpọ ise maka soket ezighi ezi.",
+   "cues": [
+    "nha kabel",
+    "1.5",
+    "2.5",
+    "soket",
+    "ọkụ",
+    "waya nke",
+    "nha ole",
+    "gbaa waya",
+    "mm2"
+   ]
+  },
+  "p-cable-02": {
+   "answer": "Ike eriri eletrik iburu ugbu a abụghị otu nọmba kwụ ọtọ. Ọ na-ebelata mgbe eriri ahụ na-agafe n’ime conduit, mgbe a kpụkọrọ ya na eriri ndị ọzọ, mgbe ihe mkpuchi okpomọkụ gbara ya gburugburu, na mgbe okpomọkụ gburugburu dị elu. Otu eriri 2.5mm² a kpọgidere ozugbo n’ahụ mgbidi na-eburu ibu ugbu a karịa otu eriri ahụ a dọpụtara n’ime conduit juru mmadụ na elu ụlọ ọkụ. Tinye ihe ndozi maka usoro nrụnye, ikpokọta eriri, na okpomọkụ gburugburu tupu ịnakwere nha eriri.",
+   "spoken": "Otu eriri ahụ anaghị ebu otu ugbu a n’ebe niile. N’ime conduit, mgbe a kpụkọrọ ha ọnụ, ma ọ bụ n’ime uko ụlọ ebe okpomọkụ dị—eriri ahụ na-ebu obere ugbu a. Ị ga-etinye ihe ndozi tupu ịnakwere nha ọ bụla.",
+   "cues": [
+    "belata ọnụahịa",
+    "ọkpọkpọ ụzọ",
+    "ihe mkpuchi ọkụ",
+    "ịchịkọta",
+    "gburugburu",
+    "ọkụ ọkụ",
+    "kekọtara ọnụ",
+    "ikike"
+   ]
+  },
+  "p-cable-03": {
+   "answer": "Oke mbelata voltaji bụ 3% nke voltaji aha maka sekit ọkụ na 5% maka sekit ndị ọzọ, a tụrụ ya site na mmalite nrụnye. N’ogologo ụzọ, eriri nwere ike gafee nyocha ibu ugbu a ma ka daa na mbelata voltaji, ya mere ihe ngwọta bụ ịbawanye nha eriri, ọ bụghị ịnakwere oriọna na-adịghị enwu nke ọma ma ọ bụ moto na-esiri ya ike ịmalite.",
+   "spoken": "Mbelata voltaji: pasent atọ maka ọkụ, pasent ise maka sekit ndị ọzọ. Ọ bụrụ na ụzọ ahụ dị ogologo, eriri nwere ike gafee ule ugbu a ma daa na mbelata voltaji. Azịza ya bụ eriri ka ukwuu, ọ bụghị ịnakwere ọkụ na-adịghị ike.",
+   "cues": [
+    "mfu voltaji",
+    "ogologo njem",
+    "dị anya",
+    "adịghị enwu nke ọma",
+    "adịghị ike",
+    "anya"
+   ]
+  },
+  "p-cable-04": {
+   "answer": "Igwe ntụ oyi bụ ibu moto inductive nke ọkụ mmalite ya na-adị ọtụtụ ugboro karịa ọkụ ọ na-eji arụ ọrụ. Ọ chọrọ sekit ikpeazụ nke ya pụrụ iche, nke a tụrụ nha ya nke ọma maka ọkụ e depụtara maka ngwaọrụ ahụ, na-atụlekwa àgwà mmalite moto ahụ, ma chekwaa ya site na ngwaọrụ nwere usoro ịpụ ọkụ kwesịrị ekwesị. Ịgbanye waya 1.5mm² na soket igwe ntụ oyi bụ ihe ize ndụ ọkụ: eriri ahụ nwere ike ibu oke ogologo oge na-enweghị ngwaọrụ nchebe ahụ arụ ọrụ.",
+   "spoken": "AC bụ motor load. Current ọ na-amalite dị ukwuu karịa current ọ na-agba. Ọ chọrọ circuit nke ya, cable kwesịrị ekwesị, na breaker curve kwesịrị ekwesị. Otu point ise maka AC bụ ọkụ na-eche ime—cable ahụ ga-ebufe ibu karịa ka o kwesịrị, breaker ahụ agaghịkwa trip.",
+   "cues": [
+    "ac",
+    "igwe oyi",
+    "1.5 maka ac",
+    "aircon",
+    "moto",
+    "ugbu a na-amalite"
+   ]
+  },
+  "p-earth-01": {
+   "answer": "Onye ndu nchebe sekit na onye ndu neutra ga-anọrịrị iche n’ime sekit ikpeazụ ọ bụla. Ijikọta ha n’ọkpụkpọ ọkụ na-eme ka ngwaọrụ nnwale ọkpụkpọ ọkụ gosi nsonaazụ ziri ezi, ma na-emepụta nrụnye nwere ike igbu mmadụ. Onye ndu nchebe ahụ aghọ onye ndu na-eburu ọkụ eletrik, ma ọ bụrụ na neutra akwụsị ebe ọ bụla n’akụkụ elu, mkpuchi igwe nke ngwaọrụ ọ bụla ejikọrọ n’ala n’ime sekit ahụ ga-eru nso na voltaji ahịrị. Onye ọ bụla metụrụ friji, pọmpụ ma ọ bụ igwe ịsa akwa ga-abụ ụzọ ọkụ ahụ si aga n’ala.",
+   "spoken": "Ala na neutra ekwesịghị ịdịkọ ọnụ n’ime sekit ikpeazụ. Ọ bụrụ na ijikọta ha, ngwaọrụ nnwale ọkpụkpọ ọkụ ga-egosi na ihe niile ziri ezi — ma nrụnye ahụ bụ ọnyà ọnwụ. Ọ bụrụ na neutra akwụsị ebe ọ bụla tupu ya eruo, ahụ ngwaọrụ ọ bụla ga-eburu ọkụ eletrik. Onye metụrụ friji ga-abụ ụzọ ọkụ si aga n’ala.",
+   "cues": [
+    "ụwa ruo na nnọpụiche",
+    "sonyere ụwa na-anọpụ iche",
+    "àkwà mmiri ụwa",
+    "Jikọọ ụwa na neutral",
+    "ala na-anọpụ iche otu ahụ"
+   ]
+  },
+  "p-earth-02": {
+   "answer": "A na-edobe akwụkwọ ndụ akwụkwọ ndụ na odo naanị maka waya nchebe, a gaghị eji ya dịka waya line ma ọ bụ neutral n'ebe ọ bụla n'ime nrụnye ahụ. Agba aja aja na-egosi waya line, ebe acha anụnụ anụnụ na-egosi neutral. Agba ahụ bụ ntụziaka nchekwa nye onye ọzọ ga-emeghe bọọdụ ahụ, iji ya ọzọ maka waya dị ndụ na-ewepụ naanị ịdọ aka ná ntị ha nwere.",
+   "spoken": "Akwụkwọ ndụ ndụ na odo bụ naanị maka ụwa. Ejila ha maka live ma ọ bụ neutral. Brown bụ maka line, blue bụ maka neutral. Agba ahụ bụ ozi nye onye ọkụ eletrik ọzọ ga-emeghe bọọdụ ahụ. Ọ bụrụ na ị gbanwee ya, ị na-ewepụ naanị ịdọ aka ná ntị ya.",
+   "cues": [
+    "akwụkwọ ndụ akwụkwọ ndụ odo",
+    "agba ụwa",
+    "koodu agba",
+    "jiri waya ụwa dịka waya dị ndụ"
+   ]
+  },
+  "p-earth-03": {
+   "answer": "N’ọrụ nrụnye TT, elektrodu ụwa ga-enye nguzogide dị ala nke ọma ka Ra × IΔn ghara ịgafe 50V, nke mere eji achọ RCD kama ịdabere na nchedo oke ọkụ. Njikọ nchedo bụ isi na-ejikọ ọrụ ọla na-abata na ọrụ ọla nke ihe owuwu na njedebe ụwa bụ isi. Ijikọ ọkpọkọ mmiri abụghị otu ihe na inye elektrodu ụwa: njikọ na-eme ka voltaji hà nhata, ebe elektrodu na-enye ntụaka ụwa. Otu anaghị edochi nke ọzọ.",
+   "spoken": "N’usoro TT, nguzogide mkpanaka ụwa ga-adị ala nke ọma ka Ra ugboro ogo RCD ghara ịgafe volt iri ise. Ọ bụ ya mere ị ji chọọ RCD. Marakwa nke ọma: ijikọta ọkpọkọ mmiri abụghị otu ihe na mkpanaka ụwa. Ijikọta na-eme ka voltaji haa nhata. Mkpịsị ụwa na-enye gị ntụaka ụwa. Otu anaghị edochi nke ọzọ.",
+   "cues": [
+    "mkpanụọ ala",
+    "elektrodu",
+    "njikọ ala",
+    "ọkpọkọ mmiri",
+    "mgbochi ala",
+    "TT"
+   ]
+  },
+  "p-earth-04": {
+   "answer": "Ọpụpụ soket ọ bụla, ebe ọkụ ọ bụla na ngwaọrụ Klaasị I ọ bụla ga-enwerịrị kondoktọ nchebe na-aga n’ihu ruo na njedebe isi nke njikọta ala. A na-enyocha ịdị na-aga n’ihu ya site n’ịtụ ya tupu e tinye ọkụ eletrik na nrụnye ahụ, ọ bụghị naanị iche na ọ dị n’ihi na waya akwụkwọ ndụ akwụkwọ ndụ na odo dị. Kondoktọ nchebe ejikọrọ na soket ma gbajie n’ụgbọ nkesa anaghị enye nchebe ọ bụla.",
+   "spoken": "Sọọket ọ bụla, ebe ọkụ ọ bụla, ngwa eletrik ọ bụla nwere ahụ metal ga-enwe waya ala na-adịghị agbaji ruo na isi ebe njikọ ala. Tụọ ya tupu i tinye ọkụ eletrik. Echela na ọ dị mma naanị n’ihi na ị hụrụ waya akwụkwọ ndụ na odo. Ala jikọtara na sọket ma gbajie na bọọdụ anaghị echebe onye ọ bụla.",
+   "cues": [
+    "aga n’ihu nke ụwa",
+    "CPC agbajiri",
+    "nwalee ụwa",
+    "R1 R2"
+   ]
+  },
+  "p-protect-01": {
+   "answer": "MCB na-echebe eriri megide ibu karịrị akarị na obere sekit. Ọ naghị echebe mmadụ megide ọkụ eletrik. Nke a bụ nghọtahie kachasị ewu ewu na nke kachasị dị ize ndụ n’ọrụ nrụnye ụlọ. MCB 16A ga-ekwe ka 16A gafee mmadụ ruo mgbe ebighị ebi n’enweghị ịrụ ọrụ. Nchebe megide ọkụ eletrik sitere na ngwaọrụ fọdụrụ ugbu a, ịtọ ala ziri ezi, na mkpuchi ziri ezi.",
+   "spoken": "Breaker na-echebe eriri site n'ibu karịrị akarị na mkpirisi sekit. Breaker anaghị echebe mmadụ pụọ na ọkụ eletrik. Nke a bụ mmejọ kachasị dị ize ndụ n'ọrụ a. Breaker amp iri na isii ga-ekwe ka amp iri na isii gafee mmadụ ma ghara ịgbanyụ. Nchedo pụọ na ọkụ eletrik bụ RCD, ịkwanye ala nke ọma, na mkpuchi ziri ezi.",
+   "cues": [
+    "mcb",
+    "nchebe breaker",
+    "ujo breaker",
+    "ihe breaker na-eme",
+    "ibu karịrị akarị"
+   ]
+  },
+  "p-protect-02": {
+   "answer": "Ụdị B na-apụ n’ọrụ na ugboro atọ ruo ise nke ọkụ eletrik e tụrụ anya ya, ọ dabara maka ibu resistive na ọkụ. Ụdị C na-apụ n’ọrụ na ugboro ise ruo iri nke ọkụ eletrik e tụrụ anya ya, ọ dabara maka ibu inductive dịka moto, air conditioner na transformer, ndị ọkụ mbido ha nwere ike ime ka Ụdị B na-apụ n’ọrụ n’enweghị mkpa. Ịhọrọ rating dị elu iji kwụsị tripping na-enweghị mkpa kama ịhọrọ curve ziri ezi na-ahapụ cable n’enweghị nchebe.",
+   "spoken": "Ụdị B na-apụ n’ọrụ na ugboro atọ ruo ise nke rating — ọ dị mma maka ọkụ na ibu resistive. Ụdị C na-apụ n’ọrụ na ugboro ise ruo iri — ọ dị mma maka moto, AC na transformer n’ihi inrush. Ọ bụrụ na breaker na-apụ n’ọrụ ugboro ugboro, gbanwee curve. Etinyela rating elu — ọ bụrụ na i mee ya, cable agaghị enwe nchebe ọzọ.",
+   "cues": [
+    "B curve",
+    "C curve",
+    "curve",
+    "njem MCB",
+    "njem ụgha",
+    "breaker moto"
+   ]
+  },
+  "p-protect-03": {
+   "answer": "Sọket ndị dị n’ọrụ ọkụ ụlọ chọrọ nchebe mgbakwunye site na ngwaọrụ fọdụrụnụ ugbu a nke ogo arụ ọrụ fọdụrụnụ ya anaghị agafe 30mA. Bọdụ nkesa nwere naanị MCB anaghị enye nchebe megide ịma jijiji eletrik site na mmejọ waya dị ndụ gaa n’ala site n’ahụ mmadụ. Ebe bọd enweghị RCD, nke ahụ bụ ntụpọ a ga-akọ, ọ bụghị ọnọdụ a ga-agbalị ịnagide.",
+   "spoken": "Oghere soket chọrọ RCD nke na-adịghị karịa miliamp iri atọ. Ọ bụrụ na bọọdụ ahụ nwere naanị breeka, ọ nweghị onye nwere nchebe pụọ na ọkụ eletrik n’ebe nrụnye ahụ. Bọọdụ na-enweghị RCD bụ ntụpọ ị ga-akọ — ọ bụghị ihe ị ga-anabata.",
+   "cues": [
+    "RCD",
+    "30mA",
+    "mgbapụta ọkụ eletrik",
+    "RCCB",
+    "enweghị RCD",
+    "nchebe pụọ na ọkụ eletrik"
+   ]
+  },
+  "p-protect-04": {
+   "answer": "Itinye sekit niile n’azụ otu RCD 30mA pụtara na otu mmejọ ọ bụla ga-akwụsị nrụnye niile, gụnyere friza. A na-enweta nkewa site n’ịkewa sekit ikpeazụ n’ọrụ ngwaọrụ 30mA ọtụtụ, ma ebe a na-eji ngwaọrụ dị n’elu, ọ ga-abụrịrị ụdị nhọrọ nke na-egbu oge ka ngwaọrụ dị n’okpuru rụọ ọrụ mbụ. Nke a dị mkpa n’ọrụ nakwa na teknụzụ: nrụnye na-agbanyụ kpamkpam mgbe mmejọ ọ bụla mere na-eme ka onye bi n’ụlọ gafee RCD ya.",
+   "spoken": "Ọ bụrụ na i tinye ihe niile n’azụ otu RCD nke 30 mA, otu obere mmejọ ga-eme ka ọkụ kwụsị n’ụlọ niile, tinyere friza. Kewaa sekit ndị ahụ n’ofe ngwaọrụ karịrị otu. Ọ bụrụ na i jiri otu n’elu usoro, mee ka ọ bụrụ ụdị nhọrọ nwere oge igbu oge ka nke dị n’okpuru kwụpụ mbụ. Ọ bụrụ na ụlọ niile agbawa ọchịchịrị, onye nwe ụlọ ga-agafe RCD ahụ — mgbe ahụ ọ nweghị onye nwere nchebe.",
+   "cues": [
+    "ịkpa ókè",
+    "njem ụlọ dum",
+    "otu RCD",
+    "nhọpụta",
+    "friza",
+    "nsogbu ngwaọrụ"
+   ]
+  },
+  "p-change-01": {
+   "answer": "Nhazi mgbanwe n’etiti ọkụ ụlọ ọrụ na jenereta ma ọ bụ inverter ga-akwụsị ma waya line ma waya neutral, ma a ga-eji interlock igwe mechie ya ka isi ọkụ abụọ ahụ ghara ijikọ n’otu oge. Ọ bụrụ na ị gbanwee naanị line, neutral ga-anọgide jikọrọ, nke nwere ike ime ka isi ọkụ ọzọ laghachi nye ọkụ NEPA. Onye ọrụ ahịrị ọkụ nke chịrị na ahịrị ahụ adịghị ndụ nwere ike ịnwụ n’ihi jenereta gị na-eziga ọkụ azụ site na neutral a na-agbanyeghị.",
+   "spoken": "Changeover ga-akwụsị line na neutral—ha abụọ. A ga-ejikwa interlock igwe mechie ya ka isi ọkụ abụọ ahụ ghara imechi n’otu oge. Ọ bụrụ na ị gbanwee naanị line, neutral ka jikọrọ, jenereta gị nwere ike iziga ọkụ azụ n’ahịrị NEPA. Onye ọrụ ahịrị ọkụ kwadoro na ahịrị ahụ anwụọla nwere ike ịnwụ site na jenereta gị.",
+   "cues": [
+    "gbanwee",
+    "mgbanwe",
+    "jikọọ jenereta",
+    "nloghachi ọkụ",
+    "mgba ọkụ nnyefe",
+    "jenereta kpọmkwem"
+   ]
+  },
+  "p-change-02": {
+   "answer": "A machibidoro ijikọ jenaretọ ma ọ bụ inverta na nrụnye site n’iji eriri nwere plọgụ n’akụkụ abụọ, site na soket, ma ọ bụ site n’usoro ọ bụla na-enweghị ngwaọrụ mgbanwe ejikọrọ ọnụ. Eriri nwere plọgụ n’ọnụ abụọ na-ekpughe ntụtụ eletrik dị ndụ mgbe e jikọtara otu njedebe, ọ naghịkwa enye ikewapụ na ọkụ eletrik sitere n’ụlọ ọrụ ọkụ. Ọ dịghị ọnọdụ ọ bụla n’ọrụ nrụnye ụlọ ebe a na-anabata nke a, ọbụna nwa oge.",
+   "spoken": "Eriri nwoke-na-nwoke, ijikọ jenaretọ site na soket, ma ọ bụ usoro ọ bụla na-enweghị ngwaọrụ mgbanwe ejikọrọ ọnụ — amachibidoro ha niile. Eriri ahụ nwere plọgụ n’akụkụ abụọ na-ekpughe ntụtụ dị ndụ ozugbo e tinye otu njedebe. Ọ bụghị nwa oge, ọ bụghị obere oge. Ekwela mgbe ọ bụla.",
+   "cues": [
+    "eriri igbu onwe onye",
+    "nwoke na nwoke",
+    "plọg isi abụọ",
+    "Tinye ya n’oghere ọkụ ọkụ",
+    "jikọọ ozugbo gen"
+   ]
+  },
+  "p-change-03": {
+   "answer": "Inverter na-enye nrụnye ọkụ dịka isi iyi ọzọ ga-enwerịrị waya neutral mmepụta ya ejikọrọ n’ala dịka ntụziaka onye nrụpụta na usoro ijikọ ala nke nrụnye ahụ siri dị. Neutral mmepụta na-adịghị ejikọta n’ala na-eme ka ngwaọrụ residual current rụọ ọrụ n’ụzọ na-ezighị ezi, ma nwee ike ime ka mkpuchi ngwaọrụ dị na voltaji a na-amaghị. Ịhazi ibu ọkụ bụ ihe ọzọ a chọrọ: sekit ndị dị mkpa kwesịrị ịdị na sub-board pụrụ iche, a gaghị etinye ibu ọkụ na-adọta nnukwu current dịka air conditioner na water heater n’ahịrị inverter.",
+   "spoken": "A ga-etinye neutral output inverter na earth dịka ntuziaka onye nrụpụta na usoro earthing ụlọ si dị. Ọ bụrụ na neutral na-ese n’elu, RCD nwere ike ghara ịrụ ọrụ nke ọma, ahụ ngwaọrụ nwekwara ike ibu voltaji amaghị ama. Ihe ọzọ: tinye ibu ndị dị mkpa na sub-board nke ha, ma mee ka AC na water heater ghara ịdị na akụkụ inverter.",
+   "cues": [
+    "neutrel inverter",
+    "ụwa inverter",
+    "neutrel na-ese n’elu",
+    "ibu inverter",
+    "anyanwụ",
+    "ibu dị mkpa"
+   ]
+  },
+  "p-test-01": {
+   "answer": "Nnwale nkwenye na-agbaso usoro a kapịrị ọnụ, ule ndị na-enweghị ọkụ na-ebukwa ụzọ: ịga n'ihu nke ndị nduzi nchebe na njikọta, ịga n'ihu nke ndị nduzi njedebe mgbanaka ebe a na-eji mgbanaka, nguzogide mkpuchi, polaịtị, na nguzogide elektrodu ala ebe nrụnye ahụ bụ TT. Ọ bụ naanị mgbe ahụ ka a na-eme ule ndị nwere ọkụ: impedansị okirikiri mmejọ ala, oge ọrụ RCD, na nnwale ọrụ. Usoro a dị n’ihi na mmejọ ule na-enweghị ọkụ chọtara ga-adị ize ndụ ma a chọpụta ya site n’ule nwere ọkụ.",
+   "spoken": "Usoro a na-enye aka na ule nwụrụ anwụ na-abịa mbụ. Nnwale nkwụsị ala na njikọta. Nnwale nkwụsị mgbanaka ma ọ bụrụ na ọ bụ ring. Nguzogide mkpuchi. Polarity. Electrode ala ma ọ bụrụ na ọ bụ TT. Ọ bụ naanị mgbe emechara ihe ndị a niile ka a ga-eme ule dị ndụ: loop impedance, oge RCD, emesịa ule ọrụ. Usoro a dị n'ihi na mmejọ ọ bụla ị chọpụta mgbe ọkụ adịghị ga-adị ize ndụ ịchọpụta mgbe ọkụ dị.",
+   "cues": [
+    "usoro nnwale",
+    "tupu inye ọkụ",
+    "nnwale nwụrụ anwụ",
+    "usoro",
+    "ịnye ọrụ",
+    "nkwenye"
+   ]
+  },
+  "p-test-02": {
+   "answer": "A na-atụ nguzogide mkpuchi maka nrụnye 230/400V na 500V DC, ọ gaghị adịkwa ihe na-erughị 1.0 MΩ n’etiti ndị ndu ọkụ na n’etiti ndị ndu ọkụ na ala. Ọgụgụ dị ala ma na-abụghị efu ka bụ ọdịda, ma na-egosikarị na mmiri abanyela, eriri mebiri emebi, ma ọ bụ ngwaọrụ eletrik ka jikọtara. Kwupu ngwaọrụ ndị na-enwe mmetụta tupu ịnwale, kama ịhapụ ule ahụ.",
+   "spoken": "Nguzogide mkpuchi: nwalee na narị volt ise DC, ọgụgụ ahụ ekwesịghị ịdị n’okpuru otu megohm. Ọ bụrụ na ọgụgụ ahụ dị ala ma ọ bụghị efu, ọ ka bụ ọdịda—ọtụtụ mgbe ọ na-abụ mmiri, eriri mebiri emebi, ma ọ bụ ngwaọrụ ka jikọtara. Wepụ ngwaọrụ ndị na-enwe mmetụta, ahapụkwala ule ahụ.",
+   "cues": [
+    "nguzogide mkpuchi",
+    "megger",
+    "1 megohm",
+    "500v",
+    "ule IR"
+   ]
+  },
+  "p-test-03": {
+   "answer": "A ghaghị ịlele polariti tupu e tinye ọkụ eletrik. A ga-ejikọta ngwaọrụ nchebe ọ bụla na mgba ọkụ pól otu ọ bụla naanị na onye ndu ahịrị, ọ bụghị na onye ndu nnọpụiche. A ga-ejikọta kọntaktị etiti nke njide bọlbụ Edison screw na onye ndu ahịrị. Mgba ọkụ ejikọrọ na nnọpụiche na-ahapụ bọlbụ ka ọ dị ndụ mgbe agbanyụrụ ya, onye na-esote ga-agbanwe bọlbụ achọpụta ya.",
+   "spoken": "Lelee polarity tupu itinye ọkụ. Breaker ọ bụla na switch single-pole ọ bụla ga-adị n’ahịrị live, ọ bụghị na neutral. Kọntaktị dị n’etiti lampholder ga-abụrịrị live. Ọ bụrụ na ị gbanwee neutral, oriọna ka nwere ọkụ ọbụna mgbe switch gbanyụrụ — onye ga-agbanwe bulb ga-achọpụta ya.",
+   "cues": [
+    "polarity",
+    "gbanye na neutral",
+    "fiusi na neutral",
+    "njide bọlbụ",
+    "kọntaktị etiti"
+   ]
+  },
+  "p-test-04": {
+   "answer": "RCD 30mA nke na-enye nchebe mgbakwunye ga-arụ ọrụ n'ime 300ms na akụrụngwa fọdụrụnụ e kenyere ya, nakwa n'ime 40ms na ugboro ise nke akụrụngwa fọdụrụnụ e kenyere ya. Bọtịnụ nnwale jikọtara ọnụ na-akwado naanị usoro ya, ọ bụghị oge ọrụ ya, yabụ ọ bụghị dochie nnwale igwe nyocha. RCD nke na-arụ ọrụ ma na-arụ ọrụ nwayọ adaala.",
+   "spoken": "RCD nke iri atọ milliamp ga-apụrịrị n'ime narị millisekọnd atọ na ogo ya, ma n'ime millisekọnd iri anọ na ugboro ise. Bọtịnụ nnwale dị na ngwaọrụ ahụ na-akwado naanị mekanizim ahụ — ọ naghị agwa gị oge ya. Ị ga-eji ngwaọrụ nwalee ya. RCD nke na-apụ nwayọ adaala.",
+   "cues": [
+    "nnwale RCD",
+    "oge njem",
+    "300ms",
+    "40ms",
+    "oge RCD",
+    "bọtịnụ nnwale"
+   ]
+  },
+  "p-test-05": {
+   "answer": "Ịnye ọkụ n’ọrụ nrụnye iji hụ ma ọ na-arụ ọrụ abụghị nnwale. Ọ nweghị ike ịchọpụta polarity agbanwere agbanwe, onye ndu nchebe gbajiri agbaji, ma ọ bụ mkpuchi mebiri emebi, ma nke ọ bụla n’ime ndị ahụ na-egosi dị ka nrụnye na-arụ ọrụ ruo mgbe mmadụ merụrụ ahụ. A ghaghị ikwenye nguzogide mkpuchi na polarity mgbe ọkụ adịghị tupu ejikọọ ọkụ eletrik.",
+   "spoken": "Itinye ọkụ ugbu a ka ịhụ ma ọ na-arụ ọrụ abụghị ule. Nke ahụ agaghị egosi gị polarity azụ, earth gbajiri agbaji, ma ọ bụ insulation ọjọọ — ihe atọ ahụ niile nwere ike ịdị ka nrụnye na-arụ ọrụ ruo mgbe mmadụ merụrụ ahụ. Kwenye insulation na polarity mgbe ọkụ anaghị aga tupu ijikọ supply.",
+   "cues": [
+    "gbanye ọkụ hụpụta",
+    "nwalee site n'ịgbanye",
+    "buru ụzọ tinye ọkụ eletrik",
+    "naanị tinye ọkụ"
+   ]
+  }
+ },
+ "lessons": {
+  "1": {
+   "title": "Nha eriri maka sekit soket na ọkụ",
+   "subtitle": "Gịnị mere 2.5 na 1.5, gịnịkwa na-agbanwe azịza ahụ",
+   "practicePrompt": "Dekọọ onwe gị ka ị na-akọwa ihe mere ị ga-eji gbaa eriri 2.5mm² gaa n’ọdụ soket, ọ bụghị 1.5mm².",
+   "practiceSpoken": "Gwa m. Gịnị mere ị ga-eji gbaa 2.5 gaa na soket, gịnịkwa mere 1.5 agaghị ezuru?",
+   "keyPoints": [
+    "Sekit soseeti 2.5mm², sekit ọkụ 1.5mm²",
+    "Ib ≤ In ≤ Iz — ibu, ngwaọrụ, eriri, n’usoro ahụ",
+    "Belata ogo maka kọnduiti, ijikọta ọnụ, mkpuchi na okpomọkụ gburugburu",
+    "Mbelata voltaji: 3% maka ọkụ, 5% maka ndị ọzọ",
+    "Igwe ntụ oyi chọrọ sekit nke ya nke a tụrụ nha nke ọma"
+   ],
+   "rubricPoints": [
+    "Na-akpọ 2.5mm² nha ziri ezi maka soket",
+    "Na-ejikọta ikike ibu nke kábụl na ogo ngwaọrụ nchebe",
+    "Na-achọpụta ibu karịrị akarị ma ọ bụ ikpo oke ọkụ dị ka ihe ize ndụ",
+    "Na-ekwu maka ihe na-agbanwe azịza ahụ"
+   ]
+  },
+  "2": {
+   "title": "Ịwụnye ọkụ n’ala, na ihe mere ijikọta ala na neutral ji egbu mmadụ",
+   "subtitle": "Ụzọ mkpirisi nke na-eme ka tester gụọ nke ọma ma mee ka ụlọ bụrụ ihe egwu",
+   "practicePrompt": "Dekọọ onwe gị ka ị na-akọwa ihe na-eme casing friji ma ọ bụrụ na ejikọtara ala na neutral, neutral ahụ emesịa agbaji n’elu ụzọ tupu ọ rute ebe ahụ.",
+   "practiceSpoken": "Gwa m. Ọ bụrụ na mmadụ ejikọta ala na neutral, neutral ahụ emesịa agbaji tupu ọ rute ebe ahụ — gịnị ga-eme ahụ friji?",
+   "keyPoints": [
+    "CPC na neutral na-adị iche n’ime sekit ikpeazụ ọ bụla",
+    "Ijikọta ha ọnụ na-eme ka mkpuchi ngwa eletrik dị ndụ ma ọ bụrụ na neutral mepee n’elu",
+    "A na-edobe akwụkwọ ndụ akwụkwọ ndụ na odo naanị maka ndị nduzi nchebe",
+    "Ijikọta ọkpọkọ mmiri abụghị otu ihe na elektrodu ala",
+    "A na-atụle ịdịgide njikọ ala, a naghị eche ya naanị echiche"
+   ],
+   "rubricPoints": [
+    "Ihe mkpuchi ahụ na-ebili ruo na voltaji ahịrị",
+    "Na-achọpụta onye metụrụ ya dịka ụzọ mmejọ",
+    "Na-ekwu na ngwaọrụ nnwale soket ka ga-egosi nke ziri ezi",
+    "Na-ekwu na omume ziri ezi bụ ikewapụ CPC n’ogologo ya niile"
+   ]
+  },
+  "3": {
+   "title": "Nhọrọ MCB na RCD",
+   "subtitle": "Breaker na-echebe eriri. Ọ naghị echebe mmadụ.",
+   "practicePrompt": "Dekọọ onwe gị ka ị na-akọwara onye ahịa ihe mere bọọdụ ya nke nwere naanị MCB anaghị echebe ya pụọ na ujo eletrik.",
+   "practiceSpoken": "Onye ahịa ahụ kwuru na bọọdụ ya nwere breaker, ya mere ọ dị nchebe. Zaa ya. Gịnị mere breaker naanị ya anaghị echebe ya pụọ na ujo eletrik?",
+   "keyPoints": [
+    "MCB na-echebe pụọ na ibu karịrị akarị na mgbawa mkpirisi, ọ bụghị ujo",
+    "Ụdị B maka ibu resistive na ọkụ, Ụdị C maka moto na AC",
+    "Oghere socket chọrọ nchebe mgbakwunye RCD 30mA",
+    "Ebulila ọkwa ahụ iji kwụsị ịgbapụta na-enweghị isi — gbanwee curve",
+    "Kekọrịta sekit n'ofe RCD dị iche iche ka otu mmejọ ghara ime ka ụlọ dum gbachie ọchịchịrị"
+   ],
+   "rubricPoints": [
+    "Na-ekwu na MCB na-echebe eriri, ọ bụghị mmadụ",
+    "Na-akọwa na ugbu a na-agafe n’ahụ mmadụ dị n’okpuru ọkwa ọ ga-eme ka ọ gbanyụọ",
+    "Na-akpọ RCD ngwaọrụ nchebe megide ujo eletrik",
+    "Na-ekwu na achọrọ 30mA maka oghere soket"
+   ]
+  },
+  "4": {
+   "title": "Mgbanwe ọkụ na njikọ inverter",
+   "subtitle": "Gbanweeekwa neutral, ma ọ bụghị ya ị nwere ike igbu onye na-arụ ọrụ n’ahịrị",
+   "practicePrompt": "Ziga foto nke nrụnye mgbanwe ọkụ na-egosi ọdụ neutral na interlock",
+   "practiceSpoken": "Were foto mgbanwe ọkụ ahụ maka m. Jide n’aka na m nwere ike ịhụ ọdụ neutral na interlock.",
+   "keyPoints": [
+    "Kwụsị ahịrị ma bụrụ nke na-anọpụ iche, ha abụọ, na mgbanwe ọ bụla",
+    "Njikọ mgbochi igwe ka isi mmalite abụọ ghara imechi ọnụ.",
+    "Neutral a na-agbanweghị na-enye ohere ka ọkụ laghachi n’ọrụ netwọk eletrik",
+    "A machibidoro eriri plug-na-plug na jenereta a na-enye site na sọket kpamkpam.",
+    "A ghaghị itinye ala na neutral nke mmepụta inverter maka ibu ndị dị mkpa na sub-board nke ha."
+   ],
+   "checklist": [
+    "A na-ahụ ma ọdụ line na neutral ma agbanyụrụ ha",
+    "Enwere mechanical interlock n’etiti isi iyi abụọ ahụ",
+    "Enweghị njikọ plug-na-plug ma ọ bụ njikọ sitere na socket n’ebe ọ bụla na nhazi ahụ",
+    "A kwụsịrị eriri earthing na enclosure changeover"
+   ]
+  },
+  "5": {
+   "title": "Nnwale tupu ịnye ya ọkụ",
+   "subtitle": "Ịgbanye ya ka ịhụ ma ọ na-arụ ọrụ abụghị nnwale",
+   "practicePrompt": "Dekọọ onwe gị ka ị na-ekwu ule dead n’usoro ị ga-esi mee ha, ma kwuo ihe mere usoro ahụ ji dị mkpa.",
+   "practiceSpoken": "Depụtara m ule dead ahụ n’usoro. Mgbe ahụ gwa m ihe mere usoro ahụ ji dị mkpa.",
+   "keyPoints": [
+    "Nnwale na-adịghị ndụ mbụ, n’usoro, emesịa nnwale dị ndụ",
+    "Nguzogide mkpuchi ≥ 1.0 MΩ tụrụ na 500V DC",
+    "Polarity: ngwaọrụ na switshi otu-pọlụ naanị n’ahịrị",
+    "RCD 30mA: ≤300ms na IΔn, ≤40ms na 5×IΔn",
+    "Bọtịnụ nnwale RCD na-akwado usoro ahụ, ọ bụghị oge ahụ"
+   ],
+   "rubricPoints": [
+    "Aha na-aga n’ihu nke ndị na-eduzi nchebe mbụ",
+    "Na-akpọ nguzogide mkpuchi ọkụgwụkọta",
+    "Aha polarity",
+    "Na-akọwa na iwu ahụ na-echebe onye nyocha ahụ"
+   ]
+  }
+ },
+ "recall": {
+  "1": {
+   "question": "Maka sekit ikpeazụ nke soket n’ụlọ nwere ime ụlọ ihi ụra abụọ, kedu eriri?",
+   "spoken": "Ngwa ngwa. Maka sekit soket n’ime flat ime ụlọ abụọ—kedu waya ị ga-eji?",
+   "options": [
+    "Ọla kọpa 2.5mm²",
+    "Ọla kọpa 1.5mm²"
+   ]
+  },
+  "2": {
+   "question": "Onye nnwale soket na-egosi na o ziri ezi na oghere ọkụ ọ bụla. Nke ahụ ò gosiri na waya ụwa dị mma?",
+   "spoken": "Ọ bụrụ na socket tester gosi na sockets niile ziri ezi, nke ahụ ọ pụtara na earthing ziri ezi?",
+   "options": [
+    "Mba — earth-neutral ejikọrọ ọnụ na-agụkwa nke ọma",
+    "Ee — onye nnwale ahụ na-enyocha earth"
+   ]
+  },
+  "3": {
+   "question": "Kedu ngwaọrụ na-echebe mmadụ pụọ na ọkụ eletrik?",
+   "spoken": "Kedu ngwaọrụ na-echebe mmadụ pụọ na ọkụ eletrik?",
+   "options": [
+    "RCD 30mA",
+    "MCB 16A"
+   ]
+  },
+  "4": {
+   "question": "Ngbanwe mgbanwe ga-agbaji ndị nduzi ole?",
+   "spoken": "Ngbanwe mgbanwe ga-agbaji onye nduzi ole?",
+   "options": [
+    "Ahịrị na nke etiti, ha abụọ",
+    "Naanị ahịrị — nke na-anọpụ iche bụ nke a na-ahụkarị"
+   ]
+  },
+  "5": {
+   "question": "Kedu kacha nta ntụchịkọta mgbochi mkpuchi maka nrụnye 230V, a nwalere ya na 500V DC?",
+   "spoken": "Kachasị nta mgbochi mkpuchi maka nrụnye volt iri atọ abụọ, nwalee na volt DC narị ise?",
+   "options": [
+    "1.0 MΩ",
+    "0.5 MΩ"
+   ]
+  }
+ },
+ "safety": {
+  "s-earth-neutral-bridge": {
+   "label": "Ejikọtala ụwa na neutral",
+   "correction": "Kwụpụ njikọ ahụ. CPC na neutral ga-adị iche na sekit ikpeazụ ọ bụla. Ọ bụrụ na ejikọta ha, nkwụsị na neutral n’elu ga-etinye voltaiji line n’elu mkpuchi ngwaọrụ ọ bụla dị na sekit ahụ."
+  },
+  "s-undersized-socket": {
+   "label": "Eriri dị obere na seketi soket ma ọ bụ AC",
+   "correction": "Dochie eriri ahụ. Seketi soket chọrọ 2.5mm², ebe air conditioner chọrọ seketi nke ya pụrụ iche, nke a tụrụ nha dabere na ike ugbu a e mere maka ngwaọrụ ahụ, na-atụlekwa mmalite moto. 1.5mm² nwere ike ịnọ n’ibu karịrị akarị ruo ọtụtụ awa na-enweghị ngwaọrụ ahụ ịrụ ọrụ."
+  },
+  "s-bridged-protection": {
+   "label": "Ejikọrọ ngwaọrụ nchekwa ma ọ bụ gafere ya",
+   "correction": "Weghachite ngwaọrụ ahụ. Ijikọta nchedo megide oke ọkụ eletrik ma ọ bụ ọkụ fọdụrụ na-ewepụ naanị ihe dị n'etiti mmejọ na ọkụ ma ọ bụ ọnwụ. Ọ bụrụ na ngwaọrụ agbapụ ugboro ugboro, chọta mmejọ ahụ ma ọ bụ dozie nhọrọ kọọvụ."
+  },
+  "s-live-working": {
+   "label": "Ịrụ ọrụ n’ọrụ eletrik dị ndụ",
+   "correction": "Kewapụ ya, kpọchie ya, ma gosi na ọkụ adịghị tupu i metụ ya aka. Ikewapụ n’enweghị ihe ize ndụ bụ nkà mbụ n’ọrụ a, ọ dịghịkwa ọrụ ụlọ ọ bụla kwesịrị ime ka a hapụ ya."
+  },
+  "s-generator-direct": {
+   "label": "Ejikọrọ jenereta na-enweghị ngbanwe interlock mmekọrịta",
+   "correction": "Wụnye mgbanwe ntụgharị jikọtara ọnụ nke na-ebipụ line na neutral. Eriri plug-na-plug na-ekpughe pin ndị dị ndụ, neutral na-adịghị agbanyụkwa na-eziga ọkụ azụ n'ahịrị utility onye ọrụ ahịrị egosila na ọ nwụọla."
+  },
+  "s-no-rcd": {
+   "label": "Ụgbọ ọkụ soket na-enweghị nchedo RCD",
+   "correction": "Ụgbọ ọkụ soket chọrọ nchedo mgbakwunye RCD 30mA. Bọdụ naanị MCB na-ahapụ ụlọ ahụ n’enweghị nchedo megide ujo ọkụ sitere na mmejọ waya ọkụ gaa n’ala. Kọọ ya dịka ntụpọ kama ịchọ ụzọ isi gbanahụ ya."
+  },
+  "s-colour-misuse": {
+   "label": "A na-eji akwụkwọ ndụ akwụkwọ ndụ na odo dị ka waya ndụ ma ọ bụ waya neutral",
+   "correction": "Wepụ waya ahụ. A na-edobe akwụkwọ ndụ akwụkwọ ndụ na odo maka waya nchebe. Iji ya ọzọ dị ka waya ndụ ma ọ bụ waya neutral na-ewepụ naanị ịdọ aka ná ntị onye ọkụ eletrik na-esote nwere tupu o mepee bọọdụ ahụ."
+  },
+  "s-water-pipe-earth": {
+   "label": "Ọkpọkọ mmiri eji dị ka elektrodu ala",
+   "correction": "A na-ejikọta ọkpọkọ ọnụ, anaghị eji ya dịka electrode. Ijikọta ọnụ na-eme ka potential hà nhata; electrode na-enye earth reference. Wụnye electrode ma chọpụta na Ra × IΔn anaghị agafe 50V."
+  },
+  "s-energise-before-test": {
+   "label": "Itinye ọkụ tupu nkwenye",
+   "correction": "Itinye ọkụ abụghị ule. Ọ pụghị ịchọpụta pola agbanwere agbanwe, CPC gbajiri agbaji, ma ọ bụ mkpuchi emebiela, nke ọ bụla n’ime ha na-adị ka nrụnye na-arụ ọrụ ruo mgbe mmadụ merụrụ ahụ. Buru ụzọ kwado nguzogide mkpuchi na pola mgbe ọkụ nwụrụ."
+  },
+  "s-rating-up": {
+   "label": "A mụbara ọkwa ngwaọrụ nchebe ka ọ kwụsị ịkpụpụ",
+   "correction": "Ịbawanye ọkwa ahụ na-ahapụ eriri na-enweghị nchebe. Ịkpụpụ ugboro ugboro pụtara na e nwere ezigbo mmejọ ma ọ bụ ejiri usoro ịkpụpụ na-ezighi ezi — Type C ebe ibu inductive chọrọ ya. Dozie ihe kpatara ya, debe ọkwa ahụ ka ọ dabara na eriri."
+  }
+ },
+ "examples": [
+  {
+   "text": "Achọrọ m ịgba waya maka soket, 1.5 ka ọ bụ 2.5?",
+   "note": "Nha eriri — ajụjụ a na-ajụkarị",
+   "en": "I wan run wire for socket, 1.5 abi 2.5?"
+  },
+  {
+   "text": "Maka soket AC, etinyere m naanị 1.5, jikọkwara m ala na neutral ka tester gosi nke ọma.",
+   "note": "Ihe ịrịba ama nchekwa abụọ dị mkpa",
+   "en": "For the AC socket I just run 1.5, and I join the earth to the neutral so the tester go show correct."
+  },
+  {
+   "text": "Bọdụ onye ahịa m nwere naanị breaker, enweghị earth leakage. Ọ sịrị na ọ dị nchebe n’ihi na breaker dị.",
+   "note": "Echiche ezighi ezi gbasara nchedo ọkụ eletrik",
+   "en": "My customer board get only breaker, no earth leakage. Him say him safe because breaker dey."
+  },
+  {
+   "text": "Ejikọtara m jenereto ozugbo, etinyeghị m changeover. Ọ bụ naanị line ka m gbanyere.",
+   "note": "Ihe ize ndụ nke ọkụ ịlaghachi azụ",
+   "en": "I connect the gen direct, I no put change over. Na only line I switch."
+  },
+  {
+   "text": "Kedu insulation resistance m kwesịrị inweta tupu m etinye ọkụ?",
+   "note": "Nnwale na nkwenye",
+   "en": "What insulation resistance should I get before energising?"
+  },
+  {
+   "text": "Kedu ka m ga-esi rụzie carburettor jenereto?",
+   "note": "N’èzí ngwugwu — kwesịrị ịjụ",
+   "en": "How I go fix generator carburettor?"
+  }
+ ],
+ "trade": "Ntinye Ọdụdọ N’ụlọ",
+ "conductors": [
+  {
+   "role": "Ahịrị",
+   "colour": "aja aja"
+  },
+  {
+   "role": "Nọpụ iche",
+   "colour": "anụnụ anụnụ"
+  },
+  {
+   "role": "Ụwa",
+   "colour": "akwụkwọ ndụ akwụkwọ ndụ na odo"
+  }
+ ]
+}

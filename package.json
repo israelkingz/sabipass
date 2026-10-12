@@ -1,0 +1,19 @@
+{
+  "name": "sabipass",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Voice-first skill recognition for Nigeria's informal trades",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/serve.js",
+    "dev": "node --env-file-if-exists=.env server/serve.js",
+    "check": "node tools/check-pack.js",
+    "diag": "node --env-file-if-exists=.env server/diag.js",
+    "localize": "node --env-file-if-exists=.env tools/localize.js",
+    "check:audio": "node --env-file-if-exists=.env tools/check-audio.js",
+    "review": "node tools/review-queue.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

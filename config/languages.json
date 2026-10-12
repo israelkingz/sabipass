@@ -1,0 +1,76 @@
+{
+  "_comment": "Language registry. Breadth is configuration, not code: adding a language is a row here, never a code change. `validated` must be set from evidence — `npm run diag` proves the provider accepts the codes, field testing proves the model handles a real apprentice. The UI labels every unvalidated entry as a preview.",
+  "schemaVersion": 3,
+  "fallbackText": "en",
+  "provider": {
+    "spitch": {
+      "baseUrl": "https://api.spitch.app",
+      "tts": "POST /v1/speech — {text, voice, language, format, speed} -> audio",
+      "asr": "POST /v1/transcriptions — multipart {content, language, special_words} -> {text}",
+      "translate": "POST /v1/translate — {text, source, target, tone, formality} -> {text}",
+      "probed": "2026-10-08: ha, yo, ig and en round-trip (TTS -> ASR) cleanly. Nigerian Pidgin is asymmetric — translate takes `pcm`, speech takes `pi`; `pcm`, `npe`, `en-NG` and `pidgin` are all rejected by the speech endpoint. Both codes are recorded below. Re-run `npm run diag` after any provider change."
+    }
+  },
+  "languages": [
+    {
+      "code": "pcm",
+      "name": "Nigerian Pidgin",
+      "endonym": "Naija Pidgin",
+      "asr": { "provider": "spitch", "language": "pi", "fallbackLanguage": "en", "biasListFrom": "content-packs/*/lexicon" },
+      "tts": { "provider": "spitch", "language": "pi", "voice": "boma" },
+      "translate": { "provider": "spitch", "target": "pcm", "formality": "casual", "tone": "warm" },
+      "webSpeechFallback": "en-NG",
+      "validated": false,
+      "validatedBy": null,
+      "notes": "Widest reach among artisans and the natural register for trade talk, and the hardest ASR case: heavy accent plus trade jargon. The lexicon bias list matters most here."
+    },
+    {
+      "code": "ha",
+      "name": "Hausa",
+      "endonym": "Harshen Hausa",
+      "asr": { "provider": "spitch", "language": "ha", "biasListFrom": "content-packs/*/lexicon" },
+      "tts": { "provider": "spitch", "language": "ha", "voice": "amina" },
+      "translate": { "provider": "spitch", "target": "ha", "formality": "casual", "tone": "neutral" },
+      "webSpeechFallback": null,
+      "validated": false,
+      "validatedBy": null,
+      "notes": "Large, underserved northern artisan networks. Round-trips cleanly on the provider; still needs a trainer and three learners."
+    },
+    {
+      "code": "yo",
+      "name": "Yoruba",
+      "endonym": "Èdè Yorùbá",
+      "asr": { "provider": "spitch", "language": "yo", "biasListFrom": "content-packs/*/lexicon" },
+      "tts": { "provider": "spitch", "language": "yo", "voice": "sade" },
+      "translate": { "provider": "spitch", "target": "yo", "formality": "casual", "tone": "neutral" },
+      "webSpeechFallback": "yo-NG",
+      "validated": false,
+      "validatedBy": null,
+      "notes": "Best-documented language on the provider, so the lowest-risk choice if Pidgin underperforms in field testing."
+    },
+    {
+      "code": "ig",
+      "name": "Igbo",
+      "endonym": "Asụsụ Igbo",
+      "asr": { "provider": "spitch", "language": "ig", "biasListFrom": "content-packs/*/lexicon" },
+      "tts": { "provider": "spitch", "language": "ig", "voice": "ngozi" },
+      "translate": { "provider": "spitch", "target": "ig", "formality": "casual", "tone": "neutral" },
+      "webSpeechFallback": null,
+      "validated": false,
+      "validatedBy": null,
+      "notes": "Maps directly onto the igba-boi apprenticeship structure the product is built around."
+    },
+    {
+      "code": "en",
+      "name": "English",
+      "endonym": "English",
+      "asr": { "provider": "spitch", "language": "en", "biasListFrom": "content-packs/*/lexicon" },
+      "tts": { "provider": "spitch", "language": "en", "voice": "lucy" },
+      "translate": null,
+      "webSpeechFallback": "en-NG",
+      "validated": true,
+      "validatedBy": "Source language — the authority all other locales are translated from",
+      "notes": "English wording is the reference. Every other locale is a translation of it and says so on screen."
+    }
+  ]
+}

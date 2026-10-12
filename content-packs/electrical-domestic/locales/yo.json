@@ -1,0 +1,611 @@
+{
+ "code": "yo",
+ "name": "Yoruba",
+ "endonym": "Èdè Yorùbá",
+ "generated": "2026-10-08T18:07:37.997Z",
+ "source": "en",
+ "provider": "spitch",
+ "target": "yo",
+ "reviewed": false,
+ "reviewer": null,
+ "reviewNote": "Machine translation from the English pack. A trainer who speaks this language must read it before a learner is served. The English wording is the authority.",
+ "safetyDetectionNote": "Corrections below are translated. Detection still matches the English and Pidgin patterns in pack.json, which holds up because the technical terms (earth, neutral, socket, 1.5) stay English in code-switched speech. Validate per language before relying on it.",
+ "ui": {
+  "nav.ask": "Béèrè",
+  "nav.learn": "Kó",
+  "nav.recall": "Rántí",
+  "nav.passport": "Ìwé ìrìnnà",
+  "nav.trainer": "Olùkọ́",
+  "common.online": "Lórí ayélujára",
+  "common.offline": "Láìsí ayélujára",
+  "common.preview": "Àwòṣe — kò tíì jẹ́rìí nípasẹ̀ olùkọ́",
+  "common.close": "Padé",
+  "common.delete": "Paare",
+  "pack.demo": "Àpẹẹrẹ àkójọpọ̀ akóònù. A ti ṣe àkọsílẹ̀ àkóònù ìmọ-ẹ̀rọ láti NESIS, NIS IEC 60364 àti àwọn ìlànà ẹ̀ka NBTE. Àwọn ìtọ́kasí abala ń dúró de ìfọwọ́sí olùkọ́ tó ń ṣàyẹ̀wò kí a tó fi fún akẹ́kọ̀ọ́ kankan.",
+  "locale.machine": "Èdè yìí ni a túmọ̀ láti Gẹ̀ẹ́sì nípasẹ̀ èrò, olùkọ́ kò sì ti ṣàyẹ̀wò rẹ̀. Ọ̀rọ̀ Gẹ̀ẹ́sì ni ó ní àṣẹ.",
+  "ask.eyebrow": "Béèrè ní èdè rẹ",
+  "ask.title": "Kí ni o fẹ́ mọ̀ nípa iṣẹ́ náà?",
+  "ask.sub": "Sóo bí ó ṣe máa ń sọ̀rọ̀ níbi iṣẹ́. Gbogbo ìdáhùn wa láti inú ìlànà tí a ti ṣàyẹ̀wò, ó sì fi abala náà hàn ọ́.",
+  "ask.tap": "Fọwọ́kàn kí ó sì sọ̀rọ̀",
+  "ask.listening": "Ó ń fetí sílẹ̀ — sọ̀rọ̀ báyìí, lẹ́yìn náà fọwọ́kan láti dá a dúró",
+  "ask.transcribing": "Ó ń kọ́ ọ sílẹ̀...",
+  "ask.unavailable": "A kò lè lo ìfẹ́wọ́sọ̀rọ̀ níbí — fọwọ́kan àpẹẹrẹ kan ní ìsàlẹ̀",
+  "ask.answer": "Ìdáhùn",
+  "ask.play": "Ṣere",
+  "ask.retrieved": "Ti gba lati awọn ìpínrọ̀ {n} ti a ti ṣe àyẹ̀wò · netiwọ́ọ̀kì 0 KB · ẹ̀kọ́ {lesson}",
+  "ask.norefsource": "Kò sí orísun tí a ti ṣe àyẹ̀wò",
+  "ask.refuse": "Kò sí ohùn nínú àpò {trade} tí ó sọ̀rọ̀ nípa ìyẹn. N kò ní dáhùn láti òde ìlànà tí a ti ṣe àyẹ̀wò — ìdáhùn àìṣe tí a fi ìgbọ́kànlé sọ nípa iṣẹ́ yìí lè fa ìpalára fún ẹnìkan.",
+  "ask.refuseHint": "Béèrè lọ́wọ́ olùkọ́ rẹ̀, tàbí béèrè lọ́wọ́ mi nípa ìwọ̀n káíbùù, ìsopọ̀ ilẹ̀, àwọn èrò ààbò, ìyípadà orísun, tàbí ìdánwò.",
+  "ask.examples": "Àwọn àpẹẹrẹ ìfiranṣe ohun",
+  "ask.examplesSub": "Fọwọ́ kan ọkàn láti gbọ́ ọ bí ẹni pé a sọ ọ́. Ọ̀nà ààbò fún àfihàn: àfihàn gidi kò gbẹ́kẹ̀ lé ọ̀rọ̀ kan tí a kò ti ṣe ìdánwò rẹ̀.",
+  "ask.clear": "Pa ìjíròrò re",
+  "ask.notified": "{trainer}, olùkọ́ rẹ̀, ti gba ìfẹ̀ṣefúnni ní ìkọ̀kọ̀. A kò sọ fún ẹlòmíràn.",
+  "ask.seeSent": "Wo ohun tí a ránṣẹ́",
+  "ask.deleteRecord": "Pa igbasilẹ yìí rẹ",
+  "ask.deleted": "A ti paarẹ igbasilẹ naa. A ti yọ ẹ̀dà olùkọ́ rẹ̀ kúrò.",
+  "ask.sentTitle": "Ohun tí wọ́n sọ fún olùkọ́ rẹ̀",
+  "ask.sentNote": "Èyí ni ìfẹ̀sọ̀rọ̀ gangan tí a rán sí olùkọ́ rẹ̀. Kò sí ohun mìíràn nípa rẹ̀ tí a fi kún un — kò sí àkọsílẹ̀ ohùn, kò sí ibi tí ó wà, kò sí sí àwọn ìbéèrè mìíràn.",
+  "ask.needsSupervision": "Nílò ìtọ́jú ní {unit}.",
+  "ask.withdraw": "Pa kí o sì yọkuro",
+  "learn.title": "Àwọn ẹ̀kọ́ márùn-ún",
+  "learn.sub": "Ọkọọkan kúrú, o le ṣe igbasilẹ, o si pari pẹlu iṣẹ asase ti o ṣe nipa ohun tabi fọto. Kò sí ìfẹ́kansí kíkà.",
+  "learn.completed": "Àwọn ẹ̀kọ́ ti parí",
+  "learn.downloaded": "Ti gba lati ayelujara",
+  "learn.downloadAll": "Ṣe igbasilẹ gbogbo marun-un",
+  "learn.savedAll": "Gbogbo ẹ̀kọ́ marun-un ti wa ni fipamọ́ fún lílò láìsí ìkànnì",
+  "learn.offline": "Láìsí ìkànnì",
+  "learn.min": "iṣẹ́jú",
+  "learn.play": "Mú ẹ̀kọ́ ṣíṣe",
+  "learn.save": "Fipamọ́",
+  "learn.saved": "Ti fikàn",
+  "learn.mustDo": "Ohun tí ó gbọ́dọ̀ lè ṣe",
+  "learn.sources": "Àwọn orísun fún ẹ̀kọ́ yìí",
+  "learn.conductors": "Ìdánimọ̀ olùdarí",
+  "learn.conductorNote": "Aláwọ̀ ewé àti àwọ̀ ofeefee jẹ́ àfipamọ́ fún àwọn olùdarí ààbò. Ó jẹ́ ìránṣẹ́ sí ẹni tó ń bọ̀ tí yóò sí pátákó náà.",
+  "learn.lesson": "Ẹ̀kọ́",
+  "learn.listen": "Gbó ẹ̀kọ́ yìí ní èdè rẹ",
+  "learner.year": "Akẹ́kọ̀ọ́ ọdún kẹta",
+  "trainer.role": "Ọ̀gá oníṣe owó · ọdún 19",
+  "evidence.recall": "Ìdánwò ìrántí",
+  "practice.title": "Ìṣe",
+  "practice.voiceViva": "Ìdánwò ẹnu",
+  "practice.photo": "Ẹ̀rí àwòrán",
+  "practice.hear": "Gbọ́ ìbéèrè náà",
+  "practice.record": "Ṣe igbasilẹ ìdáhùn rẹ",
+  "practice.listening": "Ngbò... tẹ láti dáni dúró",
+  "practice.typePlaceholder": "Tàbí kó ohun tí ìwọ yóò sọ...",
+  "practice.submitTyped": "Fi ìdáhùn tí a tẹ̀ sílẹ̀ sílẹ̀",
+  "practice.noMcqNote": "A kò ṣe àyẹ̀wò ìmọ̀ nípasẹ̀ àwọn ìbéèrè ìfẹ́yàn ọ̀pọ̀. Kíkà àti kíkó kò pọn dandan — àpótí ìtẹ̀wé wa nìkan nítorí aṣàwákiri yìí lè di gbohùngbohùn.",
+  "practice.result": "Àbájáde",
+  "practice.points": "{score} nínú {total} àwọn àmì rubrik",
+  "practice.youSaid": "Ó sọ##numerusform",
+  "practice.again": "Ṣe igbasilẹ lẹẹkansi",
+  "practice.mustShow": "Fìwé náà gbọdọ̀ fihàn",
+  "practice.addPhoto": "Fi fọ́tò kan kún un láti fóònù rẹ",
+  "practice.photoNote": "Fàmì rẹ̀ wà lórí èrò rẹ̀ títí tí ó bá yàn láti fi ránṣẹ́ fún ìfọwọ́sí alábòójútó.",
+  "practice.submitted": "Ẹ̀rí tí a fi ránṣẹ́",
+  "practice.awaiting": "À ń dúró de ìfọwọ́sí olùkọ́. Ó lè pa ẹ̀rí yìí rẹ́ nígbàkígbà.",
+  "practice.deleteEvidence": "Pa ẹ̀rí re",
+  "recall.eyebrow": "Ìrántí ní ààyè",
+  "recall.title": "Ṣé o ṣì rántí rẹ̀?",
+  "recall.sub": "Lẹ́yìn ọjọ́ mẹ́ta tí ẹ̀kọ́ bá parí, lẹ́yìn náà ọjọ́ mẹ́wàá, lẹ́yìn náà ọgbọ̀n — ifiranṣẹ ohun kan máa dé lórí WhatsApp. Dáhùn nípa títẹ̀ bótì kan. Kò sí ápù láti ṣí, kò sì sí dàtà láti rà.",
+  "recall.clock": "Aago àfihàn",
+  "recall.forward": "+ ọjọ́ mẹ́ta",
+  "recall.clockNote": "Ìṣàkóso aago wà fún àfihàn nìkan. Ní ojú iṣẹ́, àkókò ń lọ fúnra rẹ̀.",
+  "recall.empty": "Parí iṣẹ́ ìdánwò ẹ̀kọ́ kan, a ó sì ṣètò àyẹ̀wò ìrántí rẹ̀ fún ọjọ́ mẹ́ta lẹ́yìn náà.",
+  "recall.step": "Ìrántí ẹ̀kọ́ {lesson} · ìgbésẹ̀ {step} nínú 3",
+  "recall.reply": "Dáhùn 1 tàbí 2",
+  "recall.featurePhone": "Ó ṣiṣẹ́ lórí fóònù alágbèéká aláìdàrú: ìbéèrè náà jẹ́ ohùn, ìdáhùn náà jẹ́ títẹ̀ botì kan, gbogbo ìbánisọ̀rọ̀ náà kò ju 10 KB lọ.",
+  "recall.history": "Ìtàn ìrántí",
+  "recall.scheduled": "A ti ṣètò",
+  "recall.retained": "A rántí rẹ̀ nípasẹ̀ gbogbo àyẹ̀wò mẹ́ta — ọjọ́ 3, 10 àti 30",
+  "recall.missed": "A pàdánù rẹ̀ ní ọjọ́ {day} — a ó tún un ṣe lọ́la, ẹ̀kọ́ náà sì padà sí àtòjọ rẹ̀",
+  "recall.correctOn": "Ó tó ní ọjọ́ {day} · ọjọ́ àyẹ̀wò tó kan {next}",
+  "recall.outcome": "Ti fipamọ ni igbiyanju akọkọ: {hits} ninu awọn ayẹwo {total}. Ayẹwo ti o kuna yoo da ẹkọ naa pada si atokọ — iyẹn ni abajade ẹkọ ti a wọn, kii ṣe kaunteri itẹlera.",
+  "passport.record": "Igbasilẹ ilọsiwaju",
+  "passport.countersigned": "Ti fọwọsi pẹlu ibuwọlu",
+  "passport.evidenceItems": "Awọn ohun ẹri",
+  "passport.notCert": "Eyi jẹ igbasilẹ ilọsiwaju ati akojọpọ ẹri ti o ba NSQF mu, kii ṣe iwe-ẹri. Olùyẹ̀wò tí a jáwé ṣi ni ó gbọdọ̀ fọwọ́ sí àfijéṣẹ̀ náà. SabiPass jẹ́ ẹ̀tọ́ láti mú ìlànà Recognition of Prior Learning tí ó wà tẹ́lẹ̀ yarayara.",
+  "passport.competencies": "Awọn agbara",
+  "passport.notStarted": "Kò ti bẹrẹ",
+  "passport.started": "Eri ti bẹrẹ",
+  "passport.assessed": "A ti ṣe àyẹ̀wò — ń dúró de ibuwọlu ìfẹ̀múlẹ",
+  "passport.signed": "Olùkọ́ni ti fọwọsi pẹ̀lú ibuwọlu",
+  "passport.verify": "Immune — ó ṣiṣẹ́ láìsí íńtánẹ́ẹ̀tì",
+  "passport.verifyNote": "Oníbàárà tó ní fóònù èyíkéyìí lè fìdí àkọsílẹ̀ yìí múlẹ̀. Tẹ okùn USSD náà tàbí ká kóòdù náà sókè.",
+  "passport.showQr": "Fi kóòdù QR hàn (o nílò ìsopọ̀)",
+  "passport.qrOffline": "QR nílò ìsopọ̀. Kóòdù náà àti okùn USSD tó wà lókè ṣiṣẹ́ láìsí íńtánẹ́ẹ̀tì.",
+  "passport.portfolio": "Wo àkójọpọ̀ ẹ̀rí",
+  "passport.portfolioNote": "Èyí ni àkójọpọ̀ tí olùṣàyẹ̀wò tí a fọwọ́sí ń gbà. Ó dín iṣẹ́ wọn kù láti ṣiṣẹ́ ilé-iṣẹ́ ìdánwò sí síṣàyẹ̀wò àti fífún ní ìfọwọ́sí.",
+  "passport.noEvidence": "Kò sí ẹ̀rí síbẹ̀.",
+  "passport.manifest": "Àkọsílẹ̀ àpò",
+  "passport.reviewer": "Olùṣàyẹ̀wò",
+  "passport.notSignedOff": "a kò ti fọwọ́sí",
+  "trainer.eyebrow": "Wíwo olùkọ́",
+  "trainer.reviewing": "ṣíṣe àyẹ̀wò akẹ́kọ̀ọ́ṣe 1",
+  "trainer.privacy": "Ó rí àwọn ohun tí àwọn akẹ́kọ̀ọ́ṣe rẹ̀ fúnra wọn ránṣẹ́ sí ọ nìkan, àti àwọn tí wọn kò tíì parẹ nìkan. Kò sí ilé-iṣẹ́ tàbí ẹnikẹ́ta tí ó gba àwọn wọ̀nyí.",
+  "trainer.flags": "Àwọn àmì ìkìlọ̀ ààbò",
+  "trainer.noFlags": "Kò sí ohun tí a fi àmì sí. A máa ń gbé àsíá sókè láìfọ̀rọ̀sí nígbà tí akẹ́kọ̀ọ́ṣe bá ṣàpèjúwe iṣẹ́ tí kò ní ààbò — wọn kò ní láti béèrè.",
+  "trainer.awaiting": "Ifọ́ọ̀lù rẹ ń dúró",
+  "trainer.queue": "Ìlà ìfẹ́wọ́sí kejì",
+  "trainer.noQueue": "Kò sí ohun tí ó ń dúró. Ṣe iṣẹ́ ìdánilẹ́kọ̀ọ́ kan gẹ́gẹ́ bí akẹ́kọ̀ọ́, yóò sì hàn níbí.",
+  "trainer.sign": "Fọwọ́sí agbára yìí ní ìkejì",
+  "trainer.signed": "A ti fọwọ́sí i ní ìkejì. Àkọsílẹ̀ {name} ti di tuntun.",
+  "trainer.said": "{name} sọ",
+  "settings.textOnly": "Ọ̀rọ̀ nìkan",
+  "settings.textOnlyNote": "Pa ohun tí a sọ. A máa ń fi àwọn àṣàyàn ọ̀rọ̀ hàn ní gbogbo ọ̀nà.",
+  "settings.why": "Ìdí tí èyí fi wá",
+  "settings.whyBody": "Ìlànà Orílẹ̀-èdè Nàìjíríà fún Ìjápọ̀ Ìjẹ́rìí Òye Ọ̀gbọ́n ti mọ àwọn ọ̀gbọ́n tí a ké ní ọ̀nà àìlẹ́kọ̀ọ́, nípasẹ̀ Ìdánimọ̀ Ẹ̀kọ́ Tẹ́lẹ̀, tí a bẹ̀rẹ̀ ní 2025. Ó tó ẹgbẹ̀rún márùn-ún àwọn oníṣẹ́ ọwọ́ ni a ti dán wò káàkiri orílẹ̀-èdè láti ìgbà náà, nítorí ìdánwò náà jẹ́ ti ènìyàn, ní ojú-kò-òjú, ó sì ṣòro láti rí.",
+  "settings.whyBody2": "SabiPass mú kí ìdánwò náà lè wá láti òkèèrè, nípa ohùn gẹ́gẹ́ bí ọ̀nà àkọ́kọ́, àti ní iye owó tí ó fẹ́rẹ̀ẹ́ jẹ́ ọ̀fẹ́. Ìlànà náà wà. Agbára láti ṣe é ní ìwọ̀n púpọ̀ kò sí.",
+  "settings.notBuilt": "Ohun tí a mọ̀ọ́mọ̀ kò kọ́",
+  "settings.notBuiltBody": "Ìsanwó, ìbámu iṣẹ́, ìgbésókè ẹ̀kọ́ fún gbogbo ènìyàn, àwọn ìjẹ́rìí. Ìforúkọsílẹ̀ ilé-iṣẹ́ ìdánilẹ́kọ̀ọ́ jẹ́ afọwọ́dà ìṣòwò láti jẹ́rìí sí, kì í ṣe àbùdá.",
+  "settings.data": "Da tí a lò nínú ìpàdé yìí",
+  "settings.engine": "Èrò ọ̀rọ̀",
+  "settings.reset": "Tún ìfihàn náà ṣe",
+  "settings.resetDone": "Àtúnṣètò ẹ̀yà ìfihàn."
+ },
+ "passages": {
+  "p-cable-01": {
+   "answer": "Fún fífi sórí èrò ilé, àwọn sákẹ́ẹ̀tì máa ń lo kábù bàbá 2.5mm2, àti àwọn ìmọ́lẹ̀ máa ń lo kábù bàbà 1.5mm2. Òfin tó wà lẹ́yìn rẹ̀ ní Ib Capitol In Capitol Iz: iṣan ẹlẹ́kìtíríkì tí ẹrù náà nílò kò gbọdọ̀ ju ìwọ̀n ẹ̀rọ ààbò lọ, àti pé ìwọ̀n yẹn kò gbọdọ̀ ju agbára kábù láti gbé ìṣàn ẹlẹ́kìtíríkì lọ. A máa ń yan kábù 2.5mm2 fún sákẹ́ẹ̀tì nítorí ẹ̀rọ ààbò 16A tàbí 20A wà lábẹ́ agbára rẹ̀ dáadáa. Má ṣe lo 1.5mm2 rárá fún sakẹ́ẹ̀tì.",
+   "spoken": "Fún sakẹ́ẹ̀tì, lo 2.5. Fún ìmọ́lẹ̀, lo 1.5. Ìdí ni pé kábù gbọdọ̀ lè gbé ìṣàn ẹlẹ́kìtíríkì tó pọ̀ ju ohun tí bírẹ́ẹ́kà gbà kọjá lọ. Lílò 1.5 fún sákẹ́ẹ̀tì kò tọ́.",
+   "cues": [
+    "ìwọ̀n kebulu",
+    "1.5",
+    "2.5",
+    "sókètí",
+    "iná",
+    "wáyà wò",
+    "ìwọ̀n wò",
+    "na wáyà",
+    "mm2"
+   ]
+  },
+  "p-cable-02": {
+   "answer": "Agbára ìṣiṣẹ́wọ̀n tí kábù lè gbé kì í ṣe nọ́mbà kan ṣoṣo. Ó máa ń dín kù nígbà tí kábù bá wà nínú kọndùtì, tí a bá kó pọ̀ mọ́ àwọn kábù míì, ti ìdábòbò ooru bá yí i ká, tàbí tí ìwọ̀n ooru àyíká bá ga. Kábù 2.5mm2 kan náà tí a sọ mọ́ ògiri ni tààrà máa gbé amúnáwá púpọ̀ ju kábù kan náà tí a fà gba kọndùtí tó kún fún kábù lọ lórí òrùlé gbígbóná. Lo àwọn ìpímúyẹ̀ àtúnṣe fún ọ̀nà ìfi kábù, ìkójọpọ̀, àti ìwọ̀n ooru àyíká kí ó tó gba ìwọn kábù kan.",
+   "spoken": "Kábù kan náà kì í gbé amúnáwá kan náà níbi gbogbo. Nínú kòndùtì, tí a bá kó wọn pọ̀, nínú òrùlé ibi tí ooru wà — kábù náà máa gbé amúnáwá díẹ̀. O gbọdọ lo ifosiwewe atunṣe ki o to gba iwọn kábù èyíkéyìí.",
+   "cues": [
+    "dín ìwọ̀n kù",
+    "ọ̀nà ìrọ̀rùn",
+    "ìdábọ̀bọ̀",
+    "ìṣàjọpọ̀",
+    "àyíká",
+    "gbóná",
+    "tí a kò jọ",
+    "agbára"
+   ]
+  },
+  "p-cable-03": {
+   "answer": "Àwọn ààlà ìsọkálẹ̀ fẹ́kélì jẹ́ 3% ti fẹ́bàá àfọwọ́kọ fún àwọn sákítì ìmọ́lẹ̀ àti 5% fún àwọn sákítì míì, tí a wọn láti ìbẹ̀rẹ̀ ìfi ẹ̀rọ náà. Ní àwọn ìjìnnà gígùn, káíbù tí ó bá kọjá ìdánwò agbára iṣan lè sì kùnà ní ìsọkálé foliteji, ojútùú náà sì ní láti lo káíbù tó tóbi jù, kì í ṣe láti gba fìtílà tí kò lágbára tàbí mọ́tò tí ó ń sọ̀rọ̀ láti bẹ̀rẹ̀.",
+   "spoken": "Ìsọ̀kálẹ̀ fẹ́kélì: ìdá mẹ́ta fún ìmọ́lẹ̀, ìdá márùn-ún fún sákítì míì. Bí ìjìnnà bá gùn, káíbù lè kọjá ìdánwò iṣan ṣùgbọ́n kùnà ní ìsọkálẹ̀ fẹ́dà. Ìdáhùn náà ni ká lo káíbù tó tóbi jù; kì í ṣe láti gba ìmọ́lẹ̀ aláìlágbára.",
+   "cues": [
+    "ììpòìfíà",
+    "ìrìn-àjò gígùn",
+    "jìnnà",
+    "kùtùkùtù",
+    "aláìlágbára",
+    "ìjìnnà"
+   ]
+  },
+  "p-cable-04": {
+   "answer": "Ẹ̀rọ amúlétutù jẹ́ ẹrù mótó aláìmọlẹ̀ tí ó ní iṣan ìbẹ̀rẹ̀ tó pọ̀ ní ọ̀pọ̀ ìgbà ju iṣan iṣẹ́ rẹ̀ lọ. Ó nílò sákítì ìkẹyìn tirẹ̀ tó yà sọ́tọ̀, tí a ṣe ìwọ̀n rẹ̀ dáadáa fún iṣan tí a fi ṣe ìdiwọ̀n ẹ̀rọ náà, pẹ̀lú fífi àbùdá ìbẹ̀rẹ̀ mótó sínú ìṣirò, tí a sì dáàbò bò ó pẹ̀lú èrò tó ní ìlà ìṣiṣẹ́ igé tó yẹ. Lílo kábù 1.5mm2 sí sokẹ́ẹ̀tì ẹ̀rọ amúlétutù jẹ́ ẹ̀wù iná: kábù náà lè jẹ́ ẹrú ju fún àkókò pípé láìsí pé èrò ààbò náà máa ṣiṣẹ́ rárá.",
+   "spoken": "Ẹrù AC ni. Àwọ̀n ìbẹ̀rẹ̀ rẹ̀ pọ̀ ju àwọn ìṣísẹ̀ rẹ̀ lọ. Ó nílò sákítì tìrẹ, kẹ́bù tó yẹ, àti breekà tó ní kùubù tó yẹ. Ọ̀kan pọ́ntì márùn-ún fún AC dà bí iná tó ń dúró de ìṣẹ̀lẹ̀ — kẹ́bù náà máa kùn jù, breekà náà sì lè má gé rárá.",
+   "cues": [
+    "AC",
+    "amúlétutù",
+    "1.5 fún AC",
+    "aircon",
+    "mòòtò",
+    "current ìbẹ̀rẹ̀"
+   ]
+  },
+  "p-earth-01": {
+   "answer": "Olùdarí ààbò ẹ̀yà manaana àti olùdarí neutiró gbọdọ̀ yà sọ́tọ̀ ní gbogbo ẹ̀ka manamána ìkẹyìn. Bí a bá sọ wọ́n pọ̀ ní ibi ìfẹ́sẹ̀mo ìtànná, èrò ìdánwò sọ́kéètì lè fi hàn pé ohun gbogbo tó ṣùgbọ́n ó ń dá ìfigbékalẹ̀ apaniyan sílẹ̀. Olùdarí ààbò náà á di olùdarí tí ń gbé iṣan lọ́wọ́lọ́wọ́, àti bí neutíró bá gé níbikíbi ní ìwájú, gbogbo àpò irin àwọn ohun èlò ìtànná tí a ti so mọ́ ilé nínú ẹ̀ka náà a súnmọ́ foliteji láìní. Ẹnikẹ́ni tí ó bá fọwọ́ kan firiji, póọ̀mù tàbí ẹ̀rọ ìfọṣọ náà á di ọ̀nà sí ilẹ̀.",
+   "spoken": "Ilé àti neutíró kò gbọdọ̀ darapọ̀ rárá nínú ẹ̀ka ìkẹyìn. Bí ó bá sọ wọ́n pọ̀, èrò ìdánwò sókéètì yóò fi hàn pé ó tọ́ — ṣùgbọ́n ìfigbékalẹ̀ náà jẹ́ ìdẹkùn ikú. Bí neutíró bá gé níbikíbi ní ìwájú, ara gbogbo ohun èlò ìtànná yóò gbé iṣan lọ́wọ́lọ́wọ́. Ẹni tí ó bá fọwọ́ kan firiji náà a di ọ̀nà sí ilẹ̀.",
+   "cues": [
+    "sọ ilẹ̀ pọ̀ mọ́ neutral",
+    "sọ ilẹ̀ àti neutral pọ̀",
+    "dídé ilẹ̀",
+    "sọ ilẹ̀ pọ̀ mọ́ neutral",
+    "ilẹ̀ àti neutral jẹ́ kan náà"
+   ]
+  },
+  "p-earth-02": {
+   "answer": "Aláwọ̀ ewé àti àwọ̀ òǹfẹ́ jẹ́ fún àwọn olùdarí ààbò nìkan, a kò sì gbọdọ̀ lò ó gẹ́gẹ́ bí olùdarí láìní tàbí olùdarí neutili níbikíbi nínú ìfikalẹ̀ náà. Àwọ̀ braun fi olùdarí láìní hàn, àwọ̀ búlúù sì fi olùdarí neutili hàn. Àwọ̀n náà jẹ́ ìtọ́nisọ́nà ààbò fún ẹni tó kàn máa ṣí pátákó náà, lílo rẹ̀ padà fún olùdarí tó ní iná sí máa ń yọ ìkìlọ̀ kan ṣoṣo tí wọ́n ní kúrò.",
+   "spoken": "Aláwọ̀ ewé àti àwọ̀ ofeefee jẹ́ fún ilẹ̀ nìkan. Má ṣe lò ó fún live tàbí neutral. Àwọ̀ braun jẹ́ fún line, búlúù sì jẹ́ fún neutral. Àwọ̀n náà jẹ́ ìfiranṣe sí onímọ̀ iná tó kàn tí yóò sì board náà. Tí ó bá yí i padà, ó ti mú ìkìlọ̀ kan ṣoṣo rẹ̀ kúrò.",
+   "cues": [
+    "aláwọ̀ ewé ofeefee",
+    "àwọ̀ ilẹ̀",
+    "kóòdù àwọ̀",
+    "lo okùn ilẹ̀ gẹ́gẹ́ bí wáyà alààyè"
+   ]
+  },
+  "p-earth-03": {
+   "answer": "Nínú fífi sórí ẹ̀rọ TT, elektrodu ilé gbọ́dọ̀ ní ìdènà tó kéré tó bẹ́ẹ̀ tí Ra x IDÍn kò fi ní kọjá 50V, èyí sì ni ìdí tí a fi nílò RCD dípò kí a gbẹ́kẹ̀ lé ààbò lódì sí sisàn iná jù. Ìsopọ̀ ààbò pàtàkì ń sọ àwọn iṣẹ́ irin tí ń wọlé àti irin ìkọ́lé pọ̀ mọ́ èbúté ilẹ̀ pàtàkì. Sísopọ̀ páìpù omi pọ̀ mọ́ ilẹ̀ kì í ṣe ohun kan náà pẹ̀lú pípèsè eléktródù ilẹ̀: ìsopọ̀ náà ń mú kí àgbara iná dọ́gba, eléktródù sì ń pèsè afísì ilẹ̀. Ọ̀kan kì í rọ́pò èkejì.",
+   "spoken": "Fún ètò TT, àtakò ọ̀pá ilé gbọ́dọ̀ kéré tó bẹ́ẹ̀ tí Ra pọ̀ pẹ̀lú ìwọn RCD kò gbọ́dọ̀ kọjá volta àádọ́ta. Ìdí nìyẹn tí ó fi nílò RCD. Kíyèsí dáadáa: sísọ páìpù omi pọ̀ mọ́ ilẹ̀ kì í ṣe ohun kan náà bí ọ̀pá ilé. Ṣíṣo pọ̀ ń mú kí fẹ́bàá dọ́gba. Ọpa ilẹ̀ ń fún ọ ní itọkasi ilẹ̀. Ọkàn kì í rọ́pò èkejì.",
+   "cues": [
+    "ọ̀pá ilẹ̀",
+    "ẹlẹ́ktródù",
+    "ìsopọ̀ ilẹ̀",
+    "páìpù omi",
+    "ìdènà ilẹ̀",
+    "TT"
+   ]
+  },
+  "p-earth-04": {
+   "answer": "Gbogbo ìbusọ̀kẹ, gbogbo ibi ìmọ́lẹ̀ àti gbogbo ohun èlò Kíláàsì I gbọ́dọ̀ ní okùn ìdábọ̀ bó ń lọ títí dé ibùdó ilé pàtàkì. A máa ń jẹ́sírì ìtẹ̀síwájú rẹ̀ nípasẹ̀ ìwọ̀n kí wọ́n tó fi iná mọ̀nàmọ́nà sí ìfisédásílẹ̀ náà, kì í ṣe pé a kan rò pé ó wà nítorí okùn aláwọ̀ ewé àti ofeefee wà níbẹ̀. Òkun ìdábọ̀bọ̀ tí a so mọ́ sóketì ṣùgbọ́n tó ṣẹ́ ní pátákó kò pèsè ìdábọ̀bọ̀ kankan rárá.",
+   "spoken": "Gbogbo socket, gbogbo ibi iná, gbogbo ohun èlò irin nílò ilé tí kò ní ìdádúró tó padà sí ibùdó ilé àkọ́kọ́. Ó gbọdọ̀ wọn ún kí ó tó fi iná mọ̀nàmọ́ná sí i. Má ṣe rò pé ó dáa nítorí ó rí wáyà aláwọ̀ ewé àti ofeefee. Ilẹ̀ tó so mọ́ socket ṣùgbọ́n tó já ní pátákó kó dáàbò bo ẹnikẹ́ni.",
+   "cues": [
+    "ìlọsíwájú ilẹ̀",
+    "cpc ti bàjẹ́",
+    "ṣe ìdánwò ilé",
+    "r1 r2"
+   ]
+  },
+  "p-protect-01": {
+   "answer": "MCB kékeré kan ń dáàbò bo kábù lódì sí ẹrú àṣejù àti kúkúrú nínú ẹlẹ́mìí. Kò dáàbò bo ènìyàn lódì sí ìjìnnà mànàmáná. Èyí ni èrò tí kò tọ́ tí ó wọ́pọ̀ jùlọ, tí ó sì léwu jùlọ nínú iṣẹ́ fífi ẹ̀rọ mànàmáná ilé sórí ẹ̀rọ. MCB 16A kan lè jẹ́ kí 16A kọjá nínú ara ènìyàn láìnípẹ̀kun láìṣiṣẹ́. Ààbò lódì sí ìjìnnà mànàmáná wá láti ọ̀dọ̀ èrò residual current, ìsopọ̀ ilẹ̀ tó tó.",
+   "spoken": "Breaker ń dáàbò bo kábùulì kúrò ní ìwọ̀nba ẹrù àti kúròkúrò kúkúrú. Breaker kó dáàbò bo ènìyàn kúrò nínú iná mọ̀nàmọ́nà. Èyí ni àṣìṣe tó léwu jùlọ nínú iṣẹ́ yìí. Breaker 16 amp lè jẹ́ kí 16 amp kọjá lára ènìyàn láì gé. Ààbò iná mọ̀nàmọ́nà ní RCD, ìsopọ̀ ilẹ̀ tó tó.",
+   "cues": [
+    "mcb",
+    "ìdábọ̀bọ̀ breaker",
+    "ìjìnlẹ̀ breaker",
+    "kí ni breaker ń ṣe",
+    "àpọ̀jù"
+   ]
+  },
+  "p-protect-02": {
+   "answer": "Kọ́ọ̀bù Type B máa ń gé ní ìgbà mẹ́ta sí márùn-ún iye iṣan tí a fi díwọ̀n, ó sì yẹ fún ẹrù resistive àti ìmọ́lẹ̀. Kọ́ọ̀bù Type C máa ń gé ní ìgbà márùn-ún sí mẹ́wàá iye iṣan tí a fi díwọ̀n, ó sì yẹ fún ẹrù inductive bíi mọ́tò, ẹ̀rọ amúlétutù àti transformer, nítorí ìṣàn ìbẹ̀rẹ̀ wọn lè fa kí Type B máa gé láìnídìí. Yíyangàgà tó ga láti dẹ́kun gígé láìnídìí dípò yíyan curve tó tó máa jẹ́ kí káíbù náà má ní ààbọ̀.",
+   "spoken": "Type B máa ń gé ní ìgbà mẹ́ta sí márùn-ún rating — ó yẹ fún ìmọ́lẹ̀ àti ẹrù resistive. Type C máa ń gé ní ìgbà márùn-ún sí mẹ́wàá — ó yẹ fún mọ́tò, AC, transformer, nítorí inrush. Tí breaker bá ń gé léraléra, yí curve náà padà. Má ṣe pọ̀ sí rating — tí ó bá pọ̀ sí rating, káíbù náà kò ní ààbò mọ́.",
+   "cues": [
+    "ìrú B",
+    "ìgùn C",
+    "ìgùn",
+    "MCB já",
+    "ìja àṣìṣe",
+    "burekì mótó"
+   ]
+  },
+  "p-protect-03": {
+   "answer": "Awọn sẹkẹti inu ile nilo aabo afikun lati ọdọ ẹrọ RCD ti iwọn lọwọlọwọ  iṣiṣẹ to kù rẹ ko ju 30mA lọ. Pátátó pínpin tí a fi MCB nìkan sì kò pèsè ààbò kankan lódì sí ìjìnnà mànàmáná láti àṣìṣe láìní-sí-ilẹ̀ tó gba ara ènìyàn kọjá. Níbi tí pátákó kan kò bá ní RCD, àbùkù ni a gbọ́dọ̀ ròyìn, kì í ṣe ohun tí a yẹ kí a ṣiṣẹ́ yí kán",
+   "spoken": "Soketi nílò RCD tí kò ju ọgbọ̀n milliamp lọ. Bí pátákó náà bá ní breaker nìkan, kò sí ààbò lódì sí ìjìnnà mànàmáná nínú ìfòwúlẹ̀ náà. Pátótó tí kò ní RCD jẹ́ àbùkù tí ó gbọdọ̀ ròyìn—kì í ṣe ohun tí ó yẹ kí ó máa ṣètò láti fara dà.",
+   "cues": [
+    "RCD",
+    "30mA",
+    "jíjí ilẹ̀",
+    "RCCB",
+    "kò sí RCD",
+    "ààbò lòdì sí ìjìnnà elékítìrókì"
+   ]
+  },
+  "p-protect-04": {
+   "answer": "Fífi gbogbo ìyíká sí abẹ́ RCD 30mA kan ṣoṣo túmọ̀ sí pé àṣìṣe kan níbikíbi yóò gé gbogbo fífi sórí ẹ̀rọ kúrò, títí kan firìṣà. A n ṣaṣeyọri iyatọ nipasẹ pipin awọn iyika ìkẹyìn káàkiri ọ̀pọ̀ èrò 30mA, àti níbi tí a bá lo èrò tó wà ní òkè, ó gbọ́dọ̀ jẹ́ irú àyànfẹ́ tó ní ìdádúró àkọ́kọ́ kí èrò tó wà ní ìsàlẹ̀ lè ṣiṣẹ́ kókó. Èyí ṣe pàtàkì ní ti iṣe àti ní ti imọ́ èrò: fífi sórí ẹ̀rọ tí ó máa ń ṣókùnkùn pátápátá nígbà tí àṣìṣe bá wáyé yóò mú kí ẹni tó ń gbé ibẹ̀ kọjá RCD náà.",
+   "spoken": "Tí ó bá fi gbogbo nǹkan sí lẹ́yìn RCD 30 mA kan, àṣìṣe kékeré kan lè pa iná gbogbo ilẹ̀, títí kan fírísá. Pín àwọn sákítì náà sí oríṣìíríṣìí èrò. Tí ó bá lo ọkàn ní apá òkè, jẹ́ kí ó jẹ́ irú tí ó ní ìdádúró àkọ́kọ́ kí èyí tó wà ní ìsàlẹ̀ lè kọ́kọ́ jáde. Tí gbogbo ilẹ̀ bá ṣókùnkùn, onílé lè forí kọ RCD náà — nígbà náà kò sí ẹni tó ní ààbò.",
+   "cues": [
+    "Ìhùwàsí",
+    "ìrìnàjò gbogbo ilẹ̀",
+    "rísítì kan",
+    "yíyàn lọ́tọ̀",
+    "firìṣà",
+    "ìdin"
+   ]
+  },
+  "p-change-01": {
+   "answer": "Eto iyipada laarin ipese ina NEPA ati jenerato tabi inverter gbọdọ ge mejeeji okun live ati neutral, ati pe o gbọdọ ni titiipa ẹrọ ki awọn orisun mejeeji ma ba le sopọ ni akoko kanna. Yíyọ live nikan fi neutral silẹ ni asopọ, eyi le jẹ ki ipese miiran tun fi ina ranṣẹ sẹyin si nẹtiwọọki NEPA. Oṣiṣẹ ila ile-iṣẹ pinpin ina ti o ti ya ila kan sọtọ ti o si ti jẹrisi pe ko ni ina le ku nitori jenerato kan ti n fi iná ránṣẹ́ sẹ́yìn nípasẹ̀ neutral tí a kò yípadà rárá.",
+   "spoken": "Changeover gbọdọ ge live ati neutral — mejeeji. O si gbọdọ ni titiipa ẹrọ ki awọn ipese mejeeji ma ba le darapọ ni akoko kan. Ti o ba yipada live nikan, neutral naa ṣi wa ni asopọ, jenerato rẹ si le fi ina ranṣẹ sẹyin si laini NEPA. Oṣiṣẹ ìlà tí ó ti fìdí rẹ̀ múlẹ̀ tẹ́lẹ̀ pé ìlà náà kò ní iná lè kú nítorí jenerato rẹ̀.",
+   "cues": [
+    "yí padà",
+    "ìyípadà",
+    "sọ ẹ̀rọ amúnáwá pọ̀ mọ́ ẹ̀rọ-iṣẹ́",
+    "fífún padà",
+    "yíyípadà swichi",
+    "tààrà jùlọ"
+   ]
+  },
+  "p-change-02": {
+   "answer": "Èéwó ni láti sọ èrò amúnáwá tàbí èrò inverter pọ̀ mọ́ fífi sórí ẹ̀rọ nípasẹ̀ okùn tó ní phogi ní ẹ̀gbẹ́ méjèèjì, nípasẹ̀ ibi ìsọ nìnu, tàbí nípasẹ̀ ètò èyíkéyìí tí kò ní èrò ìyípadà tó ní ìdènà ìbáṣepọ̀. Òkun tó ní phogi ni ẹgbẹ́ méjèèjì máa ń fi àwọn pini tó ní iná hàn nígbàkigbà tí a bá sọ ẹgbẹ́ kan pọ̀, ó sì kò pèsè ìyasótọ̀ kankan kúrò ní orísun iná àkọ́kọ́. Kò sí ipò kankan nínú iṣẹ́ fífi iná ilé sórí ẹ̀rọ tí èyí jẹ́ ìtẹ́wọ́gbà, kódà fún ìgbà díẹ̀.",
+   "spoken": "Òkun àkọ̀ sí akọ, sísọ gén pọ̀ nípasẹ̀ sókẹ́ẹ̀tì, tàbí ètò èyíkéyìí láìsí èrò ìyípadà tó ní ìdènà ìbáṣepọ̀ — gbogbo rẹ̀ ni a kà léèwọ̀. Òkun náà tó ní phogi ni ẹgbẹ́ méjèèjì máa ń fi àwọn pini tó ní iná hàn ní kété tí ẹgbẹ́ kan bá wọlé. Kò sí ìgbà díẹ̀, kò sí àkókò kékeré. Rárá.",
+   "cues": [
+    "okùn ìgbẹ̀mí",
+    "akọ sí akọ",
+    "púròógí olórí méjì",
+    "fi sínú sókẹ́ẹ̀tì",
+    "sọ mọ́ ẹ̀rọ amúnáwá tààrà"
+   ]
+  },
+  "p-change-03": {
+   "answer": "Inifata ti n pese fifi sori ẹrọ gẹgẹ bi orisun atunṣe gbọdọ ni neuta ijade rẹ ti a sọ mọ́ ilé ní ìbámu pẹ̀lú ìtọ́nisọ́nà olùṣèdá àti ètò ìsopọ̀ ilé ti fífi sórí ẹ̀rọ náà. Neutu ìjáde tí kò sọ mọ́ ilẹ̀ lè mú kí àwọn èrò ìdábọ̀ lọ́wọ́lọ́wọ́ tó kù ṣiṣẹ́ ní àṣìṣe, ó sì lè fi àwọn àpò ẹ̀rọ sí agbára tí kò dájú. Ìṣètò ẹrú jẹ́ ìbéèrè ọ̀tọ̀: àwọn sákítì pàtàkì gbọdọ̀ wà lórí pánì kékeré tó yàtọ̀, àti àwọn ẹrú tí ń fà lọ́wọ́lọ́wọ́ púpọ̀ bíi amúfẹ̀ àti èrò gbóná omi kò yẹ kí a fi sí ẹsẹ̀ ínífáta.",
+   "spoken": "Neutral output inverter gbọdọ jẹ ile gẹgẹ bi ìtọ́nisọ́na aṣelọpọ ati eto ile ile. Bí neutral bá ń fọfẹ́, RCD lè hùwà bàjẹ́, ara èrò sì lè ní foliteji tí a kò mọ̀. Ọ̀rọ̀ mìíràn: fi ẹrù pàtàkì sí sub-board tirẹ̀, kí ó sì pa AC àti ẹ̀rọ ìgbóná omi kúrò lórí ẹsẹ̀ inverter.",
+   "cues": [
+    "neutral inverter",
+    "ilé inverter",
+    "neutral floating",
+    "ẹrù inverter",
+    "oòrùn",
+    "ẹrù pàtàkì"
+   ]
+  },
+  "p-test-01": {
+   "answer": "Immune máa ń tẹ̀lé ìtòlẹ́sẹẹsẹ kan tí a ti pinnu, àwọn ìdánwò tí kò ní iná sí máa ń wá kókó: ìtẹ̀síwájú àwọn olùdarí ààbò àti ìsopọ̀ ilẹ̀, ìtẹ̀síwájú àwọn olùdarí ìkẹyìn orí-òrùkà níbi tí a ti lò órùkà, ìdènà ìtànná, pólárí, àti ìfaradà elékítìróódù ilẹ̀ níbi tí ìfiwọlé náà jẹ́ TT. Lẹyin ìyẹn nìkan ni a máa ń ṣe àwọn ìdánwò alààyè: ìdènà lùtúpù àìṣe ilẹ̀, àkókò ìṣiṣẹ́ RCD, àti ìdánwò iṣẹ́. Ìtòlẹ́sẹẹsẹ  náà wá nítorí pé àìṣe tí ìdánwò tí kò ní iná bá rí yóò léwu láti rí nípasẹ̀ ìdánwò alààyè.",
+   "spoken": "Ìtòlẹ́sẹẹsẹ  náà ti wà nípò, àwọn ìdánwò tí kò ní iná sì máa ń kọ́kọ́ wá. Ìtẹ̀síwájú ilẹ̀ àti ìsopọ̀ ilẹ̀. Ìtẹ̀síwájú òrúkà tí ó bá jẹ́ òrùkà. Ìdènà ìtànná. Polarítì. Ẹlẹ́kìtìrọ̀dù ilẹ̀ tí ó bá jẹ́ TT. Lẹyin gbogbo ìyẹn ni ó máa ń ṣe ìdánwò alààyè: ìdènà lúù, àkókò RCD, lẹ́yìn náà ìdánwò iṣẹ́. Ìtòlẹ́sẹẹsẹ  náà wà nítorí pé àìṣe èyíkéyìí tí ó bá rí ní ìdánwò tí kò ní iná yóò léwu láti rí ní ìdánwò alààyè.",
+   "cues": [
+    "àṣẹ ìdánwò",
+    "ṣáájú kí ó tó fi agbára ṣiṣẹ́",
+    "ìdánwò tí ó kù",
+    "ọ̀kọ̀ọ̀kan",
+    "fífi sínú iṣẹ́",
+    "ìmúdájú"
+   ]
+  },
+  "p-test-02": {
+   "answer": "A wọ́n ìdènà fún fífi sórí ẹ̀rọ náà/400V ni a máa ń wọn ní 500V DC, ó sì gbọ́dọ̀ jẹ́ kì í ṣe kéré ju 1.0 MÔ lelán lò àwọn olùdarí tí wọ́n ní iná àti láàárín àwọn olùdarí tí wọn ní iná àti ilẹ̀. Ìwọ̀n tó bá kéré ṣùgbọ́n tí kì í ṣe ọ̀fọ̀ sí jẹ́ àṣìṣe, ó sì sábà máa ń fi hàn pé ọ̀rinrin ti wọlé, káíbù ti bàjẹ́, tàbí pé èrò kan ṣì wà ní àsọpọ̀. Yọ àwọn ohun èlò tó ní ìfarabalẹ̀ kúrò kí ó tó danwo, dípò kí ó fọ ìdánwò náà kọjá.",
+   "spoken": "Ìdènà fifisé: dánwò ní 500 folti DC, ìwọ̀n náà kò sì gbọdọ̀ kéré ju megohm kan lọ. Tí ìwọ̀n náà bá kéré ṣùgbọ́n kò jẹ́ òfo, ó sì jẹ́ àṣìṣe — ó sábà máa ń jẹ́ nítorí omi, káíbù tó bàjẹ́, tàbí èrò tí ó ṣí wà ní àsọpọ̀. Yọ àwọn ohun èlò tó ní ìfarabálẹ̀ kúrò, má ṣe fọ ìdánwò náà kọjá.",
+   "cues": [
+    "ìdènà ìfaradà",
+    "megger",
+    "1 megohm",
+    "500v",
+    "ìdánwò IR"
+   ]
+  },
+  "p-test-03": {
+   "answer": "A gbọdọ̀ jẹ́rìí polarti kí a tó fi iná sí i. Gbogbo ohun èlò ààbò àti gbogbo swí pọòlù kan gbọ́dọ̀ jẹ́ kó sópọ̀ mọ́ olùdarí láìní nìkan, kì í ṣe mo neutílì rárá. Kóntáàkì àárín nínú háólídá fìlàmẹ̀ntì skrú Edison gbọ́dọ̀ sọkún mọ́ olùdarí láìní. Swí tí a bá sọ mo neutili máa ń jẹ́ kí fìlàmẹ̀ntì náà sí wa lábẹ́ foliteji nígbà tí ó bá wà ní pípà, ẹni tó bá tẹ̀lé láti yí bọ́ọ̀bù padà sí máa rí i.",
+   "spoken": "Ṣàyẹ̀wò pólárítì kí ó tó fi kùrẹ̀ẹ́ntì sí i. Gbogbo breeka ati gbogbo swí ọ̀pá-kan gbọdọ wà lórí laini, kì í ṣe lórí niuti. Kóńtáàkì àárín tí hólídá fìtílà gbọdọ̀ jẹ láìní. Tí ó bá swí níutì, fìtílà náà sì wà láàyè nígbà tí swí bá wà ní pípà— ẹni tó bá ń yí bọ́ọ̀bù pa dà á sì wà mọ́.",
+   "cues": [
+    "polarity",
+    "yípadà lórí neutral",
+    "fùfù nínú neutral",
+    "dímú fìtílà",
+    "olubasọrọ àárín"
+   ]
+  },
+  "p-test-04": {
+   "answer": "RCD 30mA kan ti n pese aabo afikun gbọdọ ṣiṣẹ laarin 300ms ni lọwọlọwọ iyokù ti a ṣe iwọn rẹ ati laarin 40ms ni igba márùn lọ́wọ́lọ́wọ́ ìyókù tí a ṣe ìwọ̀n rẹ̀. sọ. idanwo ti a ṣepọ jẹrisi ẹrọ naa nikan, kii ṣe akoko iṣiṣẹ, nitorinaa kii ṣe arọpo fun idanwo pẹlu ohun elo. RCD kan tí ó ṣiṣẹ́ ṣùgbọ́n tí ó ṣiṣẹ́ lọra ti kùnà.",
+   "spoken": "RCD ọgbọ̀n miliamp gbọdọ ja ṣiṣẹ lodun ọgbaalọsẹlọgbọn lawọnn ni iwọn amúlọwọ́ rẹ, àti láàárín ogójì milisókón ní ìgbà márùn-ún. Bótìnì ìdánwò lórí ẹ̀rọ náà kan ń jẹ́rìí sí ẹ̀rọ ìṣiṣẹ́ náà—kò sọ fún ọ nípa àkókò. O gbọ́dọ̀ fi ohun èlò ṣe ìdánwò. RCD tí ó bá já ṣíṣe lórà ti bàjẹ́.",
+   "cues": [
+    "ìdánwò rcd",
+    "àkókò ìrìn-àjò",
+    "300ms",
+    "40ms",
+    "àkókò rcd",
+    "bọtini ìdánwò"
+   ]
+  },
+  "p-test-05": {
+   "answer": "Fífi sórí ẹ̀rọ sílẹ̀ láti rí bóyá ó ń ṣiṣẹ́ kì í ṣe ìdánwò. Kò lè rí ìyípadà polarí, olùdarí ààbò tí ó ṣẹ, tàbí ìdábọ̀bọ̀ tí ó ti bàjẹ́, àti ọ̀kọ̀ọ̀kan wọn lè dà bí fífi sórí ẹ̀rọ tó ń ṣiṣẹ́ títí ẹnì kan yóò fi farapa. Gbọ́dọ̀ jẹ́rìí ìfaradà ìdábọ̀bò ati pólárítì nígbà tí iná kò sì kí á tó sọ ìpèsè iná pọ̀.",
+   "spoken": "Fífi lọwọlọwọ kí o wò bóyá o ń ṣiṣẹ́ kìí ṣe ìdánwò. In kii yoo fi polarity to yipada, earth ti o bajẹ, tàbí insulation tí kò dára hàn ọ́ — àti pé gbogbo mẹ́tẹ̀ẹ̀ta lè dàbí fífi sórí ẹ̀rọ tí ń ṣiṣẹ́ títí ẹnìkan yóò fi farapa. Jẹriṣi insulation ati polarity nigba ti ina ti wa ni pipa ṣaaju ki o to sọ ipese ina pọ.",
+   "cues": [
+    "tan-an kí ó sì rí",
+    "dán wò nípa títan",
+    "fi agbára sí i kókó",
+    "kan fi ìmọ́lẹ̀ sí i"
+   ]
+  }
+ },
+ "lessons": {
+  "1": {
+   "title": "Ìwọn kebulu fún àwọn sákẹ́ẹ̀tì àti àwọn sákẹ́ẹ̀tì ìmọ́lẹ̀",
+   "subtitle": "Kí ló dé tí a fi ń lo 2.5 àti 1.5, kí sì ni ó lè yí ìdáhùn padà",
+   "practicePrompt": "Ṣe àkọsílẹ̀ ara rẹ nígbà tí o ń ṣàlàyé ìdí tí ìwọ yóò fi lo 2.5mm2 sí ojú ìjáde sakẹ́ẹ̀tì dípò 1.5mm2.",
+   "practiceSpoken": "Bá mi sọ̀rọ̀. Kí ló dé tí ó fi máa lo 2.5 sí sánu, kí sì ni ìdí tí 1.5 kò fi yẹ?",
+   "keyPoints": [
+    "Awọn iyika socket 2.5mm2, awọn iyika ina 1.5mm2",
+    "Ib Capitol In Capitol Iz — ẹru, ẹrọ, kebulu, ni itẹle yẹn",
+    "Dín ìwọ̀n kù fún conduit, pẹkójọpọ̀, ìdábọ̀ bò àti ooru àyíká",
+    "Ìsọ̀kálẹ̀ foliteji: 3% fún iná, 5% fún àwọn mìíràn",
+    "Ẹ̀rọ amúlétutù nílò ìyíká tirẹ̀ tí a ti yan ìwọ̀n rẹ̀ dáadáa"
+   ],
+   "rubricPoints": [
+    "Daruko 2.5mm2 gẹ́gẹ́ bí ìwọ̀n tó yẹ fún àwọn sókẹ́ẹ̀tì",
+    "Sọ agbára káíbù pọ̀ mọ́ ìwọ̀n ẹ̀rọ ààbò",
+    "Ṣàlàyé ikùna nítorí ẹ̀rù púpọ̀ tàbí gbígbóná jù gẹ́gẹ́ bí ewu",
+    "Dádáko nǹkan kan tó lè yí ìdáhùn padà"
+   ]
+  },
+  "2": {
+   "title": "Ìsòdò ilẹ̀ (earthing), àti ìdí tí pípa ilẹ̀ mọ́ neutúrálì fi lè pa ènìyàn",
+   "subtitle": "Ọ̀nà abẹ́lé tó mú kí èrò ìdánwò kà dáadáa ṣùgbọ́n tó ṣì jẹ́ kí ilẹ̀ léwu",
+   "practicePrompt": "Ṣe àkọsílẹ̀ ara rẹ nígbà tó ń ṣàlàyé ohun tó máa ṣẹlẹ̀ sí àpò irin fìríìjì kan tí a bá sọ ilẹ̀ mọ́ neutúràlí, tí néutúràlì náà sì gé ní ìhà òkè.",
+   "practiceSpoken": "Sọ fún mi. Tí ẹnì kan bá sọ ilẹ̀ mọ́ neutúrálì, ti neutúrálì náà sì gé ṣáájú ibẹ̀ — kí ni yóò ṣẹlẹ̀ sí ara fìríìjì náà?",
+   "keyPoints": [
+    "CPC àti neutral gbọdọ̀ yà sọ́tọ̀ nínú gbogbo sákítì ìkẹyìn",
+    "Bí a bá sọ wọ́n pọ̀, àpò èrò lè ní iná bí neutral bá sì ṣí òkè",
+    "Awọn ewé ati ofeefee jẹ fun awọn kondokitọ aabo nikan",
+    "Ṣiṣopọ paipu omi ko jọ idasilẹ ilẹ̀",
+    "A máa ń díwọ̀n ìtẹ̀síwájú ilẹ̀, a kì í kan rò pé ó wà"
+   ],
+   "rubricPoints": [
+    "Àpótí náà ń ga sí fẹ́bàá ìlà",
+    "Ṣé ìdánimọ̀ ẹni tí ó fọwọ́ kàn án gẹ́gẹ́ bí ọ̀nà àṣìṣe",
+    "Ṣàkíyèsí pé olùdánwò socket yóò ṣíni ká dáadáa",
+    "Ṣàlàyé iṣẹ́ tó tọ́: yá CPC sọ́tọ̀ ní gbogbo ọ̀nà"
+   ]
+  },
+  "3": {
+   "title": "Yíyan MCB àti RCD",
+   "subtitle": "Ẹ̀rọ ìdènà ń dáàbò bò kábù, kò dáàbò bo ènìyàn.",
+   "practicePrompt": "Ṣé àkọsílẹ̀ ara rẹ bí o ṣe ń ṣàlàyé fún oníbàárà kan ìdí tí bọ́ọ̀dù MCB nìkan rẹ kò fi dáàbò bò wọ́n kúrò nínú ìjàm bá mànàmáná.",
+   "practiceSpoken": "Oníbàárà náà sọ pé bọ́ọ̀dù rẹ̀ ní breaker, torí náà ó wà láìléwu. Dá a lóhùn. Kí nìdí tí breaker nìkan kò fi dáàbò bò ó kúrò nínú ìjàm bá mànàmáná?",
+   "keyPoints": [
+    "MCB n daabobo lodi si apọju ati kukuru mọnamọna, kii ṣe lodi si ijaya ina",
+    "Irú B fún ohun èlò resistance àti iná, Irú C fún mọ́tọ́ àti ẹ̀rọ AC",
+    "Àwọn ihò sókètí nílò ààbò àfikún RCD 30mA",
+    "Máṣẹ́ gbé ìwọ̀n rẹ ga láti dá fífọ́ asán dúró — yí curve padà",
+    "Pín àwọn ṣakiti káàkiri àwọn RCD kí àṣìṣe kan má ṣe pa iná gbogbo ilẹ̀."
+   ],
+   "rubricPoints": [
+    "MCB náà ń dáàbò bo òkun, kì í ṣe ẹni náà",
+    "Ṣàlàyé pé iṣan ti ń gbá inú ẹni kó dé ìpele tí yóò mú un já",
+    "Pé RCD ní èrò ìdábọ̀bọ̀ lódì sí ìjàm bá mànàmáná",
+    "Sọ pé 30mA ni a nílò fún àwọn ibùsùn sokẹ́ẹ̀tì"
+   ]
+  },
+  "4": {
+   "title": "Ìyípadà asopọ ati asopọ inverter",
+   "subtitle": "Yíya neutral naa pẹlu, bibẹẹkọ o le pa osise laini kan",
+   "practicePrompt": "Fi fọ́tò fífi sórí ẹ̀rọ ìyípadà kan hàn tí ó ń fi àwọn èbúté neutral àti interlock hàn",
+   "practiceSpoken": "Ya fọ́tò ìyípadà náà fún mi. Rii daju pe mo le rii ebute neutral ati interlock naa.",
+   "keyPoints": [
+    "Ge asopọ ila-aisan ati neutrali, mejeeji, lori gbogbo ayipada",
+    "Titiipa ẹrọ ki awọn orisun meji ma baa le darapọ mọ ara wọn",
+    "Neutrali tí a kò yípadà lè fa iná padà sẹ́yìn sí nẹtiwọọki iná gbogbogbo",
+    "Awọn okun plug-si-plug ati awọn jenerato ti a nfi agbara wo nipasẹ socket jẹ eewo patapata",
+    "Neutrali abajade inverter gbọdọ wa ni ile; àwọn ẹrù pàtàkì gbọdọ̀ wà lórí sub-board tiwọn"
+   ],
+   "checklist": [
+    "Mẹ́jèjì láìní àti àwọn èbúté neutra hàn àti pé a ti yípadà wọn",
+    "Isó èrò wa láàrin àwọn orísun méjèèjì",
+    "Kò sí ìyóo púròógí-sí-púlòògì tàbí ìyóo ti sókètí ń pèsè níbikíbi nínú ìṣètò náà",
+    "Òkun ilẹ̀ ti wà ní so mọ́ àpótí ìyípadà"
+   ]
+  },
+  "5": {
+   "title": "Ṣàyẹ̀wò kí ó tó tàn án.",
+   "subtitle": "Títan an láti rí bóyá ó ṣiṣẹ́ kì í ṣe ìdánwò",
+   "practicePrompt": "Ṣe igbasilẹ ara rẹ bi o ṣe n ṣe àtòjọ àwọn ìdánwò tó kù ní ìtòlẹ́sẹẹsẹ tí ìwọ yóò ṣe wọ́n, kí ó sì sọ ìdí tí ìtòlẹ́sẹẹsẹ náà fi ṣe pàtàkì.",
+   "practiceSpoken": "Ṣàkójọ àwọn ìdánwò tó ti kú fún mi, ní ìtòlẹ́sẹẹsẹ. Lẹ́yìn náà, sọ fún mi ìdí tí ìtòlẹ́sẹẹsẹ náà fi ṣe pàtàkì.",
+   "keyPoints": [
+    "Àwọn ìdánwò tí kò ní fẹ́bàá kọ́kọ́, ní ìtòlẹ́sẹẹsẹ, lẹ́yìn náà àwọn ìdánwò tí ó ní fẹ́bàá",
+    "Àtakò ìdábọ̀bọ̀ >pọ̀ 1.0 MÓ tí a wọ̀n ní 500V DC",
+    "Polarity: àwọn èrò àti àwọn swichi polu kan ṣoṣo nínú láìní nìkan",
+    "30mA RCD: Capitol300ms ní I garcin, Capitol40ms ní 5xIDÍn",
+    "Bòtì ìdánwò RCD jẹ́rìí sí èrò rẹ̀, kì í ṣe àkókò rẹ̀"
+   ],
+   "rubricPoints": [
+    "Ìlọsíwájú àwọn adáòrin ààbò àkọ́kọ́",
+    "Ìdábọ̀gbọ̀ resistance",
+    "Polarity",
+    "Ṣàlàyé bí ìlànà náà ṣe nìgbọ́n olùyẹ̀wò"
+   ]
+  }
+ },
+ "recall": {
+  "1": {
+   "question": "Fún ìyíká sókètí nínú ilé ìyẹ̀wù yàrá méjì, irú kebulu wo ni ìwọ yóò lọ?",
+   "spoken": "Ẹ jíò, ní kúkúrú. Fún ìyíká sókètí inú ilé ìyẹ̀wù yàrá méjì, irú kebulu wo ni ìwọ yóò lọ?",
+   "options": [
+    "Ejò 2.5mm2",
+    "Ejò 1.5mm2"
+   ]
+  },
+  "2": {
+   "question": "Ẹrọ ìdánwò socket fi hàn pé ó tọ́ ní gbogbo outlet. Ṣé ìyẹn fi hàn pé earth náà dáa?",
+   "spoken": "Ṣé ìdánwò sokẹ́ẹ̀tì fi hàn pé ó tọ́ fún gbogbo ọ̀nà abẹ́lẹ̀? Ṣé ìyẹn fi hàn pé ilé wà ní tó?",
+   "options": [
+    "Rárá — earth-neutral tí a sọ pọ̀ náà kà dáadáa",
+    "Beeni — èrò ìdánwò náà ń ṣàyẹ̀wò earth náà"
+   ]
+  },
+  "3": {
+   "question": "Èrò wo ló ń dáàbò bo ènìyàn lọ́wọ́ innamọn?",
+   "spoken": "Èrò wo ló ń dáàbò bo ènìyàn lọ́wọ́ mọ̀nàmọ́nà?",
+   "options": [
+    "RCD 30mA kan",
+    "MCB 16A kan"
+   ]
+  },
+  "4": {
+   "question": "Irú àwọn kòńdùkító wo ni swíìtì ìyípadà gbọdọ̀ gé?",
+   "spoken": "Kóndùkító wo ni swíìtì ìyípadà gbọdọ̀ gé?",
+   "options": [
+    "Láìní àti neutra, méjèèjì",
+    "Láìní nìkan — èyí tí kò ní ìfẹ́ sí ẹgbẹ́ kankan wọ́pọ̀ jùlọ"
+   ]
+  },
+  "5": {
+   "question": "Kí ni iye ìdènà ìsọdà tó kéré jù fún fífi ẹ̀rọ 230V sílẹ̀, tí a dán wò ní 500V DC?",
+   "spoken": "Ìwọ̀n ìdènà ìdábòbò tó kéré jù fún ìfìdíkálé volta ọgbọ̀n méjì, tí a dán ní volta DC irínwó márùn-ún?",
+   "options": [
+    "1.0 MÓ",
+    "0.5 MÓ"
+   ]
+  }
+ },
+ "safety": {
+  "s-earth-neutral-bridge": {
+   "label": "A ti sọ ilẹ̀ pọ̀ mọ́ neutral",
+   "correction": "Yọ ìsopọ̀ yẹn kúrò. CPC àti neutral gbọ́dọ̀ yà sọ́tọ̀ nínú gbogbo final circuit. Bí wọ́n bá sọ pọ̀, ìdààmú nínú neutral ní apá òkè lè fi foliteji line sí gbogbo kọ́kọ́pù ohun èlò inú circuit náà."
+  },
+  "s-undersized-socket": {
+   "label": "Kábù tí ó kéré jù lórí sókẹ́ẹ̀tì tàbí sákítì AC",
+   "correction": "Rọ́pò ìlà náà. Sákítì gba 2.5mm2, àti pé ẹ̀rọ amúlétutù gbọ́dọ̀ ní sákítì tirẹ̀ tí a ṣe ìwọ̀n rẹ̀ fún ìwọ̀n lọ́wọ́lọ́wọ́  ti ẹ̀rọ náà ní, pẹ̀lú bí móòtó ṣe bẹ̀rẹ̀. 1.5mm2 lè wà ní ipò àṣejù fún ọ̀pọ̀ wákàtí láìjẹ́ pé èrò náà ń ṣiṣẹ́."
+  },
+  "s-bridged-protection": {
+   "label": "A ti kọja èrò ààbò tàbí a ti yọ ọ́ kúrò",
+   "correction": "Mú èrò náà padà. Kíkojá ààbò lòdì sí ìṣàn ajújú tàbí iṣan tó kù yọ ohun kan ṣoṣo tí ó wà láàárín àṣìṣe àti iná tàbí ikú kúrò. Bí èrò kan bá ń jáde léraléra, wá àṣìṣe náà tàbí ṣàtúnṣe yíyan kẹ́fù."
+  },
+  "s-live-working": {
+   "label": "Ṣíṣiṣẹ́ lórí sátí alààyè",
+   "correction": "Ya a sọ́tọ̀, ti pa á mọ́, kí ó sì jẹ́rìí pé kò ní iná mọ́ kí ó tó fọwọ́ kàn án. Ìhùwàsí ààbò ní ọgbọ̀n àkọ́kọ́ nínú iṣẹ́ yìí, kò sì sí iṣẹ́ ilé kankan tó yẹ kí ó fojú kọ ọ́."
+  },
+  "s-generator-direct": {
+   "label": "A ti sọ monomono pọ laisi ẹrọ iyipada to ni titiipa aabo",
+   "correction": "Fi ohun ìyípadà tó ní ìdènà pọ̀ tí yóò gé láìní àti nuutu. Okùn púròógì-sí-púlòògì máa ń fi àwọn píni tó wà láàyè hàn, àti nuuta tí a kò yí padà lè tún fi iná ránṣẹ́ sí láìní ilé iṣẹ́ amúnáwá tí òṣìṣẹ́ láìní ti fìdí rẹ̀ múlẹ̀ pé kò ní iná."
+  },
+  "s-no-rcd": {
+   "label": "Àwọn iṣan sókètí kò ní ààbò RCD",
+   "correction": "Àwọn iṣan sókètí nílò ààbò àfikún RCD 30mA. Pátótó MCB nìkan fi ilé náà sílẹ̀ láìní ààbò lòdì sí ìjàmbá mọ̀nàmọ́nà láti àṣìṣe láàárín láìní àti ilẹ̀. Ròyìn rẹ̀ gẹ́gẹ́ bí àbùkù dípò kí ó ṣiṣẹ́ yí i kán"
+  },
+  "s-colour-misuse": {
+   "label": "Aláwo ewé àti ofẹ̀ẹ́fẹ̀ẹ́ tí a lò gẹ́gẹ́ bí olùdarí iná tàbí olùdarí aláìdáṣe",
+   "correction": "Yọ olùdarí náà jáde. Aláwo ewé àti ofẹ̀ẹ́fẹ̀ẹ́ jẹ́ fún àwọn olùdarí ààbò nìkan. Lílo o gẹ́gẹ́ bí olùdarí iná tàbí aláìdáṣe mú ìkìlọ̀ kan ṣoṣo tí onímọ̀ iná tó kàn máa rí ṣáájú kí ó tó ṣí pátákó náà kúrò."
+  },
+  "s-water-pipe-earth": {
+   "label": "Paipu omi tí a lò gẹ́gẹ́ bí ẹlẹ́któdù ilẹ̀",
+   "correction": "A máa ń so páìpù pọ̀, kì í ṣe eléktródù. Ìsopọ̀ náà máa ń mú agbára-iná dọ́gba; ẹlẹ́któdùdù náà ni ó ń pèsè àfísí ilẹ̀. Fi elekturodu kan sílẹ̀, kí o sì rí i dájú pé Ra x I garcin kò ju 50V lọ."
+  },
+  "s-energise-before-test": {
+   "label": "Fífi agbára ṣáájú ìjẹ́rìísí",
+   "correction": "Fífi agbára kì í ṣe ìdánwò. Kò lè rí polarity tí a yí padà, CPC tí ó fọ́, tàbí ìdábò tí ó ti bàjẹ́, àti ọ̀kọ̀ọ̀kan wọn lè dà bí fífi sórí ẹ̀rọ tó ń ṣiṣẹ́ títí ẹnì kan yóò fi farapa. Jiisi ìdènà ìdábòbo àti polarity nígbà tí kò sí iná mọ́lẹ̀ kókó."
+  },
+  "s-rating-up": {
+   "label": "A pọ̀sí ìfàsẹ́yìn èrò ààbò pọ̀ síi láti dá ìjábá dúró",
+   "correction": "Pípí ìfàsẹ́yìn náà síi máa jẹ́ kí kẹ́bù náà wà láìní ààbò. Ìjábá tó ń ṣẹlẹ̀ léraléra túmọ̀ sí pé bóyá àbùkù gidi wà tàbí itẹ̀ tripping kò tọ́ — irú C níbi tí ẹ̀rù inductive ti nílò rẹ̀. Ṣàtúnṣe ohun tó fà á, kí ó sì jẹ́ kí ifàsẹ́yìn náà yẹ fún kẹ́bù náà."
+  }
+ },
+ "examples": [
+  {
+   "text": "Mo fẹ́ fa wáyà fún socket, 1.5 tàbí 2.5?",
+   "note": "Ìwọ̀n kebulu — ìbéèrè tí a máa ń béèrè jù lọ",
+   "en": "I wan run wire for socket, 1.5 abi 2.5?"
+  },
+  {
+   "text": "Fún socket AC, mo kàn lo 1.5, mo sì sọ ilẹ̀ pọ̀ mọ́ neutral kí tester lè fi hàn dáadáa.",
+   "note": "Àwọ̀n ìkìlọ̀ ààbọ̀ pàtàkì méjì",
+   "en": "For the AC socket I just run 1.5, and I join the earth to the neutral so the tester go show correct."
+  },
+  {
+   "text": "Páne oníbàárà mi ní breaker nìkan, kò ní earth leakage. Ó ní ó wà láìléwu nítorí breaker wá.",
+   "note": "Ìrò tí kò tọ́ nípa ìdáàbòbò lódì sí imọnámọ́nà",
+   "en": "My customer board get only breaker, no earth leakage. Him say him safe because breaker dey."
+  },
+  {
+   "text": "Mo sọ generator tààrà, mi ò fi changeover sí i. Line nìkan ni mo n switch.",
+   "note": "Ewu ìpadàsẹ́yìn agbára",
+   "en": "I connect the gen direct, I no put change over. Na only line I switch."
+  },
+  {
+   "text": "Kí ni iye insulation resistance tí mo yẹ kí n rí kí n tó fi iná sí i?",
+   "note": "Ìdánwò àti ìjẹ́rìísí",
+   "en": "What insulation resistance should I get before energising?"
+  },
+  {
+   "text": "Báwo ni mo ṣe lè tún carburettor generator ṣe?",
+   "note": "Níta àpò — yẹ kí a kọ ọ̀dọ́lọwọ",
+   "en": "How I go fix generator carburettor?"
+  }
+ ],
+ "trade": "Fífi sórí ẹ̀rọ ìtànná inú ilé",
+ "conductors": [
+  {
+   "role": "Ìlà",
+   "colour": "àwọ̀ ilẹ̀kẹ́"
+  },
+  {
+   "role": "Aláìlábòògwú",
+   "colour": "aláwọ̀ búlúù"
+  },
+  {
+   "role": "Ayé",
+   "colour": "aláwọ̀ ewé àti òwe"
+  }
+ ]
+}

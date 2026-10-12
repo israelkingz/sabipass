@@ -1,0 +1,611 @@
+{
+ "code": "pcm",
+ "name": "Nigerian Pidgin",
+ "endonym": "Naija Pidgin",
+ "generated": "2026-10-08T17:58:34.567Z",
+ "source": "en",
+ "provider": "spitch",
+ "target": "pcm",
+ "reviewed": false,
+ "reviewer": null,
+ "reviewNote": "Machine translation from the English pack. A trainer who speaks this language must read it before a learner is served. The English wording is the authority.",
+ "safetyDetectionNote": "Corrections below are translated. Detection still matches the English and Pidgin patterns in pack.json, which holds up because the technical terms (earth, neutral, socket, 1.5) stay English in code-switched speech. Validate per language before relying on it.",
+ "ui": {
+  "nav.ask": "Ask",
+  "nav.learn": "Learn",
+  "nav.recall": "Remember",
+  "nav.passport": "Passport",
+  "nav.trainer": "Trainer",
+  "common.online": "Online",
+  "common.offline": "Offline",
+  "common.preview": "Preview — trainer never validate am",
+  "common.close": "Close",
+  "common.delete": "Delete",
+  "pack.demo": "Demo content pack. Dem draft technical content from NESIS, NIS IEC 60364 and NBTE unit standards. Clause references dey wait make reviewing trainer countersign am before dem serve any learner.",
+  "locale.machine": "Dis language na machine translate from English and trainer never review am. Na di English wording get authority.",
+  "ask.eyebrow": "Ask for your own language",
+  "ask.title": "Wetin you wan know about di work?",
+  "ask.sub": "Talk the way you dey talk for site. Every answer dey come from reviewed standard and e go show you di clause.",
+  "ask.tap": "Tap and talk",
+  "ask.listening": "E dey listen — talk now, den tap stop",
+  "ask.transcribing": "E dey transcribe…",
+  "ask.unavailable": "Voice input no dey available here — tap one example below",
+  "ask.answer": "Answer",
+  "ask.play": "Play",
+  "ask.retrieved": "E don retrieve from {n} reviewed passages · 0 KB network · lesson {lesson}",
+  "ask.norefsource": "No reviewed source",
+  "ask.refuse": "Nothing for the {trade} pack cover that one. I no go answer from outside reviewed standard — if person talk confident but e wrong about this work, e fit make person get hurt.",
+  "ask.refuseHint": "Ask your trainer, or ask me about cable sizing, earthing, protection devices, changeover, or testing.",
+  "ask.examples": "Example voice notes",
+  "ask.examplesSub": "Tap one make e play like say person dey talk am. Demo-safe path: live demo no suppose depend on one unrehearsed utterance.",
+  "ask.clear": "Clear conversation",
+  "ask.notified": "{trainer}, your trainer, don get private notification. Nobody else know.",
+  "ask.seeSent": "See wetin dem send",
+  "ask.deleteRecord": "Delete this record",
+  "ask.deleted": "Record don delete. Dem withdraw your trainer copy.",
+  "ask.sentTitle": "Wetin dem tell your trainer",
+  "ask.sentNote": "Na the exact message wey dem send your trainer be this. Dem no include anything else about you — no recording, no location, no other questions.",
+  "ask.needsSupervision": "E need supervision for {unit}.",
+  "ask.withdraw": "Delete and withdraw",
+  "learn.title": "Five lessons",
+  "learn.sub": "Each one short, fit download, and e dey end with practice task wey you go do with voice or photo. You no need read.",
+  "learn.completed": "Lessons don complete",
+  "learn.downloaded": "Downloaded",
+  "learn.downloadAll": "Download all five",
+  "learn.savedAll": "All five lesson don save make you fit use dem offline.",
+  "learn.offline": "Offline",
+  "learn.min": "min",
+  "learn.play": "Play lesson",
+  "learn.save": "Save",
+  "learn.saved": "Don save",
+  "learn.mustDo": "Wetin you suppose fit do",
+  "learn.sources": "Sources for this lesson",
+  "learn.conductors": "Identify conductor",
+  "learn.conductorNote": "Green-and-yellow na for protective conductors. Na message to di next person wey go open di board.",
+  "learn.lesson": "Lesson",
+  "learn.listen": "Listen to dis lesson for your language",
+  "learner.year": "3rd-year apprentice",
+  "trainer.role": "Master craftsman · 19 years",
+  "evidence.recall": "Recall check",
+  "practice.title": "Practice",
+  "practice.voiceViva": "Voice viva",
+  "practice.photo": "Photo evidence",
+  "practice.hear": "Hear di question",
+  "practice.record": "Record your answer",
+  "practice.listening": "I dey listen… tap to stop",
+  "practice.typePlaceholder": "Or type wetin you go talk…",
+  "practice.submitTyped": "Submit wetin you type",
+  "practice.noMcqNote": "Dem no dey assess competency with multiple choice. You no need sabi read or write — the box wey you fit type dey there only because this browser fit block microphone.",
+  "practice.result": "Result",
+  "practice.points": "{score} out of {total} rubric points",
+  "practice.youSaid": "You talk",
+  "practice.again": "Record again",
+  "practice.mustShow": "The photo must show",
+  "practice.addPhoto": "Add foto from your phone",
+  "practice.photoNote": "Your foto go stay for your device until you choose send am for countersignature.",
+  "practice.submitted": "Evidence don submit",
+  "practice.awaiting": "Dey wait for trainer countersignature. You fit delete this evidence anytime.",
+  "practice.deleteEvidence": "Delete evidence",
+  "recall.eyebrow": "Spaced recall",
+  "recall.title": "You still remember am?",
+  "recall.sub": "Three days after lesson, then ten, then thirty — voice note go enter for WhatsApp. Answer am by pressing one key. No app to open, no data to buy.",
+  "recall.clock": "Demo clock",
+  "recall.forward": "+3 days",
+  "recall.clockNote": "Clock control dey only for demo. For field, time dey pass by itself.",
+  "recall.empty": "Finish lesson practice task and dem go schedule im recall check for three days later.",
+  "recall.step": "Lesson {lesson} recall · step {step} out of 3",
+  "recall.reply": "Reply 1 or 2",
+  "recall.featurePhone": "E dey work for feature phone: question na audio, answer na one keypress, whole exchange no pass 10 KB.",
+  "recall.history": "Recall history",
+  "recall.scheduled": "Scheduled",
+  "recall.retained": "You retain am for all three checks — day 3, 10 and 30",
+  "recall.missed": "You miss am for day {day} — dem go repeat am tomorrow, and lesson don come back for your list",
+  "recall.correctOn": "Correct for day {day} · next check na day {next}",
+  "recall.outcome": "E remain for first try: {hits} out of {total} checks. If you miss check, the lesson go return to the list — na the measured learning result be that, no be streak counter.",
+  "passport.record": "Progress record",
+  "passport.countersigned": "Countersigned",
+  "passport.evidenceItems": "Evidence items",
+  "passport.notCert": "This na progress record and NSQF-aligned evidence portfolio, no be certificate. Accredited assessor still dey sign the qualification. SabiPass na throughput for the existing Recognition of Prior Learning route.",
+  "passport.competencies": "Competencies",
+  "passport.notStarted": "Never start",
+  "passport.started": "Evidence don start",
+  "passport.assessed": "Dem don assess am — dey wait for countersignature",
+  "passport.signed": "Trainer don countersign",
+  "passport.verify": "Confirmation — e dey work offline",
+  "passport.verifyNote": "Any customer wey get any phone fit confirm this record. Dial the USSD code or read the code comot.",
+  "passport.showQr": "Show QR code (e need connection)",
+  "passport.qrOffline": "QR need connection. The code and USSD string wey dey above dey work offline.",
+  "passport.portfolio": "See evidence portfolio",
+  "passport.portfolioNote": "Na the bundle wey accredited assessor dey receive be this. E dey make their work easy from running assessment centre to just review and endorse.",
+  "passport.noEvidence": "Evidence never dey yet.",
+  "passport.manifest": "Pack manifest",
+  "passport.reviewer": "Reviewer",
+  "passport.notSignedOff": "never sign off yet",
+  "trainer.eyebrow": "Trainer view",
+  "trainer.reviewing": "dey review 1 apprentice",
+  "trainer.privacy": "You fit only see wetin your own apprentices send you, and only wetin dem never delete. No institution or third party dey receive any of these.",
+  "trainer.flags": "Safety flags",
+  "trainer.noFlags": "Nothing dey flagged. Flags dey raise automatically when apprentice talk about unsafe practice — dem no need ask.",
+  "trainer.awaiting": "Your signature dey wait",
+  "trainer.queue": "Countersign queue",
+  "trainer.noQueue": "Nothing dey wait. Complete practice task as learner and e go show here.",
+  "trainer.sign": "Countersign this competency",
+  "trainer.signed": "Don countersign am. {name} record don update.",
+  "trainer.said": "{name} talk say",
+  "settings.textOnly": "Na text only",
+  "settings.textOnlyNote": "Off spoken output. Text alternatives dey show anyhow.",
+  "settings.why": "Why dis one dey exist",
+  "settings.whyBody": "Nigeria National Skills Qualifications Framework don already recognise skills wey people learn informally, through Recognition of Prior Learning, wey dem launch for 2025. Since den, dem don assess about 500 artisans nationwide, because assessment na human matter, e dey happen face-to-face and e scarce.",
+  "settings.whyBody2": "SabiPass make dat assessment fit happen remotely, use voice naturally and almost free. Di framework dey. Na capacity no dey.",
+  "settings.notBuilt": "Wetin we deliberately no build",
+  "settings.notBuiltBody": "Payments, job matching, public course uploads, certificates. Training-centre subscription na commercial idea wey we need test, no be feature.",
+  "settings.data": "Data wey we use for dis session",
+  "settings.engine": "Speech engine",
+  "settings.reset": "Reset demo",
+  "settings.resetDone": "Demo don reset."
+ },
+ "passages": {
+  "p-cable-01": {
+   "answer": "For house installation, socket final circuit dey use 2.5mm² copper, while lighting final circuit dey use 1.5mm² copper. The rule na Ib ≤ In ≤ Iz: the load design current no suppose pass the protective device rating, and the protective device rating no suppose pass the cable current-carrying capacity. Dem dey choose 2.5mm² cable for sockets because 16A or 20A protective device dey safely below wetin e fit carry. No ever use 1.5mm² cable for socket outlet.",
+   "spoken": "For socket, use 2.5. For light, use 1.5. The reason be say cable must fit carry pass the current wey breaker go allow through. 1.5 for socket na wrong.",
+   "cues": [
+    "Cable size",
+    "1.5",
+    "2.5",
+    "socket",
+    "light",
+    "which wire",
+    "wetin size",
+    "run wire",
+    "mm2"
+   ]
+  },
+  "p-cable-02": {
+   "answer": "Cable capacity to carry current no be just one fixed number. E dey reduce when cable dey inside conduit, when e join plenty other cables, when insulation surround am, and when temperature high. The same 2.5mm² cable wey dem clip direct to wall fit carry pass the same cable wey dem pull through crowded conduit for hot roof. Apply correction factors for installation method, grouping, and ambient temperature before you accept any size.",
+   "spoken": "The same cable no dey carry the same current everywhere. Inside conduit, when plenty cables join together, or inside ceiling wey heat dey—cable go carry less. You must apply correction factor before you accept any size.",
+   "cues": [
+    "reduce",
+    "conduit",
+    "insulation",
+    "grouping",
+    "surrounding",
+    "hot",
+    "join together",
+    "capacity"
+   ]
+  },
+  "p-cable-03": {
+   "answer": "Voltage drop limit na 3% of nominal voltage for lighting circuit and 5% for other circuit, as dem measure am from where the installation start. For long run, cable wey pass current-carrying check fit still fail for voltage drop, and the solution na to increase the cable size, no be to accept dim lamp or motor wey dey struggle to start.",
+   "spoken": "Voltage drop: three percent for light, five percent for other circuit. If wire long, cable fit pass current test but fail voltage drop. The answer na bigger cable, no be to accept dim light.",
+   "cues": [
+    "voltage drop",
+    "long wire run",
+    "far",
+    "dim",
+    "weak",
+    "distance"
+   ]
+  },
+  "p-cable-04": {
+   "answer": "Air conditioner na inductive motor load wey starting current fit pass e normal running current well well. E need im own separate final circuit, wey dem size correct for di unit rated current and motor starting characteristic, plus protection device wey get di correct tripping curve. If you run 1.5mm² cable go air conditioner socket, e fit cause fire because di cable fit overload for long time without di protective device tripping.",
+   "spoken": "AC na motor load. Him starting current plenty pass him running current. E need im own circuit, correct cable, and correct breaker curve. One point five for AC na fire wey dey wait happen — cable go overload and breaker no go even trip.",
+   "cues": [
+    "I acknowledge am.",
+    "air conditioner",
+    "1.5 for AC",
+    "AC",
+    "motor",
+    "I dey start now."
+   ]
+  },
+  "p-earth-01": {
+   "answer": "Circuit protective conductor and neutral conductor must remain separate for every final circuit. If you join dem for socket, socket tester fit show say everything correct but e go create dangerous installation wey fit kill person. Protective conductor go begin carry current, and if neutral cut anywhere for upstream, every metal casing wey dem earth for that circuit go rise reach line potential. Anybody wey touch fridge, pump or washing machine go become path to earth.",
+   "spoken": "Earth and neutral no suppose join for final circuit. If you join dem, socket tester go show correct — but the installation na death trap. If neutral break anywhere before, every appliance body go carry current. Person wey touch fridge go become the earth path.",
+   "cues": [
+    "earth to neutral",
+    "join earth neutral",
+    "bridge earth",
+    "Connect earth to neutral.",
+    "earth no dey take side, e be the same"
+   ]
+  },
+  "p-earth-02": {
+   "answer": "Green-and-yellow na only for protective conductor and e no suppose ever be used as line or neutral conductor for anywhere inside the installation. Brown na for line conductor, while blue na for neutral. The colour na safety instruction for the next person wey open that board, and if you use am again for live conductor, you don remove the only warning wey dem get.",
+   "spoken": "Green and yellow na for earth only. No use am for live or neutral. Brown na line, blue na neutral. That colour na message for the next electrician wey open the board. If you change am, you don remove im only warning.",
+   "cues": [
+    "green yellow",
+    "earth colour",
+    "colour code",
+    "use earth wire as live"
+   ]
+  },
+  "p-earth-03": {
+   "answer": "For TT installation, di earth electrode must get resistance wey low well-well so dat Ra × IΔn no pass 50V, na why RCD dey necessary instead of to depend on overcurrent protection. Main protective bonding dey connect metal services wey enter and structural metalwork to di main earthing terminal. To bond water pipe no be di same tin as to provide earth electrode: bonding dey make di potential balance, while di electrode dey provide di earth reference. One no fit replace di oda.",
+   "spoken": "For TT system, earth rod resistance suppose low well-well so that Ra times RCD rating no pass fifty volts. Na why you need RCD. And make you note am: bonding water pipe no be the same thing as earth rod. Bonding dey make potential equal. The rod dey give you earth reference. One no fit replace the other.",
+   "cues": [
+    "earth rod",
+    "electrode",
+    "bonding",
+    "water pipe",
+    "earth resistance",
+    "TT"
+   ]
+  },
+  "p-earth-04": {
+   "answer": "Every socket outlet, every lighting point and every Class I equipment must get continuous protective conductor wey go back reach the main earthing terminal. Dem dey confirm continuity with measurement before dem power the installation, no be because green-and-yellow wire dey. Protective conductor wey connect for socket but don break for board no dey give any protection at all.",
+   "spoken": "Every socket, every light point, every appliance wey get metal body need correct earth wey no break reach main earthing terminal. You go measure am before you put current. No just assume because you see green and yellow wire. Earth wey connect for socket but don break for board no dey protect anybody.",
+   "cues": [
+    "Earth continuity",
+    "CPC don break",
+    "test earth",
+    "R1 R2"
+   ]
+  },
+  "p-protect-01": {
+   "answer": "Mini circuit breaker dey protect cable against overload and short circuit. E no dey protect person against electric shock. Na dis be di most common and dangerous misunderstanding for house electrical installation work. 16A MCB fit carry 16A pass through human body forever without tripping. Protection against shock dey come from residual current device, correct earthing, and correct insulation.",
+   "spoken": "Breaker dey protect cable from overload and short circuit. Breaker no dey protect person from shock. Na the most dangerous mistake for this work. Sixteen amp breaker fit allow sixteen amp pass through person body and e no go trip. Protection from shock na RCD, correct earthing, and correct insulation.",
+   "cues": [
+    "MCB",
+    "breaker protection",
+    "breaker shock",
+    "wetin breaker dey do",
+    "overload"
+   ]
+  },
+  "p-protect-02": {
+   "answer": "Type B curve dey trip for three to five times di rated current and e dey good for resistive and lighting loads. Type C curve dey trip for five to ten times di rated current and e dey good for inductive loads like motors, air conditioners and transformers, wey dia inrush current fit cause unnecessary tripping for Type B. If you choose higher rating just to stop unnecessary tripping instead of di correct curve, di cable go remain unprotected.",
+   "spoken": "Type B dey trip for three to five times the rating — na for light and resistive load. Type C dey trip for five to ten times — na for motor, AC, transformer, because of inrush. If breaker dey trip anyhow, change the curve. No increase the rating — if you increase am, the cable no go get protection again.",
+   "cues": [
+    "b curve",
+    "c curve",
+    "curve",
+    "mcb trip",
+    "nuisance trip",
+    "motor breaker"
+   ]
+  },
+  "p-protect-03": {
+   "answer": "Socket outlet for house installation need extra protection from residual current device wey rated residual operating current no pass 30mA. Distribution board wey get only MCB no dey protect person from electric shock if line-to-earth fault pass through person body. If board no get RCD, na defect wey dem suppose report, no be condition wey person suppose manage work around.",
+   "spoken": "Socket outlet need RCD wey no pass thirty milliamp. If board get only breaker, nobody no get shock protection for that installation. Board wey no get RCD na defect wey you must report — no be something wey you go manage.",
+   "cues": [
+    "RCD",
+    "30mA",
+    "earth leakage",
+    "RCCB",
+    "no RCD",
+    "protection against shock"
+   ]
+  },
+  "p-protect-04": {
+   "answer": "If you put every circuit behind one single 30mA RCD, any fault anywhere go disconnect the whole installation, including the freezer. You fit get discrimination by sharing the final circuits across plenty 30mA devices, and if you use upstream device, e must be selective type wey get time delay so the downstream device go work first. This one matter for practical side as e matter technically: installation wey dey black out completely anytime fault happen fit make the person wey dey use am bypass the RCD.",
+   "spoken": "If you put everything behind one 30 milliamp RCD, one small fault fit make the whole house light go off, freezer join. Share the circuits between more than one device. If you use one for upstream, make e be time-delay selective type so the downstream one go trip first. If the whole house dey black out, the owner fit bypass the RCD — then nobody no get protection.",
+   "cues": [
+    "discrimination",
+    "whole house trip",
+    "one RCD",
+    "selectivity",
+    "freezer",
+    "wahala"
+   ]
+  },
+  "p-change-01": {
+   "answer": "Changeover arrangement wey dey between utility supply and generator or inverter must disconnect both line and neutral conductor, and e must get mechanical interlock so both sources no fit connect at the same time. If na only line you switch, neutrals go still remain connected, and alternative supply fit backfeed enter utility network. Distribution company linesman wey dey work for line wey e don isolate and confirm say e no get current fit die because generator dey backfeed through neutral wey dem no switch.",
+   "spoken": "Changeover must break line and neutral — both. And e must get mechanical interlock make the two supply no fit close together. If you switch only line, neutral still connect and your gen fit backfeed enter NEPA line. Linesman wey don confirm say line don die fit die because of your generator.",
+   "cues": [
+    "change am well",
+    "changeover",
+    "connect generator",
+    "backfeed",
+    "transfer switch",
+    "connect gen direct"
+   ]
+  },
+  "p-change-02": {
+   "answer": "E no dey allowed at all to connect generator or inverter to installation with plug-to-plug wire, through socket outlet, or any setup wey no get interlocked changeover device. Wire wey get plug for both ends fit expose live pin anytime one end don connect, and e no dey isolate am from NEPA supply. For house electrical work, no condition dey where this one acceptable, even if na temporary.",
+   "spoken": "Male-to-male cord, connecting gen through socket, or any setup wey no get interlocked changeover—na all of am dey prohibited. That cord wey get plug for both sides go expose live pin immediately one end enter. No temporary, no small time. Never.",
+   "cues": [
+    "Suicide cord",
+    "male-to-male",
+    "two-head plug",
+    "plug am for socket",
+    "direct connect gen"
+   ]
+  },
+  "p-change-03": {
+   "answer": "Inverter wey dey supply installation as alternative source must get im output neutral earthed according to di manufacturer instruction and di installation earthing arrangement. If output neutral dey float, e fit make residual current devices no work well and fit leave appliance casing for unknown voltage level. Load scheduling na separate requirement: essential circuits suppose dey for dedicated sub-board, and high-current loads like air conditioner and water heater no suppose dey for inverter leg.",
+   "spoken": "Inverter output neutral suppose connect to earth according to wetin manufacturer talk and how house earthing be. If neutral dey float, RCD fit misbehave and appliance body fit carry voltage wey nobody know. Another matter: put important loads for dem own sub-board, and no put AC and water heater for inverter line.",
+   "cues": [
+    "inverter neutral",
+    "inverter earth",
+    "floating neutral",
+    "inverter load",
+    "solar",
+    "important load"
+   ]
+  },
+  "p-test-01": {
+   "answer": "Verification dey follow fixed order, and dead tests dey come first: continuity of protective conductors and bonding, continuity of ring final conductors where ring dey used, insulation resistance, polarity, and earth electrode resistance where installation na TT. Na only after that dem dey do live tests: earth fault loop impedance, RCD operating time, and functional testing. This order dey because fault wey dead test fit find go dangerous to find am with live test.",
+   "spoken": "Order na fixed and dead test dey come first. Check earth continuity and bonding. Ring continuity if na ring. Insulation resistance. Polarity. Earth electrode if na TT. Na only after all dis you go do live test: loop impedance, RCD timing, then functional test. Dis order dey because any fault wey you fit find when e dead go dangerous to find when e live.",
+   "cues": [
+    "test order",
+    "before energise",
+    "dead test",
+    "sequence",
+    "commissioning",
+    "verification"
+   ]
+  },
+  "p-test-02": {
+   "answer": "For 230/400V installation, dem dey measure insulation resistance with 500V DC, and e no suppose dey less than 1.0 MΩ between live conductors, and between live conductors and earth. If reading low but e no be zero, e still mean say test fail, and na usually moisture don enter, cable don damage, or appliance still dey connected cause am. Disconnect sensitive equipment before you test, no just skip the test.",
+   "spoken": "Insulation resistance: test am for five hundred volt DC, and the reading no suppose pass one megohm go down. If the reading low but e no be zero, e still fail — na usually water, cable wey don damage, or appliance wey still connect. Remove sensitive equipment, no skip the test.",
+   "cues": [
+    "Insulation resistance",
+    "megger",
+    "1 megohm",
+    "500V",
+    "IR test"
+   ]
+  },
+  "p-test-03": {
+   "answer": "Polarity must make sure before you energise. Every protective device and every single-pole switch must connect only for line conductor, never for neutral. The centre contact of Edison screw lampholder must connect to line conductor. If switch wire enter neutral, e go leave the lamp live when e off, and na the next person wey wan change bulb go discover am.",
+   "spoken": "Check polarity before you put current. Every breaker and every single-pole switch must dey for line, never for neutral. The centre contact of the lampholder must be line. If you switch neutral, lamp still dey live when switch off — and person wey wan change bulb go find out.",
+   "cues": [
+    "polarity",
+    "switch for neutral",
+    "fuse for neutral",
+    "lamp holder",
+    "centre contact"
+   ]
+  },
+  "p-test-04": {
+   "answer": "30mA RCD wey dey provide extra protection must trip within 300ms for im rated residual current, and within 40ms when current reach five times im rated residual current. Di built-in test button na only to confirm say di mechanism dey work, e no dey check di operating time, so e no fit replace instrument test. RCD wey trip but trip slow don fail.",
+   "spoken": "Thirty milliamp RCD suppose trip within three hundred millisecond for im rated current, and within forty millisecond for five times am. The test button for the device na only to confirm say the mechanism dey work — e no go tell you the timing. You must test am with instrument. RCD wey trip slow don fail.",
+   "cues": [
+    "RCD test",
+    "trip time",
+    "300ms",
+    "40ms",
+    "RCD timing",
+    "test button"
+   ]
+  },
+  "p-test-05": {
+   "answer": "To energise installation make you see whether e work no be test. E no fit detect reversed polarity, broken protective conductor, or insulation wey don spoil, and each one go look like say installation dey work until person injure. You must confirm insulation resistance and polarity while supply never connect.",
+   "spoken": "To put current make you see whether e dey work no be test. E no go show you reverse polarity, broken earth, or bad insulation — and all three fit look like say installation dey work until person injure. Confirm insulation and polarity when power no dey before you connect supply.",
+   "cues": [
+    "On am make you see",
+    "try am by on am",
+    "give am power first",
+    "just put light"
+   ]
+  }
+ },
+ "lessons": {
+  "1": {
+   "title": "Cable size for socket and lighting circuits",
+   "subtitle": "Why na 2.5 and 1.5, and wetin fit change di answer?",
+   "practicePrompt": "Abeg record yourself explain why you go run 2.5mm² wire go socket outlet instead of 1.5mm².",
+   "practiceSpoken": "Talk to me. Why you go run two point five to socket, and why one point five no go do?",
+   "keyPoints": [
+    "Socket circuit na 2.5mm², lighting circuit na 1.5mm²",
+    "Ib ≤ In ≤ Iz — load, device, cable, for dat order",
+    "Reduce am for conduit, grouping, insulation and ambient heat",
+    "Voltage drop: 3% for lighting, 5% for oda tins",
+    "Air conditioner need im own circuit wey dem size well"
+   ],
+   "rubricPoints": [
+    "E name 2.5mm² as the correct size for sockets",
+    "E link cable capacity to the protective device rating",
+    "E identify overload or overheating as the risk",
+    "E mention one factor wey fit change the answer"
+   ]
+  },
+  "2": {
+   "title": "Earthing, and why joining earth to neutral fit kill",
+   "subtitle": "The shortcut wey dey make tester show correct but make house dangerous",
+   "practicePrompt": "Record yourself explain wetin go happen to fridge body if person join earth to neutral and neutral later break for upstream.",
+   "practiceSpoken": "Tell me. If person join earth to neutral, then neutral break before that point — wetin go happen to the fridge body?",
+   "keyPoints": [
+    "CPC and neutral no suppose join for any final circuit",
+    "if you bridge dem, appliance casing fit carry current if neutral open for upstream",
+    "green-and-yellow na only for protective conductor",
+    "bonding water pipe no be the same thing as earth electrode",
+    "dem dey measure earth continuity, no be to assume am"
+   ],
+   "rubricPoints": [
+    "E talk say casing dey rise reach line potential",
+    "Person wey touch am na di fault path",
+    "Socket tester go still show correct",
+    "Correct way na make CPC separate throughout"
+   ]
+  },
+  "3": {
+   "title": "MCB and RCD selection",
+   "subtitle": "Breaker dey protect cable, e no dey protect person.",
+   "practicePrompt": "Record yourself as you dey explain to customer why him board wey get only MCB no fit protect am from electric shock.",
+   "practiceSpoken": "Customer talk say him board get breaker, so e safe. Answer am. Why breaker alone no fit protect am from shock?",
+   "keyPoints": [
+    "MCB dey protect against overload and short circuit, no be electric shock",
+    "Type B na for resistive load and lighting, Type C na for motor and AC",
+    "Socket outlet need extra 30mA RCD protection",
+    "No ever increase the rating just to stop nuisance tripping — change the curve",
+    "Share circuits across RCDs so one fault no go put the whole house for darkness"
+   ],
+   "rubricPoints": [
+    "MCB dey protect cable, no be person",
+    "Current wey fit pass through person dey below wetin go make am trip",
+    "RCD na the device wey dey protect person from shock",
+    "Socket outlet suppose get 30mA protection"
+   ]
+  },
+  "4": {
+   "title": "Changeover and inverter tie-in",
+   "subtitle": "Switch neutral too, if not you fit kill line man",
+   "practicePrompt": "Send photo of changeover installation wey show neutral terminals and interlock",
+   "practiceSpoken": "Snap the changeover for me. Make sure say I fit see the neutral terminal and the interlock.",
+   "keyPoints": [
+    "Break line and neutral, both, for every changeover",
+    "Mechanical interlock make sure say two sources no fit close together",
+    "Unswitched neutral fit cause backfeed enter utility network",
+    "Plug-to-plug leads and generators wey socket dey feed no dey allowed at all",
+    "Inverter output neutral must dey earthed, essential loads make dem get their own sub-board"
+   ],
+   "checklist": [
+    "Both line and neutral terminal dey visible and dem don switch",
+    "Mechanical interlock dey between the two sources",
+    "No plug-to-plug or socket-fed connection dey anywhere for the arrangement",
+    "Earthing conductor terminate for the changeover enclosure"
+   ]
+  },
+  "5": {
+   "title": "Test am before you energise am",
+   "subtitle": "To just switch am on see if e dey work no be test",
+   "practicePrompt": "Record yourself as you dey list the dead tests for the order wey you go do dem, and talk why that order matter.",
+   "practiceSpoken": "List the dead tests for me, for order. Then tell me why that order matter.",
+   "keyPoints": [
+    "Dead test first, follow order, before live test",
+    "Insulation resistance ≥ 1.0 MΩ wey dem measure for 500V DC",
+    "Polarity: devices and single-pole switches na only for line",
+    "30mA RCD: ≤300ms for IΔn, ≤40ms for 5×IΔn",
+    "RCD test button na to confirm say mechanism dey work, no be timing"
+   ],
+   "rubricPoints": [
+    "E name continuity of protective conductors first",
+    "E name insulation resistance",
+    "E name polarity",
+    "E explain how the order dey protect the tester"
+   ]
+  }
+ },
+ "recall": {
+  "1": {
+   "question": "For socket final circuit for two-bedroom flat, which cable?",
+   "spoken": "Quick one. For socket outlet circuit inside two bedroom flat — which cable you go use?",
+   "options": [
+    "2.5mm² copper",
+    "1.5mm² copper"
+   ]
+  },
+  "2": {
+   "question": "Socket tester show correct for every outlet. E mean say the earth don dey okay?",
+   "spoken": "Socket tester show correct for every outlet. E mean say earthing correct?",
+   "options": [
+    "No — bridge earth-neutral sef dey show correct too",
+    "Yes — tester dey check earth"
+   ]
+  },
+  "3": {
+   "question": "Which device dey protect person against electric shock?",
+   "spoken": "Which device dey protect person from electric shock?",
+   "options": [
+    "30mA RCD",
+    "16A MCB"
+   ]
+  },
+  "4": {
+   "question": "Which conductor changeover switch suppose break?",
+   "spoken": "Which conductor changeover switch suppose break?",
+   "options": [
+    "Line and neutral, both",
+    "Na only line — neutral common"
+   ]
+  },
+  "5": {
+   "question": "For 230V installation, minimum insulation resistance na 1 megaohm when dem test am with 500V DC.",
+   "spoken": "Di minimum insulation resistance for two thirty volt installation wey dem test for five hundred volt DC?",
+   "options": [
+    "1.0 MΩ",
+    "0.5 MΩ"
+   ]
+  }
+ },
+ "safety": {
+  "s-earth-neutral-bridge": {
+   "label": "Earth don join neutral",
+   "correction": "Disconnect that bridge. CPC and neutral must separate for every final circuit. If dem join, break for neutral upstream fit put line voltage for every appliance casing for the circuit."
+  },
+  "s-undersized-socket": {
+   "label": "Cable wey small for socket or AC circuit",
+   "correction": "Change that line. Socket circuit dey use 2.5mm², and air conditioner suppose get im own separate circuit wey dem size according to the unit rated current, plus motor starting. 1.5mm² fit dey overload for hours even when the device no dey work."
+  },
+  "s-bridged-protection": {
+   "label": "Dem bridge or bypass di protective device",
+   "correction": "Abeg restore the device. If you bypass overcurrent or residual protection, you don remove the only thing wey dey between fault and fire or person death. If device dey trip again and again, find the fault or correct the curve selection."
+  },
+  "s-live-working": {
+   "label": "Dey work on live circuit",
+   "correction": "Isolate am, lock am off, confirm say e no get current before you touch am. Safe isolation na di first skill for dis work, and no house job wey worth make you skip am."
+  },
+  "s-generator-direct": {
+   "label": "Generator don connect without interlocked changeover",
+   "correction": "Abeg fit interlocked changeover wey go break both line and neutral. Plug-to-plug lead dey expose live pins, and unswitched neutral fit send current go back utility line wey linesman don already confirm say e don die."
+  },
+  "s-no-rcd": {
+   "label": "Socket outlets wey no get RCD protection",
+   "correction": "Socket outlets need extra 30mA RCD protection. Board wey get only MCB leave house without protection against electric shock from line-to-earth fault. Report am as defect instead of to dey manage am."
+  },
+  "s-colour-misuse": {
+   "label": "Green-and-yellow wey dem use as live or neutral conductor",
+   "correction": "Comot that conductor. Green-and-yellow na only for protective conductors. If you use am again as live or neutral, you don remove the only warning wey the next electrician get before dem open the board."
+  },
+  "s-water-pipe-earth": {
+   "label": "Water pipe wey dem use as earth electrode",
+   "correction": "pipe na for bonding, no be as electrode. Bonding dey make potential dey equal, while electrode dey provide earth reference. Install electrode and confirm say Ra × IΔn no pass 50V."
+  },
+  "s-energise-before-test": {
+   "label": "Make you energise am only after verification",
+   "correction": "Energising no be test. E no fit see reverse polarity, broken CPC, or insulation wey don spoil, and all of dem fit look like installation wey dey work until person get injury. Confirm insulation resistance and polarity while power off first."
+  },
+  "s-rating-up": {
+   "label": "Dem increase di protective device rating make e no trip",
+   "correction": "But if dem raise am, cable no go dey protected. If e dey trip anyhow, e fit mean say real fault dey or say dem use wrong tripping curve — like Type C wey inductive load need. Make dem fix di cause, keep di rating correct for di cable."
+  }
+ },
+ "examples": [
+  {
+   "text": "I wan run wire for socket, 1.5 abi 2.5?",
+   "note": "Cable size — na di question wey people dey ask pass",
+   "en": "I wan run wire for socket, 1.5 abi 2.5?"
+  },
+  {
+   "text": "For AC socket, I use 1.5, and I join earth to neutral make tester show correct.",
+   "note": "Two serious safety warning",
+   "en": "For the AC socket I just run 1.5, and I join the earth to the neutral so the tester go show correct."
+  },
+  {
+   "text": "My customer board get only breaker, no earth leakage. E talk say e safe because breaker dey.",
+   "note": "Wrong idea about shock protection",
+   "en": "My customer board get only breaker, no earth leakage. Him say him safe because breaker dey."
+  },
+  {
+   "text": "I connect generator direct, I no put changeover switch. Na only line I dey switch.",
+   "note": "Backfeed risk",
+   "en": "I connect the gen direct, I no put change over. Na only line I switch."
+  },
+  {
+   "text": "Wetin insulation resistance suppose be before I energise am?",
+   "note": "Testing and verification",
+   "en": "What insulation resistance should I get before energising?"
+  },
+  {
+   "text": "How I fit repair generator carburettor?",
+   "note": "Outside di pack — I no fit help with dat one",
+   "en": "How I go fix generator carburettor?"
+  }
+ ],
+ "trade": "House Electrical Installation",
+ "conductors": [
+  {
+   "role": "Line",
+   "colour": "brown"
+  },
+  {
+   "role": "Neutral",
+   "colour": "blue"
+  },
+  {
+   "role": "Earth",
+   "colour": "green-and-yellow"
+  }
+ ]
+}

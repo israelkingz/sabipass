@@ -1,0 +1,611 @@
+{
+ "code": "ha",
+ "name": "Hausa",
+ "endonym": "Harshen Hausa",
+ "generated": "2026-10-08T18:02:30.606Z",
+ "source": "en",
+ "provider": "spitch",
+ "target": "ha",
+ "reviewed": false,
+ "reviewer": null,
+ "reviewNote": "Machine translation from the English pack. A trainer who speaks this language must read it before a learner is served. The English wording is the authority.",
+ "safetyDetectionNote": "Corrections below are translated. Detection still matches the English and Pidgin patterns in pack.json, which holds up because the technical terms (earth, neutral, socket, 1.5) stay English in code-switched speech. Validate per language before relying on it.",
+ "ui": {
+  "nav.ask": "Tambaya",
+  "nav.learn": "Koya",
+  "nav.recall": "Tuna",
+  "nav.passport": "Fasfo",
+  "nav.trainer": "Mai horarwa",
+  "common.online": "Kan layi",
+  "common.offline": "Babu intanet",
+  "common.preview": "Dubawa — ba a tabbatar da mai horarwa ba",
+  "common.close": "Rufe",
+  "common.delete": "Share",
+  "pack.demo": "Kunshin abun ciki na gwaji. An tsara abun cikin fasaha daga NESIS, NIS IEC 60364 da ƙa'idodin raka'a na NBTE. Bayanan sashe na jiran amincewar mai horaswa mai dubawa kafin a ba kowane ɗalibi.",
+  "locale.machine": "Wannan harshe an fassara shi da na'ura daga Turanci kuma mai horaswa bai duba shi ba. Rubutun Turanci shi ne hukuma.",
+  "ask.eyebrow": "Yi tambaya da harshenka",
+  "ask.title": "Me kake son sani game da aikin?",
+  "ask.sub": "Yi magana yadda kuke magana a wurin aiki. Kowace amsa tana fitowa daga ƙa'idar da aka duba kuma tana nuna maka sashe.",
+  "ask.tap": "Taɓa ka yi magana",
+  "ask.listening": "Ana sauraro — yi magana yanzu, sannan ka taɓa don tsayawa",
+  "ask.transcribing": "Ana rubuta magana…",
+  "ask.unavailable": "Ba a samun shigar da murya a nan — taɓa misali a ƙasa",
+  "ask.answer": "Amsa",
+  "ask.play": "Kunna",
+  "ask.retrieved": "An dawo da shi daga sassan da aka duba guda {n} · cibiyar sadarwa 0 KB · darasi {lesson}",
+  "ask.norefsource": "Babu tushen da aka duba",
+  "ask.refuse": "Babu wani abu a cikin kunshin {trade} da ya rufe hakan. Ba zan amsa daga wajen ƙa'idar da aka duba ba — amsa kuskure da ƙwarin gwiwa game da wannan aiki na iya jawo wa wani rauni.",
+  "ask.refuseHint": "Tambayi mai horas da kai, ko ka tambaye ni game da girman kebul, haɗa ƙasa, na'urorin kariya, canjin wuta, ko gwaji.",
+  "ask.examples": "Misalan saƙonnin murya",
+  "ask.examplesSub": "Taɓa ɗaya don kunna shi kamar ana faɗa. Hanyar demo mai aminci: demo ɗin kai tsaye bai taɓa dogara da magana guda ɗaya da ba a yi atisaye ba.",
+  "ask.clear": "Share tattaunawa",
+  "ask.notified": "An sanar da {trainer}, mai horas da kai, a ɓoye. Ba a gaya wa kowa ba.",
+  "ask.seeSent": "Duba abin da aka aika",
+  "ask.deleteRecord": "Goge wannan rikodin",
+  "ask.deleted": "An janye kwafin mai horar da kai.",
+  "ask.sentTitle": "Abin da aka gaya wa mai horar da kai",
+  "ask.sentNote": "Wannan shi ne ainihin saƙon da aka aika wa mai horar da kai. Ba a haɗa wani abu game da kai ba — babu rikodi, babu wuri, babu wasu tambayoyi.",
+  "ask.needsSupervision": "Yana buƙatar kulawa kan {unit}.",
+  "ask.withdraw": "Goge kuma janye",
+  "learn.title": "Darussa biyar",
+  "learn.sub": "Kowanne gajere ne, ana iya saukewa, kuma yana ƙarewa da aikin gwaji da za ka yi da murya ko ta hoto. Ba a buƙatar karatu.",
+  "learn.completed": "An kammala darussa",
+  "learn.downloaded": "An sauke",
+  "learn.downloadAll": "Sauke duka biyar",
+  "learn.savedAll": "An adana darussa biyar don amfani ba tare da intanet ba.",
+  "learn.offline": "Ba tare da intanet ba",
+  "learn.min": "min",
+  "learn.play": "Kunna darasi",
+  "learn.save": "Ajiye",
+  "learn.saved": "An adana",
+  "learn.mustDo": "Abin da dole ne ka iya yi",
+  "learn.sources": "Majiyoyi don wannan darasin",
+  "learn.conductors": "Gane mai gudanar da wuta",
+  "learn.conductorNote": "Kore-da-rawaya an ke keɓancewa ga wayoyin kariya. Saƙo ne ga mutum na gaba da zai buɗe allo.",
+  "learn.lesson": "Darasi",
+  "learn.listen": "Saurari wannan darasi a harshenka",
+  "learner.year": "Ɗalibin koyon sana'a na shekara ta uku",
+  "trainer.role": "Gwanin sana'a · shekaru 19",
+  "evidence.recall": "Binciken tunawa",
+  "practice.title": "Aiki",
+  "practice.voiceViva": "Tambayoyin baka",
+  "practice.photo": "Shaidar hoto",
+  "practice.hear": "Saurari tambayar",
+  "practice.record": "Yi rikodin amsarka",
+  "practice.listening": "Ana sauraro… taɓa don tsayawa",
+  "practice.typePlaceholder": "Ko kuma rubuta abin da za ka ce…",
+  "practice.submitTyped": "Aika amsar da aka rubuta",
+  "practice.noMcqNote": "Ba a taɓa tantance ƙwarewa ta hanyar zaɓi da yawa ba. Ba a buƙatar karatu da rubutu — akwatin rubutu yana nan ne kawai saboda wannan burauza na iya toshe makirufo.",
+  "practice.result": "Sakamako",
+  "practice.points": "maki {score} daga cikin {total} na ma’aunin tantancewa",
+  "practice.youSaid": "Ka ce",
+  "practice.again": "Yi rikodi kuma",
+  "practice.mustShow": "Dole ne hoton ya nuna",
+  "practice.addPhoto": "Ƙara hoto daga wayarka",
+  "practice.photoNote": "Hotonka zai kasance a na'urarka har sai ka zaɓi aika shi don amincewa.",
+  "practice.submitted": "Shaidar da aka gabatar",
+  "practice.awaiting": "Ana jiran mai horo ya amince. Za ka iya goge wannan shaida a kowane lokaci.",
+  "practice.deleteEvidence": "Goge shaida",
+  "recall.eyebrow": "Tunawa mai tazara",
+  "recall.title": "Har yanzu kana tunawa da shi?",
+  "recall.sub": "Kwana uku bayan darasi, sannan goma, sannan talatin — saƙon murya zai zo ta WhatsApp. Amsa ta danna maɓalli ɗaya. Babu manhajar da za a buɗe, babu buƙatar sayen bayanai.",
+  "recall.clock": "Agogon gwaji",
+  "recall.forward": "+ kwana 3",
+  "recall.clockNote": "Akwai sarrafa agogo ne kawai domin gwaji. A zahiri, lokaci yana wucewa da kansa.",
+  "recall.empty": "Kammala aikin atisaye na darasi, za a tsara binciken tunawarsa bayan kwana uku.",
+  "recall.step": "Tuna darasi {lesson} · mataki na {step} cikin 3",
+  "recall.reply": "Amsa 1 ko 2",
+  "recall.featurePhone": "Yana aiki a wayar maɓalli: tambayar sauti ce, amsar dannawa ɗaya ce, kuma duk musayar ba ta wuce KB 10 ba.",
+  "recall.history": "Tarihin tunawa",
+  "recall.scheduled": "An tsara",
+  "recall.retained": "An riƙe ta cikin duk bincike uku — kwanaki 3, 10 da 30",
+  "recall.missed": "An rasa a rana ta {day} — za a maimaita gobe, kuma darasin ya koma jerinka",
+  "recall.correctOn": "Daidai a rana ta {day} · bincike na gaba rana ta {next}",
+  "recall.outcome": "An riƙe a ƙoƙari na farko: {hits} daga cikin bincike {total}. Idan an rasa wani bincike, darasin zai koma cikin jerin — wannan shi ne sakamakon koyo da aka auna, ba ƙirgar jerin nasarori ba.",
+  "passport.record": "Rikodin ci gaba",
+  "passport.countersigned": "An sa hannu tare",
+  "passport.evidenceItems": "Abubuwan shaida",
+  "passport.notCert": "Wannan rikodin ci gaba ne da fayil na shaidun da ya dace da NSQF, ba takardar shaidar kammalawa ba. Har yanzu mai tantancewa da aka amince da shi ne zai sa hannu kan cancantar. SabiPass hanya ce ta hanzarta tsarin da ake da shi na Amincewa da Koyon da Aka Yi a Baya.",
+  "passport.competencies": "Ƙwarewa",
+  "passport.notStarted": "Ba a fara ba",
+  "passport.started": "An fara shaida",
+  "passport.assessed": "An tantance — ana jiran sa hannu tare",
+  "passport.signed": "Mai horarwa ya sa hannu tare",
+  "passport.verify": "Tabbatarwa — tana aiki ba tare da intanet ba",
+  "passport.verifyNote": "Duk abokin ciniki mai kowace irin waya zai iya tabbatar da wannan rikodin. Danna jerin USSD ko karanta lambar a bayyane.",
+  "passport.showQr": "Nuna lambar QR (ana buƙatar haɗi)",
+  "passport.qrOffline": "QR na buƙatar haɗi. Lambar da jerin USSD da ke sama suna aiki ba tare da intanet ba.",
+  "passport.portfolio": "Duba kundin shaidu",
+  "passport.portfolioNote": "Wannan shi ne tarin da ƙwararren mai tantancewa ke karɓa. Yana sauƙaƙa aikinsa daga gudanar da cibiyar tantancewa zuwa dubawa da amincewa.",
+  "passport.noEvidence": "Babu shaida tukuna.",
+  "passport.manifest": "Jerin abubuwan kunshin",
+  "passport.reviewer": "Mai dubawa",
+  "passport.notSignedOff": "ba a amince da shi ba tukuna",
+  "trainer.eyebrow": "Duban mai horaswa",
+  "trainer.reviewing": "ana nazarin ɗalibi 1",
+  "trainer.privacy": "Kana ganin abin da ɗalibanka kawai suka aiko maka, da kuma wanda ba su goge ba. Babu wata hukuma ko wani ɓangare na uku da ke karɓar waɗannan.",
+  "trainer.flags": "Alamun tsaro",
+  "trainer.noFlags": "Babu abin da aka yi wa alama. Ana ɗaga alamomi ta atomatik idan ɗalibi ya bayyana aiki mara lafiya — ba sai sun tambaya ba.",
+  "trainer.awaiting": "Ana jiran sa hannunka",
+  "trainer.queue": "Jerin jiran sa hannu na biyu",
+  "trainer.noQueue": "Babu abin da ke jira. Kammala aikin atisaye a matsayin mai koyo, zai bayyana a nan.",
+  "trainer.sign": "Sanya sa hannu na biyu kan wannan ƙwarewar",
+  "trainer.signed": "An sanya sa hannu na biyu. An sabunta rikodin {name}.",
+  "trainer.said": "{name} ya ce",
+  "settings.textOnly": "Rubutu kawai",
+  "settings.textOnlyNote": "Kashe fitar da murya. A koyaushe ana nuna madadin rubutu ko ta yaya.",
+  "settings.why": "Dalilin wannan",
+  "settings.whyBody": "Tsarin Ƙwarewar Sana'o'i na Ƙasa na Najeriya ya riga ya amince da ƙwarewar da aka koya ba bisa ƙa'ida ba, ta hanyar Amincewa da Ilimin da Aka Riga Aka Samu, wanda aka ƙaddamar a 2025. Kimanin masu sana'a 500 aka tantance a faɗin ƙasar tun daga lokacin, saboda tantancewar tana bukatar mutum, ana yin ta ido-da-ido kuma ba ta da yawa.",
+  "settings.whyBody2": "SabiPass yana sa wannan tantancewar ta zama ta nesa, ta amfani da murya kuma kusan kyauta. Tsarin yana nan. Ƙarfin aiwatarwa ne babu.",
+  "settings.notBuilt": "Abubuwan da ba a gina da gangan ba",
+  "settings.notBuiltBody": "Biyan kuɗi, haɗa mutane da ayyuka, loda darussa ga jama'a, takaddun shaida. Biyan kuɗin rajistar cibiyar horo hasashe ne na kasuwanci da za a tabbatar, ba fasali ba.",
+  "settings.data": "Bayanai da aka yi amfani da su a wannan zaman",
+  "settings.engine": "Injin magana",
+  "settings.reset": "Sake saita demo",
+  "settings.resetDone": "An sake saita demo."
+ },
+ "passages": {
+  "p-cable-01": {
+   "answer": "A shigarwar gida, ana amfani da tagulla mai fadin 2.5mm² wajen da'irorin ƙarshe na soket, sannan ana amfani da tagulla mai fadin 1.5mm² wajen da'irorin ƙarshe na fitilu. Ka'idar ita ce Ib ≤ In ≤ Iz: wutar da aka tsara don kaya ba za ta wuce ƙimar na'urar kariya ba, kuma ƙimar na'urar kariyar ba za ta wuce ƙarfin kebul ɗin ɗaukar wuta ba. Ana zaɓar kebul mai fadin 2.5mm² don soket saboda na'urar kariya mai 16A ko 20A tana ƙasa da ƙarfinsa cikin aminci. Kada a taɓa amfani da 1.5mm² zuwa soket.",
+   "spoken": "Don soket, yi amfani da biyu da rabi. Don fitila, yi amfani da ɗaya da rabi. Dalilin shi ne: kebul dole ne ya iya ɗaukar wuta fiye da abin da na'urar karya wuta ke bari ya wuce. Amfani da ɗaya da rabi zuwa soket ba daidai ba ne.",
+   "cues": [
+    "girman kebul",
+    "1.5",
+    "2.5",
+    "soket",
+    "hasken wuta",
+    "wace waya",
+    "wane girma",
+    "ja waya",
+    "mm2"
+   ]
+  },
+  "p-cable-02": {
+   "answer": "Ƙarfin ɗaukar wutar lantarki na kebul ba lamba guda ba ce. Yana raguwa idan kebul ɗin yana cikin bututu, idan an haɗa shi tare da wasu kebul, idan yana kewaye da abin rufe zafi, ko kuma idan yanayin zafi ya yi yawa. Kebul iri ɗaya mai girman 2.5mm² da aka ɗaura kai tsaye a bango yana ɗaukar wuta fiye da irin wannan kebul ɗin da aka ja ta cikin bututu mai cunkoso a kan rufi mai zafi. Ka yi amfani da abubuwan gyara na hanyar girkawa, haɗa kebul-kebul tare da yanayin zafi kafin ka amince da girman kebul.",
+   "spoken": "Kebul iri ɗaya ba ya ɗaukar irin ƙarfin wuta ɗaya a ko’ina. A cikin bututu, idan an haɗa su wuri guda, ko a cikin rufi inda zafi yake — kebul ɗin yana ɗaukar ƙasa da haka. Dole ne ka yi amfani da abin gyara kafin ka amince da kowane girma.",
+   "cues": [
+    "ragewa",
+    "bututu",
+    "rufin kariya",
+    "haɗawa",
+    "yanayin kewaye",
+    "zafi",
+    "a haɗe",
+    "iya aiki"
+   ]
+  },
+  "p-cable-03": {
+   "answer": "Iyakar raguwar ƙarfin lantarki ita ce 3% na ƙarfin lantarki na ƙa’ida ga da’irorin hasken wuta da 5% ga sauran da’irori, ana aunawa daga asalin shigarwar. A dogayen hanyoyin kebul, kebul da ya wuce gwajin ɗaukar halin yanzu na iya kasa cika ƙa’idar raguwar ƙarfin lantarki, kuma mafita ita ce a ƙara girman kebul ɗin, ba a amince da fitilu masu duhu ko mota mai wahalar farawa ba.",
+   "spoken": "Faɗuwar ƙarfin lantarki: kashi uku ga haske, kashi biyar ga sauran da'irori. Idan nisan waya ya yi tsawo, kebul na iya wuce gwajin halin yanzu amma ya kasa gwajin faɗuwar ƙarfin lantarki. Mafita ita ce amfani da kebul mafi girma, ba yarda da haske mai rauni ba.",
+   "cues": [
+    "faduwar wuta",
+    "dogon zango",
+    "nesa",
+    "dusashe",
+    "rauni",
+    "tazara"
+   ]
+  },
+  "p-cable-04": {
+   "answer": "Na'urar sanyaya iska nauyi ne na motar inductive mai ƙarfin farawa sau da yawa fiye da ƙarfin aikinta. Tana buƙatar nata keɓaɓɓen da'irar ƙarshe, wadda aka ƙayyade girman ta daidai gwargwadon ƙarfin na'urar da aka ƙididdige, tare da la’akari da halayen farawar motar, kuma a kare ta da na'urar da ke da madaidaiciyar lanƙwasar yankewa. Yin amfani da kebul mai 1.5mm² zuwa soket na na'urar sanyaya iska haɗarin gobara ne: kebul ɗin na iya ɗaukar nauyi fiye da kima na dogon lokaci ba tare da na'urar kariya ta taɓa aiki ba.",
+   "spoken": "AC na motor load. Current ɗinsa na farawa ya fi na tafiyarsa yawa sosai. Yana buƙatar nasa circuit, cable daidai, da breaker curve daidai. 1.5 ga AC kamar wuta ce da ke jiran faruwa — cable ɗin zai yi overload kuma breaker ɗin ma ba zai trip ba.",
+   "cues": [
+    "AC",
+    "na’urar sanyaya iska",
+    "1.5 na AC",
+    "aircon",
+    "mota",
+    "wutar farawa"
+   ]
+  },
+  "p-earth-01": {
+   "answer": "Dole ne a raba madubin kariya na kewaye da madubin tsaka-tsaki a kowane kewaye na ƙarshe. Haɗa su a soket zai sa na’urar gwajin soket ta nuna sakamako daidai, amma hakan yana haifar da shigar lantarki mai kisa. Madubin kariya zai zama mai ɗaukar wuta, kuma idan madubin tsaka-tsaki ya yanke a ko’ina a gefen gaba, duk wani jikin ƙarfe na na’urar da aka yi wa ƙasa a wannan kewaye zai kusanci ƙarfin wutar layi. Duk wanda ya taɓa firiji, famfo ko injin wanki zai zama hanyar wutar zuwa ƙasa.",
+   "spoken": "Kada a taɓa haɗa ƙasa da tsaka-tsaki a kewaye na ƙarshe. Idan ka haɗa su, na’urar gwajin soket za ta nuna daidai — amma shigarwar tarkon mutuwa ce. Idan tsaka-tsaki ya yanke a ko’ina kafin nan, jikin kowace na’ura zai ɗauki wuta. Mutumin da ya taɓa firiji zai zama hanyar zuwa ƙasa.",
+   "cues": [
+    "ƙasa zuwa tsaka-tsaki",
+    "haɗa ƙasa da tsaka-tsaki",
+    "gada ƙasa",
+    "haɗa ƙasa zuwa tsaka-tsaki",
+    "ƙasa da tsaka-tsaki iri ɗaya"
+   ]
+  },
+  "p-earth-02": {
+   "answer": "Kore-da-rawaya an keɓe shi ne kawai don wayoyin kariya, kuma ba za a taɓa amfani da shi a matsayin wayar layi ko tsaka-tsaki a ko’ina cikin tsarin shigarwa ba. Ruwan-kasa yana nuna wayar layi, yayin da shuɗi ke nuna wayar tsaka-tsaki. Launin umarni ne na tsaro ga mutum na gaba da zai buɗe wannan akwatin, kuma sake amfani da shi don waya mai wuta yana cire masa gargaɗinsa kaɗai.",
+   "spoken": "Kore da rawaya na waya ta ƙasa kaɗai. Kada a taɓa amfani da shi don waya mai wuta ko tsaka-tsaki. Ruwan-kasa na layi, shuɗi kuma na tsaka-tsaki. Wannan launin saƙo ne ga mai gyaran wuta na gaba da zai buɗe akwatin. Idan ka canza shi, ka cire masa gargaɗinsa kaɗai.",
+   "cues": [
+    "kore rawaya",
+    "launin ƙasa",
+    "lambar launi",
+    "a yi amfani da wayar ƙasa a matsayin mai rai"
+   ]
+  },
+  "p-earth-03": {
+   "answer": "A cikin tsarin TT, dole ne na'urar lantarkin ƙasa ta ba da juriya mai ƙanƙanta yadda Ra × IΔn ba zai wuce 50V ba, shi ya sa ake buƙatar RCD maimakon dogaro da kariyar wuce gona da iri. Haɗin kariya na babba yana haɗa ayyukan ƙarfe masu shigowa da ƙarafan gini zuwa babban tashar ƙasa. Haɗa bututun ruwa ba daidai yake da samar da na'urar lantarkin ƙasa ba: haɗawa yana daidaita ƙarfin lantarki, yayin da na'urar lantarkin ƙasa ke samar da ma'aunin ƙasa. Ɗaya ba ya maye gurbin ɗayan.",
+   "spoken": "A tsarin TT, juriyar sandar ƙasa dole ta zama ƙasa sosai yadda Ra sau darajar RCD ba zai wuce volt hamsin ba. Shi ya sa ake buƙatar RCD. Kuma a lura: haɗa bututun ruwa da bonding ba abu ɗaya ba ne da sandar ƙasa. Bonding yana daidaita bambancin wuta. Sandar ƙasa ce ke ba ka maƙasudin ƙasa. Ɗaya ba ya maye gurbin ɗayan.",
+   "cues": [
+    "sandaren ƙasa",
+    "lantarki",
+    "haɗawa",
+    "bututun ruwa",
+    "juriyar ƙasa",
+    "TT"
+   ]
+  },
+  "p-earth-04": {
+   "answer": "Kowane soket, kowane wurin fitila da kowace na’ura mai rukunin Class I dole ne su kasance da jagorar kariya mai ci gaba zuwa babban tashar ƙasa. Ana tabbatar da ci gaban haɗin ta hanyar auna shi kafin a kunna wutar lantarki, ba a ɗauka haka kawai saboda an ga waya mai kore da rawaya ba. Jagorar kariya da aka haɗa a soket amma ta karye a allon rarraba wuta ba ta ba da kariya ko kaɗan.",
+   "spoken": "Kowane soket, kowane wurin fitila, kowace na’ura mai jikin ƙarfe na buƙatar ƙasa marar yankewa zuwa babban tashar ƙasa. Ana auna ta kafin a saka wuta. Kada a ɗauka saboda an ga waya mai kore da rawaya. Ƙasar da aka haɗa a soket amma ta karye a allon rarraba wuta ba ta kare kowa.",
+   "cues": [
+    "ci gaban ƙasa",
+    "CPC ya karye",
+    "gwada ƙasa",
+    "R1 R2"
+   ]
+  },
+  "p-protect-01": {
+   "answer": "Na’urar katse wuta ƙarama tana kare kebul daga nauyi fiye da kima da gajeriyar haɗuwa. Ba ta kare mutum daga bugun lantarki. Wannan shi ne kuskure mafi yawan faruwa kuma mafi haɗari a aikin girka wutar gida. MCB mai 16A zai iya barin 16A ya ratsa jikin mutum har abada ba tare da ya yi aiki ba. Kariyar bugun lantarki tana zuwa ne daga na’urar gano ragowar wuta, daidaitaccen haɗa ƙasa, da ingantaccen rufi.",
+   "spoken": "Na'urar breaker tana kare kebul daga nauyi fiye da kima da gajeriyar hanya. Breaker ba ta kare mutum daga girgizar wuta. Wannan shi ne kuskure mafi haɗari a wannan aiki. Breaker mai amp 16 zai iya wuce amp 16 ta jikin mutum ba tare da ya katse ba. Kariyar girgizar wuta ita ce RCD, daidaitaccen grounding, da insulation mai kyau.",
+   "cues": [
+    "MCB",
+    "kariyar breaker",
+    "bugun breaker",
+    "abin da breaker ke yi",
+    "yawan lodi"
+   ]
+  },
+  "p-protect-02": {
+   "answer": "Lanƙwasa Nau'in B tana katsewa a sau uku zuwa biyar na ƙimar halin yanzu kuma ta dace da nauyin juriya da na hasken wuta. Lanƙwasa Nau'in C tana katsewa a sau biyar zuwa goma na ƙimar halin yanzu kuma ta dace da nauyin induktif kamar motoci, na'urorin sanyaya iska da transfoma, waɗanda halin farkon tafiyarsu zai sa Nau'in B ya riƙa katsewa ba tare da buƙata ba. Zaɓen ƙima mafi girma don hana katsewa ba tare da buƙata ba maimakon zaɓen lanƙwasa daidai yana barin kebul ba tare da kariya ba.",
+   "spoken": "Nau’in B yana katsewa sau uku zuwa biyar na ƙimar sa — don kaya mai sauƙi da mai juriya. Nau’in C yana katsewa sau biyar zuwa goma — don mota, AC, da transfoma, saboda ƙarar wutar farawa. Idan mai katse wuta yana katsewa ba gaira ba dalili, canza kurbar. Kada ka ƙara ƙimar sa — idan ka ƙara ƙimar, kebul ba zai sake samun kariya ba.",
+   "cues": [
+    "B curve",
+    "C curve",
+    "curve",
+    "MCB trip",
+    "trip na ƙarya",
+    "na'urar kashe wutar mota"
+   ]
+  },
+  "p-protect-03": {
+   "answer": "Wuraren haɗa soket a cikin shigarwar gida suna buƙatar ƙarin kariya ta na’urar ragowar wuta (RCD) mai ƙimar ragowar aikin wuta da ba ta wuce 30mA ba. Allon rarraba wuta mai MCBs kaɗai ba ya ba da kariya daga girgizar lantarki sakamakon kuskuren layi zuwa ƙasa ta jikin mutum. Idan allon ba shi da RCD, wannan lahani ne da ya kamata a bayar da rahoto a kai, ba yanayin da za a yi aiki a kewaye da shi ba.",
+   "spoken": "Soket yana buƙatar RCD wanda bai wuce miliamp 30 ba. Idan allo yana da breaker kaɗai, babu kariyar girgizar lantarki a wannan shigarwar. Allon da ba shi da RCD lahani ne da dole a bayar da rahoto—ba abin da za a yi ta kokarin sarrafawa ba.",
+   "cues": [
+    "RCD",
+    "30mA",
+    "zubar wutar lantarki zuwa ƙasa",
+    "RCCB",
+    "babu RCD",
+    "kariya daga girgizar lantarki"
+   ]
+  },
+  "p-protect-04": {
+   "answer": "Sanya kowace da’ira a bayan RCD guda ɗaya na 30mA na nufin kuskure guda a ko’ina zai katse dukkan shigarwar lantarki, har da firiza. Ana samun wariya ta raba da’irorin ƙarshe tsakanin na’urorin 30mA da yawa, kuma idan an yi amfani da na’ura ta sama, dole ne ta kasance nau’in zaɓaɓɓe mai jinkirin lokaci domin na’urar da ke ƙasa ta fara aiki. Wannan yana da muhimmanci a aikace da kuma a fasaha: shigarwar da ke duhu gaba ɗaya idan kowanne kuskure ya faru na sa mazaunin ya yi wa RCD ƙetare.",
+   "spoken": "Idan ka haɗa komai a bayan RCD guda ɗaya na miliamp 30, ƙaramin matsala ɗaya zai kashe wutar gidan gaba ɗaya, har da firiza. Raba da’irorin tsakanin na’urori fiye da ɗaya. Idan za ka yi amfani da guda ɗaya a sama, ka sa ya zama nau’in zaɓaɓɓe mai jinkirin lokaci domin na ƙasa ya fara yankewa. Idan gidan gaba ɗaya ya yi duhu, mai gidan zai iya tsallake RCD ɗin — sannan babu kariya ga kowa.",
+   "cues": [
+    "wariya",
+    "tafiyar gidan gaba ɗaya",
+    "RCD ɗaya",
+    "zaɓi",
+    "injin daskarewa",
+    "rashin jin daɗi"
+   ]
+  },
+  "p-change-01": {
+   "answer": "Tsarin canja wuta tsakanin wutar kamfani da janareta ko inverter dole ne ya yanke duka layin wuta da na neutral, kuma dole ne a kulle shi ta hanyar inji domin kada hanyoyin wutar biyu su taɓa haɗuwa a lokaci guda. Idan aka canja layin wuta kaɗai, neutral zai ci gaba da haɗuwa, wanda zai iya sa wata hanyar wutar ta koma ta shiga hanyar sadarwar kamfanin wuta. Ma’aikacin kamfanin rarraba wuta da ke aiki a kan layin da ya ware kuma ya tabbatar babu wuta a ciki na iya mutuwa idan janareta ya mayar da wuta ta hanyar neutral da ba a taɓa yankewa ba.",
+   "spoken": "Changeover dole ne ya yanke line da neutral — duka biyun. Kuma dole ne ya kasance da kullewar inji domin hanyoyin wutar biyu kada su taɓa rufewa tare. Idan ka canja line kaɗai, neutral zai ci gaba da haɗuwa, kuma janaretanka zai iya mayar da wuta zuwa layin NEPA. Ma’aikacin layi da ya riga ya tabbatar layin babu wuta zai iya mutuwa saboda janaretanka.",
+   "cues": [
+    "canza zuwa",
+    "canji",
+    "haɗa janareta",
+    "mayar da wuta baya",
+    "na’urar canja wutar lantarki",
+    "kai tsaye tsaye"
+   ]
+  },
+  "p-change-02": {
+   "answer": "An haramta haɗa janareta ko inverter zuwa tsarin wutar gida ta hanyar igiyar toshewa-zuwa-toshewa, ta soket, ko ta kowace hanya da ba ta da na’urar sauya wuta mai kullewa. Igiyar da ke da toshe a dukkan bangarorinta tana barin fil masu wuta a bayyane duk lokacin da aka haɗa gefe ɗaya, kuma ba ta ware ta daga wutar kamfani. Babu wani hali a aikin shigar da wutar gida da wannan yake karɓuwa, ko da na ɗan lokaci ne.",
+   "spoken": "Igiyar namiji-zuwa-namiji, haɗa janareta ta soket, ko kowace hanya ba tare da na’urar sauya wuta mai kullewa ba—duk haramun ne. Wannan igiyar mai toshe a bangarori biyu tana barin fil masu wuta a bayyane da zarar an saka gefe ɗaya. Ba na ɗan lokaci ba, ba kaɗan ba. Har abada.",
+   "cues": [
+    "igiyar kashe kai",
+    "namiji zuwa namiji",
+    "filogi mai kai biyu",
+    "toshe cikin soket",
+    "haɗa janareta kai tsaye"
+   ]
+  },
+  "p-change-03": {
+   "answer": "Inba da ke samar wa da wani tsarin wuta a matsayin madadin tushe dole ne a haɗa neutral na fitarsa da ƙasa bisa umarnin masana'anta da tsarin haɗa ƙasa na tsarin. Neutral mai iyo na fitarwa yana sa na'urorin gano ragowar wuta su yi aiki ba daidai ba, kuma yana iya barin murfin na'urori a wani ƙarfin lantarki da ba a tantance ba. Tsara nauyi wani buƙata ne daban: ya kamata a sanya muhimman da'irori a kan allon rarrabawa na musamman, kuma bai kamata a sanya manyan nauye-nauyen wuta kamar na'urorin sanyaya iska da masu dumama ruwa a kan layin inba ba.",
+   "spoken": "Dole ne a yi wa neutral na fitar inverter ƙasa bisa ga umarnin masana’anta da tsarin grounding na gidan. Idan neutral yana shawagi, RCD na iya yin aiki ba daidai ba kuma jikin na’ura na iya ɗaukar wutar lantarki da ba a san ƙimarta ba. Wani abu dabam: a sa muhimman lodi a kan nasu sub-board, kuma a bar AC da na’urar dumama ruwa a kashe daga layin inverter.",
+   "cues": [
+    "neutral na inverter",
+    "earth na inverter",
+    "neutral mai iyo",
+    "load na inverter",
+    "solar",
+    "load mai muhimmanci"
+   ]
+  },
+  "p-test-01": {
+   "answer": "Tabbatarwa tana bin tsari ƙayyadadde, kuma gwaje-gwajen da ba su da wuta su ne ke fara zuwa: ci gaban masu ɗaukar kariya da haɗa ƙasa, ci gaban masu ɗaukar ring na ƙarshe inda aka yi amfani da ring, juriyar rufi, polarity, da juriyar lantarkin ƙasan earth electrode idan tsarin shigarwar TT ne. Sai bayan haka ake yin gwaje-gwajen da ke da wuta: earth fault loop impedance, lokacin aikin RCD, da gwajin aiki. Wannan tsari yana nan ne saboda kuskuren da gwajin da ba shi da wuta zai gano zai kasance da haɗari a gano shi ta gwajin da ke da wuta.",
+   "spoken": "Tsarin yana ƙayyadadde kuma gwajin da ba shi da wuta yana fara zuwa. Ci gaban earth da bonding. Ci gaban ring idan akwai ring. Juriyar rufi. Polarity. Earth electrode idan TT ne. Sai bayan duk wannan ake yin gwajin mai wuta: loop impedance, lokacin RCD, sannan gwajin aiki. Tsarin yana nan saboda duk kuskuren da za a iya gano da gwajin da ba shi da wuta zai zama haɗari a gano shi da gwajin mai wuta.",
+   "cues": [
+    "gwajin oda",
+    "kafin kunna",
+    "gwajin matacce",
+    "jerin tsari",
+    "ƙaddamarwa",
+    "tabbatarwa"
+   ]
+  },
+  "p-test-02": {
+   "answer": "Ana auna juriyar rufin lantarki na na’urar 230/400V da wutar DC mai 500V, kuma dole ne ta kasance ba ƙasa da 1.0 MΩ tsakanin wayoyi masu wuta da kuma tsakanin wayoyi masu wuta da ƙasa. Karatu da yake ƙasa amma ba sifili ba har yanzu gazawa ne, kuma yawanci yana nuna danshi ya shiga, kebul ya lalace, ko kuma an bar wata na’ura a haɗe. Cire na’urori masu saurin lalacewa kafin gwaji maimakon tsallake gwajin.",
+   "spoken": "Juriyar rufin lantarki: gwada da DC volt ɗari biyar, kuma karatun bai kamata ya zama ƙasa da megaohm ɗaya ba. Idan karatun ya yi ƙasa amma ba sifili ba, har yanzu ya gaza — yawanci ruwa ne, kebul ya lalace, ko kuma wata na’ura tana nan a haɗe. Cire na’urori masu saurin lalacewa, kada a tsallake gwajin.",
+   "cues": [
+    "juriya na insulation",
+    "megger",
+    "1 megohm",
+    "500V",
+    "gwajin IR"
+   ]
+  },
+  "p-test-03": {
+   "answer": "Dole ne a tabbatar da polarity kafin a kunna wuta. Dole ne a haɗa kowace na’urar kariya da kowanne maɓalli mai pole guda ɗaya a cikin mai ɗaukar layi kawai, ba a cikin neutral ba. Dole ne a haɗa lambar tsakiya ta Edison screw lampholder da mai ɗaukar layi. Maɓallin da aka haɗa a cikin neutral yana barin fitilar da wuta ko da an kashe ta, kuma mutum na gaba da zai canza bulb ne zai gano haka.",
+   "spoken": "Duba polarity kafin ka kunna wuta. Dole ne kowane breaker da kowane switch mai polo guda su kasance a kan layin wuta, ba a kan neutral ba. Dole ne contact na tsakiya na maƙalar fitila ya kasance layin wuta. Idan ka yanke neutral, fitilar za ta ci gaba da zama da wuta ko da switch a kashe yake — wanda zai canza bulb zai gano.",
+   "cues": [
+    "polarity",
+    "maɓalli a neutral",
+    "fis a neutral",
+    "mariƙin fitila",
+    "cibiyar lamba"
+   ]
+  },
+  "p-test-04": {
+   "answer": "RCD mai 30mA da ke ba da ƙarin kariya dole ne ya yi aiki cikin 300ms a adadin ragowar wutarsa da aka ƙayyade, kuma cikin 40ms idan adadin ya kai sau biyar na wanda aka ƙayyade. Maballin gwaji da ke jikin na'urar yana tabbatar da tsarin na'urar ƙaɗai, ba lokacin aikinta ba, don haka ba ya maye gurbin gwaji da na'ura. RCD da ke aiki amma cikin jinkiri ya gaza.",
+   "spoken": "RCD mai miliamp 30 dole ne ya yanke cikin millisekan 300 a ƙimarsa ta yanzu, kuma cikin millisekan 40 idan ya kai sau biyar. Maɓallin gwaji da ke kan na’urar yana tabbatar da tsarin ne kawai—ba ya gaya maka lokacin yankewa. Dole ne a gwada shi da na’ura. RCD da yake yanke a hankali ya gaza.",
+   "cues": [
+    "gwajin RCD",
+    "lokacin yankewa",
+    "300ms",
+    "40ms",
+    "lokacin RCD",
+    "maɓallin gwaji"
+   ]
+  },
+  "p-test-05": {
+   "answer": "Kunna wutar shigarwa don ganin ko tana aiki ba gwaji ba ne. Ba zai iya gano juyewar polarity, karyewar madubin kariya, ko lalacewar rufi ba, kuma kowanne daga ciki zai iya nuna kamar shigarwar tana aiki har sai wani ya ji rauni. Dole ne a tabbatar da juriya na rufi da polarity yayin da wutar ke kashe kafin a haɗa wutar lantarki.",
+   "spoken": "A kunna wuta a ga ko yana aiki ba gwaji ba ne. Hakan ba zai nuna maka juyayyen polarity, katsewar earth, ko lalacewar insulation ba — kuma duk ukun za su yi kama da shigar da ke aiki har sai wani ya ji rauni. Tabbatar da insulation da polarity yayin babu wuta kafin ka haɗa wutar lantarki.",
+   "cues": [
+    "kunna ka gani",
+    "gwada ta kunna",
+    "fara da kunna wuta",
+    "kawai sa haske"
+   ]
+  }
+ },
+ "lessons": {
+  "1": {
+   "title": "Girman kebul don da’irorin soket da hasken wuta",
+   "subtitle": "Me ya sa 2.5 da 1.5, kuma me ke canza amsar",
+   "practicePrompt": "Ka yi rikodin kanka kana bayanin dalilin da ya sa za ka ja 2.5mm² zuwa soket maimakon 1.5mm².",
+   "practiceSpoken": "Yi magana da ni. Me ya sa za ka ja 2.5 zuwa soket, kuma me ya sa 1.5 ba zai yi ba?",
+   "keyPoints": [
+    "Da'irorin soket 2.5mm², da'irorin wuta 1.5mm²",
+    "Ib ≤ In ≤ Iz — nauyi, na'ura, kebul, a wannan tsari",
+    "Rage ƙima saboda bututu, tara, rufi da zafin yanayi",
+    "Raguwar ƙarfin lantarki: 3% don wuta, 5% don sauran",
+    "Na'urar sanyaya iska tana buƙatar nata da'ira mai girman da ya dace"
+   ],
+   "rubricPoints": [
+    "Ya ambaci 2.5mm² a matsayin girman da ya dace don soket",
+    "Ya danganta ƙarfin kebul da ƙimar na’urar kariya",
+    "Ya gano cunkoso ko zafi fiye da kima a matsayin haɗari",
+    "Ya ambaci wani abu da zai iya canza amsar"
+   ]
+  },
+  "2": {
+   "title": "Ƙasa (earthing), da dalilin da ya sa haɗa ƙasa da neutral ke kashewa",
+   "subtitle": "Gajeriyar hanyar da ke sa tester ya nuna daidai amma ta sa gida ya zama mai haɗari",
+   "practicePrompt": "Yi rikodin kanka kana bayanin abin da ke faruwa da jikin firiji idan an haɗa ƙasa da neutral sannan neutral ɗin ya karye a baya.",
+   "practiceSpoken": "Faɗa min. Idan wani ya haɗa ƙasa da neutral, sannan neutral ɗin ya karye kafin wurin haɗin — me zai faru da jikin firijin?",
+   "keyPoints": [
+    "CPC da neutral suna rabe a kowane da'irar ƙarshe",
+    "Haɗa su zai sa jikin na’urorin lantarki ya zama mai wuta idan neutral ya yanke a sama.",
+    "An keɓe kore da rawaya don masu jagorar kariya kawai",
+    "Haɗa bututun ruwa ba iri ɗaya ba ne da wayar ƙasa.",
+    "Ana auna ci gaban haɗin ƙasa, ba a taɓa ɗauka kawai ba."
+   ],
+   "rubricPoints": [
+    "Casing ɗin yana tashi zuwa ƙarfin lantarki na layi",
+    "Ya gano cewa mutumin da ya taɓa shi ne hanyar kuskure",
+    "Ya lura cewa na'urar gwajin soket za ta nuna daidai har yanzu",
+    "Ya bayyana aikin da ya dace: a ware CPC a ko'ina"
+   ]
+  },
+  "3": {
+   "title": "Zaɓin MCB da RCD",
+   "subtitle": "Na'urar katse wuta tana kare kebul ne. Ba ta kare mutum.",
+   "practicePrompt": "Yi rikodin kanka kana bayyana wa abokin ciniki dalilin da ya sa allonsa mai MCB kaɗai ba ya kare shi daga girgizar wuta.",
+   "practiceSpoken": "Abokin cinikin ya ce allonsa yana da breaker, don haka yana da lafiya. Ka ba shi amsa. Me ya sa breaker kaɗai ba ya kare shi daga girgizar wuta?",
+   "keyPoints": [
+    "MCBs suna karewa daga nauyi mai yawa da gajeriyar kewayawa, ba daga girgizar lantarki ba",
+    "Nau'in B don na'urorin juriya da fitilu, Nau'in C don motoci da AC",
+    "Wuraren soket suna buƙatar ƙarin kariya ta RCD mai 30mA",
+    "Kada a taɓa ƙara ƙimarsa don dakatar da yawan katsewa marasa dalili — a canza kwarban",
+    "A raba da'irori tsakanin RCDs domin kuskure guda kada ya kashe wutar gidan gaba ɗaya"
+   ],
+   "rubricPoints": [
+    "Ya bayyana cewa MCB na kare kebul ne, ba mutum ba",
+    "Ya bayyana cewa wutar da ke ratsa jikin mutum tana ƙasa da matakin da zai sa ya yanke",
+    "Ya ambaci RCD a matsayin na’urar kariya daga girgizar wuta",
+    "Ya bayyana buƙatar 30mA ga soket ɗin wuta"
+   ]
+  },
+  "4": {
+   "title": "Canjin wuta da haɗin inverter",
+   "subtitle": "A sauya neutral ma, ko za ka iya jawo wa ma’aikacin layi mutuwa",
+   "practicePrompt": "A turo hoto na girka changeover da ke nuna tashoshin neutral da interlock.",
+   "practiceSpoken": "Ka ɗauki hoton changeover ɗin. Ka tabbatar ina iya ganin tashar neutral da interlock.",
+   "keyPoints": [
+    "A katse layin da tsaka-tsaki a kowane sauyi",
+    "Makullin inji yana hana hanyoyin wuta biyu rufewa tare",
+    "Tsaka-tsakin da ba a katse ba na iya mayar da wuta zuwa cibiyar sadarwar kamfanin lantarki",
+    "An haramta igiyoyin toshe-zuwa-toshe da janareto masu ciyarwa ta soket gaba ɗaya",
+    "Dole ne a yi ƙasa ga tsaka-tsakin fitarwar inverter, kuma muhimman kayan aiki su kasance a kan nasu ƙaramin allo"
+   ],
+   "checklist": [
+    "Duka tashoshin layi da na tsaka-tsaki a bayyane suke kuma an kunna su",
+    "Akwai makullin inji tsakanin hanyoyin wutar biyu",
+    "Babu haɗin filogi-da-filogi ko haɗin da ake ciyarwa ta soket a ko’ina cikin tsarin",
+    "An haɗa madubin ƙasa a akwatin canja wuta"
+   ]
+  },
+  "5": {
+   "title": "Gwaji kafin ka kunna wuta",
+   "subtitle": "Kunna shi don ganin ko yana aiki ba gwaji ba ne",
+   "practicePrompt": "Yi rikodin kanka kana lissafa gwaje-gwajen rashin wuta a cikin tsarin da za ka yi su, sannan ka faɗi dalilin da ya sa wannan tsari yake da muhimmanci.",
+   "practiceSpoken": "Lissafo min gwaje-gwajen rashin wuta a jere. Sannan ka gaya min dalilin da ya sa tsarin yake da muhimmanci.",
+   "keyPoints": [
+    "Gwaje-gwajen da babu wuta da farko, a jere, sannan gwaje-gwajen da ke da wuta",
+    "Juriya ta keɓewa ≥ 1.0 MΩ a auna da 500V DC",
+    "Daidaiton polarity: na'urori da maɓallan pole ɗaya a layin wuta kawai",
+    "RCD na 30mA: ≤300ms a IΔn, ≤40ms a 5×IΔn",
+    "Maɓallin gwajin RCD yana tabbatar da tsarin aiki, ba lokacin aiki ba"
+   ],
+   "rubricPoints": [
+    "Yana bayyana ci gaba da haɗin masu ɗaukar wutar kariya da farko",
+    "Yana bayyana juriyar rufi",
+    "Yana bayyana daidaiton polarity",
+    "Yana bayyana yadda jerin yake kare mai gwaji"
+   ]
+  }
+ },
+ "recall": {
+  "1": {
+   "question": "Don da’irar soket a cikin ɗaki mai dakuna biyu, wace irin kebul za ka yi amfani da ita?",
+   "spoken": "Tambaya ce kawai. Don da’irar soket a cikin ɗaki mai dakuna biyu — wace kebul za ka yi amfani da ita?",
+   "options": [
+    "jan ƙarfe 2.5mm²",
+    "jan ƙarfe 1.5mm²"
+   ]
+  },
+  "2": {
+   "question": "Na'urar gwajin soket tana nuna daidai a kowace mashigar wuta. Shin hakan ya tabbatar cewa haɗin ƙasa yana da kyau?",
+   "spoken": "Idan na’urar gwajin soket ta nuna daidai a kowace mashiga, hakan yana tabbatar da cewa ƙasan wuta daidai ne?",
+   "options": [
+    "A’a — haɗa ƙasa da neutral yana nuna daidai ma",
+    "Eh — mai gwajin yana duba ƙasa"
+   ]
+  },
+  "3": {
+   "question": "Wace na’ura ce ke kare mutum daga girgizar wutar lantarki?",
+   "spoken": "Wace na’ura ce ke kare mutum daga girgizar lantarki?",
+   "options": [
+    "RCD mai 30mA",
+    "MCB mai 16A"
+   ]
+  },
+  "4": {
+   "question": "Wadanne masu ɗaukar wuta ne dole na’urar sauya wuta ta katse?",
+   "spoken": "Wane mai ɗaukar wuta ne dole na’urar sauya wuta ta katse?",
+   "options": [
+    "Layi da na tsaka-tsaki, duka biyun",
+    "Layi kawai — tsaka-tsaki ya zama ruwan dare"
+   ]
+  },
+  "5": {
+   "question": "Mafi ƙarancin juriya na rufi don tsarin 230V da aka gwada da 500V DC?",
+   "spoken": "Mafi ƙarancin juriyar rufin wuta ga tsarin volt talatin biyu, a gwada da volt ɗari biyar DC?",
+   "options": [
+    "1.0 MΩ",
+    "0.5 MΩ"
+   ]
+  }
+ },
+ "safety": {
+  "s-earth-neutral-bridge": {
+   "label": "An haɗa ƙasa da neutral",
+   "correction": "Cire wannan haɗin. Dole ne CPC da neutral su kasance a rabe a kowace da'ira ta ƙarshe. Idan an haɗa su, katsewa a neutral na sama zai sa ƙarfin layi ya shiga kowanne murfin na'ura a da'irar."
+  },
+  "s-undersized-socket": {
+   "label": "Kebul da bai isa girma ba a da'irar soket ko ta na'urar sanyaya iska",
+   "correction": "A maye gurbin wannan layin. Da'irar soket tana ɗaukar 2.5mm², yayin da na'urar sanyaya iska ke buƙatar nata keɓantacciyar da'ira wadda aka ƙayyade gwargwadon ƙarfin lantarkin na'urar, tare da la'akari da lokacin farawar mota. 1.5mm² na iya kasancewa cikin nauyi fiye da kima na tsawon sa'o'i ba tare da na'urar ta yi aiki ba."
+  },
+  "s-bridged-protection": {
+   "label": "An haɗa ko an kauce wa na'urar kariya",
+   "correction": "A mayar da na'urar. Haɗa ko kauce wa kariyar wuce gona da iri ko ta ragowar wuta yana cire abu guda ɗaya da ke tsakanin matsala da gobara ko mutuwa. Idan na'urar tana yankewa akai-akai, a nemo matsalar ko a gyara zaɓin lanƙwasa."
+  },
+  "s-live-working": {
+   "label": "Aiki a kan da'ira mai wuta",
+   "correction": "Ka ware ta, ka kulle ta a kashe, sannan ka tabbatar babu wuta kafin ka taɓa ta. Ware wuta cikin aminci ita ce ƙwarewa ta farko a wannan sana'a, kuma babu wani aikin gida da ya cancanci tsallake ta."
+  },
+  "s-generator-direct": {
+   "label": "An haɗa janareta ba tare da canjin wuta mai kulle juna ba",
+   "correction": "A saka canjin wuta mai kulle juna wanda ke yanke layi da neutral. Igiyar toshe-zuwa-toshe tana barin fil masu wuta a bayyane, kuma neutral da ba a kashe ba na iya mayar da wuta zuwa layin kamfanin wuta da ma’aikacin layi ya riga ya tabbatar babu wuta a ciki."
+  },
+  "s-no-rcd": {
+   "label": "Wuraren soket ba su da kariyar RCD",
+   "correction": "Wuraren soket suna buƙatar ƙarin kariyar RCD ta 30mA. Allon da ke da MCB kawai yana barin gidan ba tare da kariya daga girgizar lantarki sakamakon kuskuren layi zuwa ƙasa ba. A bayar da rahotonsa a matsayin lahani maimakon a yi ƙoƙarin kewaye matsalar."
+  },
+  "s-colour-misuse": {
+   "label": "An yi amfani da kore-da-rawaya a matsayin mai ɗaukar wuta ko tsaka-tsaki",
+   "correction": "Cire wannan wayar. An keɓe kore-da-rawaya don wayoyin kariya. Sake amfani da ita a matsayin mai ɗaukar wuta ko tsaka-tsaki yana cire gargaɗin da mai gyaran wutar lantarki na gaba yake da shi kafin ya buɗe akwatin rarrabawa."
+  },
+  "s-water-pipe-earth": {
+   "label": "Bututun ruwa da aka yi amfani da shi a matsayin lantarkin ƙasa",
+   "correction": "Ana haɗa bututu ne, ba a amfani da shi a matsayin lantarki ba. Haɗawa tana daidaita ƙarfin lantarki, lantarki kuma yana samar da ma’aunin ƙasa. Shigar da lantarki sannan a tabbatar cewa Ra × IΔn bai wuce 50V ba."
+  },
+  "s-energise-before-test": {
+   "label": "Kunna wuta kafin tabbatarwa",
+   "correction": "Kunna wuta ba gwaji ba ne. Ba zai iya gano juyewar polarity, karyewar CPC, ko lalacewar rufin waya ba, kuma kowanne daga cikinsu yana kama da tsarin da ke aiki har sai wani ya ji rauni. Da farko tabbatar da juriya na rufin waya da polarity yayin wutar a kashe."
+  },
+  "s-rating-up": {
+   "label": "An ƙara ƙimar na’urar kariya don hana katsewa",
+   "correction": "Ƙara ƙimar yana barin kebul ba tare da kariya ba. Yawan katsewa na nufin ko dai akwai matsala ta gaske ko kuma an yi amfani da lankwasa katsewa mara dacewa — irin Type C inda nauyin inductive yake buƙatarsa. Gyara sanadin, a bar ƙimar da ta dace da kebul."
+  }
+ },
+ "examples": [
+  {
+   "text": "Ina so in yi waya zuwa soket, 1.5 ko 2.5?",
+   "note": "Girman kebul — tambayar da aka fi yi",
+   "en": "I wan run wire for socket, 1.5 abi 2.5?"
+  },
+  {
+   "text": "Don soket na AC na yi amfani da 1.5 kawai, sannan na haɗa ƙasa da neutral domin tester ya nuna daidai.",
+   "note": "Muhimman alamomin tsaro guda biyu",
+   "en": "For the AC socket I just run 1.5, and I join the earth to the neutral so the tester go show correct."
+  },
+  {
+   "text": "Akwatin rarraba na abokin ciniki yana da breaker kawai, babu earth leakage. Ya ce yana da lafiya saboda akwai breaker.",
+   "note": "Kuskuren fahimta game da kariyar lantarki",
+   "en": "My customer board get only breaker, no earth leakage. Him say him safe because breaker dey."
+  },
+  {
+   "text": "Na haɗa janareta kai tsaye, ban sa changeover ba. Line kawai nake kashewa.",
+   "note": "Haɗarin dawo da wuta baya",
+   "en": "I connect the gen direct, I no put change over. Na only line I switch."
+  },
+  {
+   "text": "Wane insulation resistance ya kamata in samu kafin a kunna wuta?",
+   "note": "Gwaji da tantancewa",
+   "en": "What insulation resistance should I get before energising?"
+  },
+  {
+   "text": "Ta yaya zan gyara carburettor na janareta?",
+   "note": "Bayan fakitin — ya kamata a ƙi",
+   "en": "How I go fix generator carburettor?"
+  }
+ ],
+ "trade": "Shigar da Wutar Lantarki a Gida",
+ "conductors": [
+  {
+   "role": "Layi",
+   "colour": "ruwan kasa"
+  },
+  {
+   "role": "Tsaka-tsaki",
+   "colour": "shuɗi"
+  },
+  {
+   "role": "Duniya",
+   "colour": "kore da rawaya"
+  }
+ ]
+}

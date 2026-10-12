@@ -1,0 +1,1528 @@
+<meta charset="utf-8">
+<title>SabiPass</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: mobile app shell — sticky identity bar, single scrolling column, fixed five-tab bar.
+   Palette is the trade's own conductor colour code: brown line, blue neutral, green-and-yellow
+   earth, on a deep insulation green. The earth colour is the accent because in this trade it is
+   the one colour that already means "protection". */
+:root{
+  --paper:#F3F6F1; --surface:#FFFFFF; --surface-2:#E9EEE6; --surface-3:#DFE6DB;
+  --ink:#0F1A13; --ink-2:#3B4D43; --ink-3:#697B70; --line:#D5DDD0; --line-2:#C2CCBC;
+  --brand:#0B5A3D; --brand-2:#0E7050; --brand-soft:#E1EFE6; --brand-ink:#06331F;
+  --earth:#8CA300; --earth-bright:#C3DF14; --earth-soft:#F2F7DA;
+  --cond-line:#8A5A3C; --cond-neutral:#2366A8; --cond-earth:#8CA300;
+  --crit:#AE2318; --crit-soft:#FBE9E6; --crit-line:#F0C4BE;
+  --high:#9A5400; --high-soft:#FBF0E2; --high-line:#EFD7B6;
+  --med:#64590A; --med-soft:#F8F5DE; --med-line:#E4DEB2;
+  --ok:#0B5A3D; --ok-soft:#E1EFE6;
+  --shadow:0 1px 2px rgba(15,26,19,.06), 0 6px 18px -8px rgba(15,26,19,.14);
+  --shadow-lift:0 2px 6px rgba(15,26,19,.08), 0 18px 36px -14px rgba(15,26,19,.22);
+  --display:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --r:14px; --r-sm:9px; --r-lg:20px;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --paper:#0A100C; --surface:#131C16; --surface-2:#1C271F; --surface-3:#24312a;
+  --ink:#E7EFE8; --ink-2:#ADBDB2; --ink-3:#7D8F83; --line:#263329; --line-2:#334338;
+  --brand:#45BE87; --brand-2:#5CD39B; --brand-soft:#15271D; --brand-ink:#A6E6C4;
+  --earth:#C3DF14; --earth-bright:#D7EE4A; --earth-soft:#1E2410;
+  --cond-line:#C08A66; --cond-neutral:#6AA6E0; --cond-earth:#C3DF14;
+  --crit:#FF9B90; --crit-soft:#2B1411; --crit-line:#4A211B;
+  --high:#F0B964; --high-soft:#2A1E0C; --high-line:#443112;
+  --med:#DED08A; --med-soft:#23210E; --med-line:#3A3618;
+  --ok:#45BE87; --ok-soft:#15271D;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px -8px rgba(0,0,0,.5);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.45), 0 18px 36px -14px rgba(0,0,0,.6);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0A100C; --surface:#131C16; --surface-2:#1C271F; --surface-3:#24312a;
+  --ink:#E7EFE8; --ink-2:#ADBDB2; --ink-3:#7D8F83; --line:#263329; --line-2:#334338;
+  --brand:#45BE87; --brand-2:#5CD39B; --brand-soft:#15271D; --brand-ink:#A6E6C4;
+  --earth:#C3DF14; --earth-bright:#D7EE4A; --earth-soft:#1E2410;
+  --cond-line:#C08A66; --cond-neutral:#6AA6E0; --cond-earth:#C3DF14;
+  --crit:#FF9B90; --crit-soft:#2B1411; --crit-line:#4A211B;
+  --high:#F0B964; --high-soft:#2A1E0C; --high-line:#443112;
+  --med:#DED08A; --med-soft:#23210E; --med-line:#3A3618;
+  --ok:#45BE87; --ok-soft:#15271D;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px -8px rgba(0,0,0,.5);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.45), 0 18px 36px -14px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+/* Must out-rank the component rules below: .stack sets display:flex, which otherwise beats the
+   browser's default [hidden]{display:none} and leaves every tab's view stacked on screen at once. */
+[hidden]{display:none!important}
+img{max-width:100%}
+html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+:focus-visible{outline:2.5px solid var(--earth);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ---------- shell ---------- */
+#app{display:flex;flex-direction:column;min-height:100%;max-width:520px;margin:0 auto;
+  background:var(--paper);position:relative}
+@media(min-width:540px){#app{box-shadow:0 0 0 1px var(--line)}}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--paper);
+  border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;gap:10px;padding:9px 16px}
+.mark{display:flex;align-items:center;gap:8px;min-width:0}
+.mark svg{flex:none;display:block}
+.wordmark{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.03em;
+  line-height:1;white-space:nowrap}
+.wordmark i{font-style:normal;color:var(--brand)}
+.bar-sp{flex:1;min-width:0}
+.chipbtn{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;
+  border:1px solid var(--line-2);background:var(--surface);font-size:11.5px;font-weight:600;
+  color:var(--ink-2);white-space:nowrap}
+.chipbtn.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chipbtn.warn{background:var(--high-soft);border-color:var(--high-line);color:var(--high)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+
+.langrow{display:flex;gap:6px;padding:0 16px 9px;overflow-x:auto;scrollbar-width:none}
+.langrow::-webkit-scrollbar{display:none}
+.lang{flex:none;padding:5px 11px;border-radius:999px;border:1px solid var(--line-2);
+  background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:6px}
+.lang.sel{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.lang b{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:1.5px 4px;border-radius:3px;background:var(--high-soft);color:var(--high)}
+.lang.sel b{background:rgba(255,255,255,.16);color:inherit}
+
+main{flex:1;padding:0 16px;padding-block:16px 108px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--surface);
+  border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar-in{display:flex;max-width:520px;margin:0 auto}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 9px;
+  color:var(--ink-3);font-size:10.5px;font-weight:600;letter-spacing:.01em;position:relative}
+.tab svg{display:block}
+.tab[aria-selected="true"]{color:var(--brand)}
+.tab[aria-selected="true"]::before{content:"";position:absolute;top:0;left:50%;translate:-50% 0;
+  width:22px;height:2.5px;border-radius:0 0 3px 3px;background:var(--brand)}
+.tab .pip{position:absolute;top:5px;right:calc(50% - 18px);min-width:15px;height:15px;padding:0 4px;
+  border-radius:999px;background:var(--crit);color:var(--crit-soft);font-size:9.5px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--body)}
+
+/* ---------- primitives ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow)}
+.pad{padding:14px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.stack-sm{display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px}
+.row-top{display:flex;align-items:flex-start;gap:10px}
+.eyebrow{font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
+.h-lg{font-size:25px;font-weight:800;line-height:1.1}
+.h-md{font-size:18px;font-weight:700;line-height:1.2}
+.h-sm{font-size:15px;font-weight:700;line-height:1.3}
+.sub{color:var(--ink-2);font-size:13.5px}
+.tiny{color:var(--ink-3);font-size:12px}
+.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:-.01em}
+.ref{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;
+  padding:3px 7px;border-radius:5px;background:var(--brand-soft);color:var(--brand);
+  border:1px solid color-mix(in srgb,var(--brand) 22%,transparent);word-break:break-word}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 15px;
+  border-radius:11px;background:var(--brand);color:#fff;font-weight:600;font-size:14px;
+  transition:filter .14s}
+.btn:active{filter:brightness(.92)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-2)}
+.btn.soft{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:8px 12px;font-size:13px;border-radius:9px}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.02em}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.crit{background:var(--crit-soft);color:var(--crit)}
+.pill.high{background:var(--high-soft);color:var(--high)}
+.pill.med{background:var(--med-soft);color:var(--med)}
+.pill.idle{background:var(--surface-2);color:var(--ink-3)}
+.pill.earth{background:var(--earth-soft);color:var(--earth)}
+hr.sep{border:0;border-top:1px solid var(--line);margin:0}
+
+/* conductor chips — the trade's own colour code, used as information */
+.cond{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
+  color:var(--ink-2)}
+.cond s{width:11px;height:11px;border-radius:3px;flex:none;text-decoration:none;
+  border:1px solid rgba(0,0,0,.18)}
+.cond.l s{background:var(--cond-line)} .cond.n s{background:var(--cond-neutral)}
+.cond.e s{background:linear-gradient(135deg,var(--cond-earth) 0 48%,#FFD500 52% 100%)}
+
+/* ---------- ask ---------- */
+.mic-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0 2px}
+.mic{width:98px;height:98px;border-radius:50%;background:var(--brand);color:#fff;
+  display:grid;place-items:center;box-shadow:0 10px 28px -10px color-mix(in srgb,var(--brand) 60%,transparent);
+  position:relative;transition:transform .12s}
+.mic:active{transform:scale(.96)}
+.mic.live{background:var(--crit);animation:pulse 1.5s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--crit) 45%,transparent)}
+  100%{box-shadow:0 0 0 22px transparent}}
+.mic[disabled]{background:var(--surface-3);color:var(--ink-3);box-shadow:none;pointer-events:none}
+.bubble{background:var(--ink);color:var(--paper);padding:11px 13px;border-radius:14px 14px 4px 14px;
+  align-self:flex-end;max-width:88%;font-size:14.5px}
+.bubble .tag{font-family:var(--mono);font-size:10px;opacity:.6;display:block;margin-bottom:3px}
+.bubble mark{background:color-mix(in srgb,var(--earth-bright) 42%,transparent);color:inherit;
+  border-radius:3px;padding:0 2px}
+.ans{border-left:3px solid var(--brand)}
+.safety{border-left:3px solid var(--crit);background:var(--crit-soft);border-color:var(--crit-line)}
+.safety.high{border-left-color:var(--high);background:var(--high-soft);border-color:var(--high-line)}
+.safety.med{border-left-color:var(--med);background:var(--med-soft);border-color:var(--med-line)}
+.refusal{border-left:3px solid var(--ink-3);background:var(--surface-2)}
+.exlist{display:flex;flex-direction:column;gap:6px}
+.ex{text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--line);
+  background:var(--surface);font-size:13.5px;color:var(--ink);display:flex;gap:9px;align-items:flex-start}
+.ex:active{background:var(--surface-2)}
+.ex em{font-style:normal;color:var(--ink-3);font-size:11.5px;display:block;margin-top:2px}
+.meter{display:flex;gap:3px;align-items:center}
+.meter i{width:16px;height:4px;border-radius:2px;background:var(--surface-3)}
+.meter i.f{background:var(--brand)}
+
+/* ---------- lessons ---------- */
+.lesson{display:flex;gap:11px;padding:13px;align-items:flex-start;width:100%;text-align:left}
+.lnum{width:30px;height:30px;border-radius:9px;background:var(--surface-2);color:var(--ink-2);
+  font-family:var(--display);font-weight:700;font-size:14px;display:grid;place-items:center;flex:none}
+.lnum.done{background:var(--brand);color:#fff}
+.kp{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--ink-2)}
+.kp::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--earth);
+  flex:none;margin-top:7px}
+.rub{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+.rub:first-of-type{border-top:0}
+.tick{width:19px;height:19px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:11px;font-weight:700;background:var(--surface-3);color:var(--ink-3)}
+.tick.y{background:var(--ok-soft);color:var(--ok)} .tick.n{background:var(--crit-soft);color:var(--crit)}
+.dl{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--ink-3)}
+
+/* ---------- recall / whatsapp facsimile ---------- */
+.wa{background:#E4DDD4;border-radius:var(--r);padding:12px;border:1px solid var(--line)}
+:root[data-theme="dark"] .wa,:root:not([data-theme="light"]) .wa{background:#161F1A}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .wa{background:#E4DDD4}}
+.wa-msg{background:#fff;border-radius:4px 12px 12px 12px;padding:10px 11px;max-width:92%;
+  box-shadow:0 1px 1px rgba(0,0,0,.1);color:#0F1A13}
+:root[data-theme="dark"] .wa-msg,:root:not([data-theme="light"]) .wa-msg{background:#1F2B24;color:#E7EFE8}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .wa-msg{background:#fff;color:#0F1A13}}
+.wa-vn{display:flex;align-items:center;gap:9px}
+.wa-wave{flex:1;height:22px;display:flex;align-items:center;gap:2px}
+.wa-wave i{flex:1;background:currentColor;opacity:.3;border-radius:1px}
+.keypad{display:flex;gap:10px}
+.key{flex:1;padding:16px 10px;border-radius:12px;border:1.5px solid var(--line-2);
+  background:var(--surface);text-align:left}
+.key:active{background:var(--surface-2)}
+.key b{font-family:var(--display);font-size:20px;font-weight:800;display:block;color:var(--brand)}
+.key span{font-size:13px;color:var(--ink);display:block;margin-top:2px}
+
+/* ---------- passport ---------- */
+.ppt{background:linear-gradient(160deg,var(--brand) 0%,var(--brand-ink,#06331F) 100%);
+  color:#fff;border-radius:var(--r-lg);padding:16px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lift)}
+.ppt::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;
+  border-radius:50%;background:rgba(255,255,255,.055)}
+.ppt .seal{position:absolute;right:14px;bottom:14px;opacity:.9}
+.vcode{font-family:var(--mono);font-size:19px;font-weight:500;letter-spacing:.06em;
+  background:var(--surface-2);border:1px dashed var(--line-2);border-radius:10px;
+  padding:11px;text-align:center;color:var(--ink)}
+.comp{display:flex;gap:10px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start}
+.comp:first-of-type{border-top:0}
+#qr{display:grid;place-items:center;padding:12px;background:#fff;border-radius:10px;
+  border:1px solid var(--line)}
+#qr img,#qr canvas{display:block}
+
+/* ---------- trainer ---------- */
+.flag{display:flex;gap:10px;padding:12px;border-radius:var(--r-sm);border:1px solid var(--crit-line);
+  background:var(--crit-soft);align-items:flex-start}
+.flag.high{border-color:var(--high-line);background:var(--high-soft)}
+.flag.med{border-color:var(--med-line);background:var(--med-soft)}
+.sev{width:3px;border-radius:2px;align-self:stretch;background:var(--crit);flex:none}
+.flag.high .sev{background:var(--high)} .flag.med .sev{background:var(--med)}
+
+/* ---------- sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(10,16,12,.5);z-index:60;
+  animation:fade .18s ease-out}
+@keyframes fade{from{opacity:0}}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--paper);
+  border-radius:var(--r-lg) var(--r-lg) 0 0;max-width:520px;margin:0 auto;max-height:90vh;
+  display:flex;flex-direction:column;animation:up .22s cubic-bezier(.2,.8,.2,1);
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+@keyframes up{from{transform:translateY(100%)}}
+.sheet-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line);
+  flex:none}
+.sheet-b{overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch}
+.x{width:30px;height:30px;border-radius:50%;background:var(--surface-2);display:grid;
+  place-items:center;flex:none;color:var(--ink-2);font-size:15px}
+
+.banner{display:flex;gap:9px;padding:10px 12px;border-radius:var(--r-sm);font-size:12.5px;
+  background:var(--high-soft);border:1px solid var(--high-line);color:var(--high);align-items:flex-start}
+.banner.quiet{background:var(--surface-2);border-color:var(--line);color:var(--ink-2)}
+.empty{text-align:center;padding:30px 16px;color:var(--ink-3)}
+.boot{position:fixed;inset:0;background:var(--paper);display:grid;place-items:center;z-index:90}
+label.sw{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;
+  border-top:1px solid var(--line)}
+label.sw:first-of-type{border-top:0}
+input[type=checkbox].sw-i{appearance:none;width:42px;height:25px;border-radius:999px;
+  background:var(--surface-3);position:relative;transition:background .15s;flex:none;cursor:pointer}
+input[type=checkbox].sw-i::after{content:"";position:absolute;top:2.5px;left:2.5px;width:20px;
+  height:20px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+input[type=checkbox].sw-i:checked{background:var(--brand)}
+input[type=checkbox].sw-i:checked::after{left:19.5px}
+.tnum{font-variant-numeric:tabular-nums}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{padding:11px;border-radius:var(--r-sm);background:var(--surface-2);min-width:0}
+.stat b{font-family:var(--display);font-size:21px;font-weight:800;display:block;line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.stat span{font-size:11.5px;color:var(--ink-3);display:block;margin-top:2px}
+img.ev{width:100%;max-width:100%;border-radius:var(--r-sm);border:1px solid var(--line);display:block}
+</style>
+
+<div class="boot" id="boot">
+  <div style="text-align:center;padding:0 24px">
+    <svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true" style="margin:0 auto 12px;display:block">
+      <rect x="2" y="2" width="40" height="40" rx="11" fill="#0B5A3D"/>
+      <path d="M22 9l-7 12h5.2l-1.6 9.5L26 19h-5.2z" fill="#C3DF14"/>
+      <circle cx="22" cy="35" r="2.2" fill="#fff" opacity=".85"/>
+    </svg>
+    <div class="wordmark" style="font-size:20px;justify-content:center">Sabi<i>Pass</i></div>
+    <p class="tiny" style="margin-top:8px" id="bootmsg">Loading language registry and content pack…</p>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="bar">
+    <div class="bar-in">
+      <div class="mark">
+        <svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true">
+          <rect x="2" y="2" width="40" height="40" rx="11" fill="var(--brand)"/>
+          <path d="M22 9l-7 12h5.2l-1.6 9.5L26 19h-5.2z" fill="var(--earth-bright)"/>
+          <circle cx="22" cy="35" r="2.2" fill="#fff" opacity=".8"/>
+        </svg>
+        <span class="wordmark">Sabi<i>Pass</i></span>
+      </div>
+      <span class="bar-sp"></span>
+      <button class="chipbtn" id="netBtn" aria-pressed="false"><span class="dot"></span><span id="netLbl">Online</span></button>
+      <button class="chipbtn" id="moreBtn" aria-label="Settings and about">•••</button>
+    </div>
+    <div class="langrow" id="langrow"></div>
+  </header>
+
+  <main>
+    <section id="v-ask" class="stack"></section>
+    <section id="v-learn" class="stack" hidden></section>
+    <section id="v-recall" class="stack" hidden></section>
+    <section id="v-passport" class="stack" hidden></section>
+    <section id="v-trainer" class="stack" hidden></section>
+  </main>
+
+  <nav class="tabbar" role="tablist" aria-label="Main">
+    <div class="tabbar-in" id="tabs"></div>
+  </nav>
+</div>
+
+<div id="sheetHost"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ════════ storage (must survive being blocked) ════════ */
+const LS="sabipass.v1";
+function load(){ try{ const r=localStorage.getItem(LS); return r?JSON.parse(r):null }catch(e){ return null } }
+function save(){ try{ localStorage.setItem(LS,JSON.stringify(S)) }catch(e){} }
+
+/* ════════ state ════════ */
+const LEARNER={ name:"Chidi Okafor", trade:"Domestic Electrical Installation",
+  place:"Ojodu, Lagos", year:"3rd-year apprentice", trainer:"Eng. Yusuf Bello",
+  trainerRole:"Master craftsman · 19 years" };
+
+let PACK=null, LANGS=null, RULES=[], UIEN={}, LOC=null;
+const LOCCACHE={};
+
+/* ════════ localization ════════
+ * The English pack is the authority. Every other language is a locale file built once by
+ * `npm run localize` and shipped with the pack, so a learner can ask, read and listen in their
+ * own language with the radio off. Nothing is translated at ask time.
+ */
+async function setLang(code){
+  S.lang=code; save();
+  if(code==="en"){ LOC=null; return }
+  if(LOCCACHE[code]){ LOC=LOCCACHE[code]; return }
+  let loc=null;
+  try{
+    const r=await fetch("content-packs/"+PACK.id+"/locales/"+code+".json");
+    if(r.ok) loc=await r.json();
+  }catch(e){}
+  if(loc){ try{ localStorage.setItem("sabipass.loc."+code,JSON.stringify(loc)) }catch(e){} }
+  else { try{ const c=localStorage.getItem("sabipass.loc."+code); if(c) loc=JSON.parse(c) }catch(e){} }
+  LOC=loc; if(loc) LOCCACHE[code]=loc;
+}
+function T(k,vars){
+  let s=(LOC&&LOC.ui&&LOC.ui[k])||UIEN[k]||k;
+  if(vars) for(const v in vars) s=s.split("{"+v+"}").join(vars[v]);
+  return s;
+}
+const PXP=p=>(LOC&&LOC.passages&&LOC.passages[p.id])||{};
+const pAns=p=>PXP(p).answer||p.answer;
+const pSpk=p=>PXP(p).spoken||p.spoken;
+/* Search the English cues AND the localized ones. Nigerian artisans code-switch constantly —
+   the technical nouns stay English inside a Yoruba or Hausa sentence — so matching both is
+   what actually works on site. */
+const pCues=p=>{ const l=PXP(p).cues; return (l&&l.length)?p.cues.concat(l):p.cues };
+const LXL=n=>(LOC&&LOC.lessons&&LOC.lessons[String(n)])||{};
+const lTitle=l=>LXL(l.n).title||l.title;
+const lSub=l=>LXL(l.n).subtitle||l.subtitle;
+const lKeys=l=>LXL(l.n).keyPoints||l.keyPoints;
+const lPrompt=l=>LXL(l.n).practicePrompt||l.practice.prompt;
+const lSpokenP=l=>LXL(l.n).practiceSpoken||l.practice.spokenPrompt;
+const lCheck=l=>LXL(l.n).checklist||l.practice.checklist||[];
+const lRubric=l=>LXL(l.n).rubricPoints||(l.practice.rubric||[]).map(r=>r.point);
+const RXR=n=>(LOC&&LOC.recall&&LOC.recall[String(n)])||{};
+const rQ=r=>RXR(r.lesson).question||r.question;
+const rSpk=r=>RXR(r.lesson).spoken||r.spoken;
+const rOpts=r=>RXR(r.lesson).options||r.options;
+const SXS=id=>(LOC&&LOC.safety&&LOC.safety[id])||{};
+const sLabel=r=>SXS(r.id).label||r.label;
+const sCorr=r=>SXS(r.id).correction||r.correction;
+const tradeName=()=>(LOC&&LOC.trade)||PACK.trade;
+const conductors=()=>{
+  const c=LOC&&LOC.conductors;
+  return (c&&c.length===PACK.conductorColours.length)
+    ? PACK.conductorColours.map((x,i)=>({role:c[i].role,colour:c[i].colour,key:x.role.charAt(0).toLowerCase()}))
+    : PACK.conductorColours.map(x=>({role:x.role,colour:x.colour,key:x.role.charAt(0).toLowerCase()}));
+};
+const evLabel=t=>t==="voice-viva"?T("practice.voiceViva")
+  :t==="photo-evidence"?T("practice.photo")
+  :t==="recall"?T("evidence.recall"):t;
+let S = Object.assign({
+  lang:"pcm", tab:"ask", offline:false, trainer:false, kb:0, day:0,
+  lessons:{}, evidence:[], flags:[], recalls:[], thread:[], signed:{}, textOnly:false
+}, load()||{});
+
+/* ════════ boot ════════ */
+async function boot(){
+  const bm=document.getElementById("bootmsg");
+  try{
+    const [lr,pr,ur]=await Promise.all([
+      fetch("config/languages.json").then(r=>r.json()),
+      fetch("content-packs/electrical-domestic/pack.json").then(r=>r.json()),
+      fetch("config/ui-en.json").then(r=>r.json())
+    ]);
+    LANGS=lr; PACK=pr; UIEN=ur;
+    try{ localStorage.setItem("sabipass.pack",JSON.stringify({LANGS,PACK,UIEN})) }catch(e){}
+  }catch(err){
+    try{ const c=JSON.parse(localStorage.getItem("sabipass.pack")); LANGS=c.LANGS; PACK=c.PACK; UIEN=c.UIEN||{}; }
+    catch(e){ bm.textContent="Could not load the content pack. Reload the page."; return }
+  }
+  RULES=PACK.safetyRules.map(r=>Object.assign({},r,{
+    rx:r.patterns.map(p=>{ try{ return new RegExp(p,"i") }catch(e){ return null } }).filter(Boolean)
+  }));
+  const g=PACK.assertionGuard||{};
+  try{ GUARD={q:g.question?new RegExp(g.question,"i"):null,
+              a:g.assertion?new RegExp(g.assertion,"i"):null} }catch(e){ GUARD={q:null,a:null} }
+  buildLex();
+  S.kb = S.kb || 41;            // honest: the one-time pack download
+  bm.textContent="Loading "+(lang(S.lang)||{}).name+"…";
+  await Promise.all([probeSpeech(), setLang(S.lang||"pcm")]);
+  document.getElementById("boot").remove();
+  document.getElementById("app").hidden=false;
+  renderLangs(); renderTabs(); go(S.tab||"ask");
+}
+
+/* ════════ helpers ════════ */
+const $=(s,r)=>(r||document).querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t); if(c)n.className=c; if(h!=null)n.innerHTML=h; return n};
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const norm=s=>String(s).toLowerCase().replace(/[^\w\s.²]/g," ").replace(/\s+/g," ").trim();
+const lang=c=>(LANGS.languages.find(l=>l.code===c)||LANGS.languages[0]);
+const lessonOf=n=>PACK.lessons.find(l=>l.n===n);
+const psg=id=>PACK.passages.find(p=>p.id===id);
+const L=n=>(S.lessons[n]=S.lessons[n]||{dl:false,read:false,practice:null});
+const DAY0=new Date("2026-10-08T09:00:00");
+const now=()=>new Date(DAY0.getTime()+S.day*864e5);
+const fmtDay=d=>d.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+
+function ic(p,sz){ return '<svg width="'+(sz||20)+'" height="'+(sz||20)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>' }
+const ICON={
+  ask:'<path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/>',
+  learn:'<path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H10a2 2 0 0 1 2 2v16a1.5 1.5 0 0 0-1.5-1.5H5.5A2.5 2.5 0 0 1 3 17z"/><path d="M21 5.5A2.5 2.5 0 0 0 18.5 3H14a2 2 0 0 0-2 2v16a1.5 1.5 0 0 1 1.5-1.5h5A2.5 2.5 0 0 0 21 17z"/>',
+  recall:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+  pass:'<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10.5" r="2.2"/><path d="M5.6 17c.7-1.9 1.9-2.8 3.4-2.8s2.7.9 3.4 2.8"/><path d="M15 9.5h4M15 13h4"/>',
+  trainer:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
+  play:'<path d="M6 4l14 8-14 8z" fill="currentColor" stroke="none"/>',
+  dl:'<path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/>',
+  shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+  warn:'<path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+  cam:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>', x:'<path d="M18 6 6 18M6 6l12 12"/>',
+  pen:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  ff:'<path d="M13 19l9-7-9-7z"/><path d="M2 19l9-7-9-7z"/>',
+  wifi:'<path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5.5 5.5 0 0 1 7 0"/><path d="M12 20h.01"/>'
+};
+
+/* ════════ speech ════════
+ * Two providers behind one interface. Spitch when a local server is running with a key
+ * (real Nigerian-language ASR and TTS); the browser's own Web Speech engine otherwise, which
+ * is what the published demo page uses. The app never holds the API key — the server does.
+ */
+const SR = window.SpeechRecognition||window.webkitSpeechRecognition;
+const SPEECH={mode:"webspeech",langs:{},server:false};
+async function probeSpeech(){
+  try{
+    const r=await fetch("api/health",{cache:"no-store"});
+    if(!r.ok) return;
+    if((r.headers.get("content-type")||"").indexOf("json")<0) return;
+    const j=await r.json();
+    SPEECH.server=true; SPEECH.langs=j.languages||{};
+    if(j.spitch) SPEECH.mode="spitch";
+  }catch(e){ /* no local server: stay on Web Speech */ }
+}
+const provider=()=>SPEECH.mode==="spitch"?"Spitch":"Browser speech";
+
+/* ---- output ---- */
+let audioEl=null; const ttsCache=new Map();
+async function speak(text,code){
+  if(S.textOnly||!text) return;
+  const c=code||S.lang;
+  if(SPEECH.mode==="spitch"){
+    try{ return await speakSpitch(text,c) }
+    catch(e){ /* fall through to the browser engine rather than going silent */ }
+  }
+  speakWeb(text);
+}
+async function speakSpitch(text,c){
+  const k=c+"|"+text;
+  let url=ttsCache.get(k);
+  if(!url){
+    const r=await fetch("api/tts",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({text,lang:c})});
+    if(!r.ok){
+      try{ const j=await r.json(); if(j.code==="insufficient_credits"){ SPEECH.mode="webspeech"; toast(j.error) } }catch(e){}
+      throw new Error("tts");
+    }
+    const b=await r.blob();
+    url=URL.createObjectURL(b); ttsCache.set(k,url);   // replays are free
+    S.kb+=Math.round(b.size/1024); save();
+  }
+  try{ if(audioEl) audioEl.pause() }catch(e){}
+  audioEl=new Audio(url);
+  await audioEl.play();
+}
+function speakWeb(text){
+  try{
+    const sy=window.speechSynthesis; if(!sy) return;
+    sy.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    const vs=sy.getVoices()||[];
+    const v=vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith("en-ng"))||
+            vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith("en-gb"))||
+            vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith("en"));
+    if(v) u.voice=v;
+    u.rate=.94; u.pitch=1;
+    sy.speak(u);
+  }catch(e){}
+}
+
+/* ---- input ---- */
+const CAP={on:false,mode:null,mr:null,stream:null,chunks:[],rec:null,cb:null};
+let ASRBUSY=false;
+const capActive=()=>CAP.on;
+function capAvailable(){
+  return (SPEECH.mode==="spitch" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+          && window.MediaRecorder) || !!SR;
+}
+function capDone(text,err){ const c=CAP.cb; CAP.cb=null; CAP.on=false; if(c) c(text,err) }
+
+async function capStart(cb){
+  if(CAP.on) return;
+  CAP.cb=cb;
+  if(SPEECH.mode==="spitch" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder){
+    CAP.mode="spitch";
+    try{
+      CAP.stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,
+        noiseSuppression:true,echoCancellation:true,autoGainControl:true}});
+    }catch(e){ return capDone(null,"mic-denied") }
+    CAP.chunks=[];
+    try{ CAP.mr=new MediaRecorder(CAP.stream) }catch(e){ return capDone(null,"recorder") }
+    CAP.mr.ondataavailable=e=>{ if(e.data&&e.data.size) CAP.chunks.push(e.data) };
+    CAP.mr.onstop=async()=>{
+      try{ CAP.stream.getTracks().forEach(t=>t.stop()) }catch(e){}
+      const blob=new Blob(CAP.chunks,{type:(CAP.mr&&CAP.mr.mimeType)||"audio/webm"});
+      if(!blob.size) return capDone(null,"no-audio");
+      try{
+        const wav=await toWav(blob,16000);     // Spitch takes wav/mp3/m4a/ogg, not webm
+        const r=await fetch("api/asr?lang="+encodeURIComponent(S.lang),
+          {method:"POST",headers:{"Content-Type":"audio/wav"},body:wav});
+        const j=await r.json();
+        if(!r.ok){
+          // Degrade rather than go mute: drop to the browser engine for the rest of the session.
+          if(j.code==="insufficient_credits") SPEECH.mode="webspeech";
+          throw new Error(j.error||"transcription failed");
+        }
+        S.kb+=(j.kb||0); save();
+        capDone(j.text||"",(j.text||"").trim()?null:"no-speech");
+      }catch(e){ capDone(null,e.message||"asr-failed") }
+    };
+    CAP.mr.start(); CAP.on=true; return;
+  }
+  if(!SR) return capDone(null,"unavailable");
+  CAP.mode="webspeech";
+  try{
+    CAP.rec=new SR();
+    CAP.rec.lang=lang(S.lang).webSpeechFallback||"en-NG";
+    CAP.rec.interimResults=false; CAP.rec.maxAlternatives=1;
+    let got=null;
+    CAP.rec.onresult=e=>{ got=e.results[0][0].transcript };
+    CAP.rec.onerror=e=>capDone(null,e.error);
+    CAP.rec.onend=()=>{ if(CAP.cb) capDone(got,got?null:"no-speech") };
+    CAP.rec.start(); CAP.on=true;
+  }catch(e){ capDone(null,"failed") }
+}
+function capStop(){
+  if(!CAP.on) return;
+  if(CAP.mode==="spitch"){ try{ CAP.mr.stop() }catch(e){ capDone(null,"stop-failed") } }
+  else { try{ CAP.rec.stop() }catch(e){ capDone(null,"stop-failed") } }
+}
+const CAPERR={ "mic-denied":"Microphone blocked. Allow it in your browser, or tap an example below.",
+  "no-audio":"Nothing recorded — hold the button while you speak.",
+  "no-speech":"I did not catch that. Try again, or tap an example below.",
+  "unavailable":"Voice input is not available in this browser. Tap an example below.",
+  "recorder":"This browser cannot record audio. Tap an example below." };
+const capErrMsg=e=>CAPERR[e]||("Speech failed: "+e);
+
+/* Decode whatever the recorder produced, resample to 16 kHz mono, encode WAV.
+   16 kHz mono is about 32 KB per second — small enough to send on a weak connection,
+   and the format the provider actually accepts. */
+async function toWav(blob,rate){
+  const ab=await blob.arrayBuffer();
+  const AC=window.AudioContext||window.webkitAudioContext;
+  const ac=new AC();
+  let buf;
+  try{ buf=await ac.decodeAudioData(ab) } finally { try{ ac.close() }catch(e){} }
+  const off=new OfflineAudioContext(1,Math.max(1,Math.ceil(buf.duration*rate)),rate);
+  const src=off.createBufferSource(); src.buffer=buf; src.connect(off.destination); src.start();
+  const out=await off.startRendering();
+  return wavBlob(out.getChannelData(0),rate);
+}
+function wavBlob(f32,rate){
+  const n=f32.length, ab=new ArrayBuffer(44+n*2), v=new DataView(ab);
+  const w=(o,s)=>{ for(let i=0;i<s.length;i++) v.setUint8(o+i,s.charCodeAt(i)) };
+  w(0,"RIFF"); v.setUint32(4,36+n*2,true); w(8,"WAVE"); w(12,"fmt ");
+  v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,rate,true); v.setUint32(28,rate*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true);
+  w(36,"data"); v.setUint32(40,n*2,true);
+  let o=44;
+  for(let i=0;i<n;i++){ const s=Math.max(-1,Math.min(1,f32[i])); v.setInt16(o,s<0?s*0x8000:s*0x7FFF,true); o+=2 }
+  return new Blob([ab],{type:"audio/wav"});
+}
+
+/* ════════ retrieval — lexical, local, 0 KB ════════ */
+/* Lexicon keys match on word boundaries, never as substrings: "ac" must not fire inside
+   "machine", "contact" or "backup", which otherwise drags air-conditioner passages into
+   unrelated questions. */
+let LEX=[];
+function buildLex(){
+  LEX=Object.keys(PACK.lexicon).filter(k=>k.charAt(0)!=="_").map(k=>({
+    rx:new RegExp("\\b"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i"),
+    vals:PACK.lexicon[k]
+  }));
+}
+function expand(q){
+  const t=norm(q); const out=new Set(t.split(" ").filter(w=>w.length>1));
+  LEX.forEach(e=>{ if(e.rx.test(t)) e.vals.forEach(v=>norm(v).split(" ").forEach(w=>out.add(w))) });
+  return [...out];
+}
+const STOP=new Set("the a an and or for of to in on is it i you my me we go dey na abi wan want how what which why do does can should am be with that this no not".split(" "));
+function retrieve(q){
+  const toks=expand(q).filter(w=>!STOP.has(w));
+  const df={}; PACK.passages.forEach(p=>{
+    const bag=norm(pCues(p).join(" ")+" "+p.topic+" "+p.answer+" "+pAns(p));
+    toks.forEach(w=>{ if(bag.indexOf(w)>-1) df[w]=(df[w]||0)+1 });
+  });
+  const N=PACK.passages.length;
+  const scored=PACK.passages.map(p=>{
+    const cues=norm(pCues(p).join(" ")), topic=norm(p.topic), body=norm(p.answer+" "+pAns(p));
+    let s=0, ch=0;
+    toks.forEach(w=>{
+      const idf=Math.log(1+N/(1+(df[w]||0)));
+      if(cues.indexOf(w)>-1){ s+=3.0*idf; ch++ }
+      else if(topic.indexOf(w)>-1){ s+=2.0*idf; ch++ }
+      else if(body.indexOf(w)>-1) s+=0.7*idf;
+    });
+    return {p,s,ch};
+  }).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);
+  const t0=scored[0]||{s:0,ch:0};
+  return {hits:scored.slice(0,3),top:t0.s,topCh:t0.ch,toks};
+}
+/* Two gates, not one. Score alone let "how I go fix generator carburettor" reach the changeover
+   passage on the word "generator"; requiring two distinct cue hits closes that. Refusing is the
+   correct behaviour here — this trade kills people when it is guessed at. */
+const THRESHOLD=8.0, MIN_CUES=2;
+const confident=r=>r.top>=THRESHOLD&&r.topCh>=MIN_CUES;
+
+/* ════════ safety engine ════════ */
+/* A flag is raised only for described practice, never for a question. "Socket — 1.5 or 2.5?"
+   must not report the learner to their trainer: that false positive costs more trust than a
+   missed flag. Both guards live in the pack so the reviewing trainer can read them. */
+let GUARD={q:null,a:null};
+function assertsPractice(t){
+  if(GUARD.a && GUARD.a.test(t)) return true;   // explicitly describes what they did
+  if(GUARD.q && GUARD.q.test(t)) return false;  // it is a question — teach, don't escalate
+  return true;
+}
+function scan(text){
+  const t=norm(text);
+  if(!assertsPractice(t)) return [];
+  return RULES.filter(r=>r.rx.some(rx=>rx.test(t)));
+}
+
+/* ════════ ask ════════ */
+function highlight(text){
+  let h=esc(text);
+  Object.keys(PACK.lexicon).filter(k=>k.charAt(0)!=="_")
+    .sort((a,b)=>b.length-a.length).forEach(k=>{
+      const rx=new RegExp("\\b("+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")\\b","ig");
+      h=h.replace(rx,"<mark>$1</mark>");
+    });
+  return h;
+}
+
+function ask(text){
+  const t=String(text||"").trim(); if(!t) return;
+  S.thread.push({who:"learner",text:t,lang:S.lang,at:now().toISOString()});
+
+  const found=scan(t);
+  const r=retrieve(t), hits=r.hits;
+
+  let answered=null;
+  if(hits.length && confident(r)){
+    answered=hits[0].p;
+    S.thread.push({who:"pack",pid:answered.id,alt:hits.slice(1).map(h=>h.p.id),at:now().toISOString()});
+  }else{
+    S.thread.push({who:"refuse",q:t,at:now().toISOString()});
+  }
+
+  found.forEach(r=>{
+    const f={id:"f"+Date.now()+Math.random().toString(36).slice(2,6),rule:r.id,
+      said:t,at:now().toISOString(),escalated:!!r.escalate,seen:false,deleted:false};
+    S.flags.push(f);
+    S.thread.push({who:"flag",fid:f.id,at:now().toISOString()});
+  });
+
+  save(); renderAsk();
+  // A safety correction always takes the voice channel ahead of the answer.
+  const spoken = found.length ? sCorr(found[0]) : (answered ? pSpk(answered) : null);
+  if(spoken) setTimeout(()=>speak(spoken),250);
+
+  // The safety patterns are written in English and Pidgin. For the other languages, re-scan
+  // through translation when a server is reachable — the learner already has their answer, so
+  // this only ever adds a flag, never delays one.
+  if(!found.length && S.lang!=="en" && S.lang!=="pcm" && SPEECH.server && !S.offline) upgradeScan(t);
+}
+
+async function upgradeScan(t){
+  try{
+    const src=(lang(S.lang).translate||{}).target;
+    const r=await fetch("api/translate",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({text:t,source:src,target:"en"})});
+    if(!r.ok) return;
+    const j=await r.json();
+    const more=scan(j.text||"");
+    if(!more.length) return;
+    more.forEach(rule=>{
+      const f={id:"f"+Date.now()+Math.random().toString(36).slice(2,6),rule:rule.id,said:t,
+        at:now().toISOString(),escalated:!!rule.escalate,seen:false,deleted:false,via:"translated"};
+      S.flags.push(f);
+      S.thread.push({who:"flag",fid:f.id,at:now().toISOString()});
+    });
+    save();
+    if(S.tab==="ask") renderAsk();
+    renderTabs();
+    speak(sCorr(more[0]));
+  }catch(e){ /* offline or no server: the English/Pidgin scan already ran */ }
+  setTimeout(()=>{ const m=$("main"); m&&window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"}) },80);
+}
+
+function renderAsk(){
+  const v=$("#v-ask"); v.innerHTML="";
+  const lg=lang(S.lang);
+
+  if(!PACK.manifest.reviewed){
+    v.appendChild(el("div","banner",ic(ICON.warn,15)+"<div>"+esc(T("pack.demo"))+"</div>"));
+  }
+  if(LOC&&!LOC.reviewed){
+    v.appendChild(el("div","banner quiet",ic(ICON.warn,15)+"<div>"+esc(T("locale.machine"))+"</div>"));
+  }
+  if(S.lang!=="en"&&S.lang!=="pcm"){
+    v.appendChild(el("div","banner quiet",ic(ICON.shield,15)+
+      "<div>Safety detection is validated for Pidgin and English. In "+esc(lg.name)+
+      " it catches code-switched English terms, and re-checks through translation when you are online.</div>"));
+  }
+
+  const hero=el("div","stack-sm");
+  hero.appendChild(el("div","eyebrow",esc(T("ask.eyebrow"))));
+  hero.appendChild(el("h1","h-lg",esc(T("ask.title"))));
+  hero.appendChild(el("p","sub",esc(T("ask.sub"))));
+  v.appendChild(hero);
+
+  // mic
+  const mw=el("div","mic-wrap");
+  const mic=el("button","mic",ic(ICON.ask,38));
+  mic.setAttribute("aria-label",capActive()?"Stop recording":"Record a question");
+  if(capActive()) mic.classList.add("live");
+  if(!capAvailable()||ASRBUSY) mic.disabled=true;
+  mic.onclick=async()=>{
+    if(capActive()){ capStop(); if(CAP.mode==="spitch") ASRBUSY=true; renderAsk(); return }
+    await capStart((text,err)=>{
+      ASRBUSY=false;
+      if(err){ renderAsk(); toast(capErrMsg(err)); return }
+      if(text) ask(text); else renderAsk();
+    });
+    renderAsk();
+  };
+  mw.appendChild(mic);
+  mw.appendChild(el("div","tiny",
+    ASRBUSY ? esc(T("ask.transcribing"))
+    : capActive() ? esc(T("ask.listening"))
+    : capAvailable() ? esc(T("ask.tap"))+" · "+esc(lg.endonym||lg.name)
+    : esc(T("ask.unavailable"))));
+  const eng=el("div","row"); eng.style.flexWrap="wrap"; eng.style.justifyContent="center";
+  eng.appendChild(el("span","pill "+(SPEECH.mode==="spitch"?"ok":"idle"),
+    (SPEECH.mode==="spitch"?ic(ICON.shield,10)+" Spitch speech":ic(ICON.wifi,10)+" Browser speech")));
+  if(!lg.validated) eng.appendChild(el("span","pill high",ic(ICON.warn,10)+" "+esc(T("common.preview"))));
+  mw.appendChild(eng);
+  if(SPEECH.mode!=="spitch")
+    mw.appendChild(el("p","tiny",SPEECH.server
+      ? "Server running, no Spitch key. Add <span class='mono'>SPITCH_API_KEY</span> to <span class='mono'>.env</span> and restart for real Nigerian-language speech."
+      : "Run locally with <span class='mono'>npm start</span> and a Spitch key for real Nigerian-language speech."));
+  v.appendChild(mw);
+
+  // thread
+  if(S.thread.length){
+    const th=el("div","stack");
+    S.thread.forEach((m,i)=>{
+      if(m.who==="learner"){
+        const b=el("div","bubble");
+        b.innerHTML='<span class="tag">'+esc(lang(m.lang).endonym||lang(m.lang).name)+' · voice note</span>'+highlight(m.text);
+        th.appendChild(b);
+      }
+      if(m.who==="pack"){
+        const p=psg(m.pid); if(!p) return;
+        const c=el("div","card pad ans");
+        c.appendChild(el("div","row",'<span class="eyebrow">'+esc(T("ask.answer"))+'</span>'));
+        c.appendChild(el("p","",esc(pAns(p))));
+        if(LOC&&PXP(p).answer&&PXP(p).answer!==p.answer){
+          const en=el("details"); en.style.marginTop="8px";
+          en.innerHTML='<summary class="tiny" style="cursor:pointer">English (the authority)</summary>'+
+            '<p class="tiny" style="margin-top:6px">'+esc(p.answer)+'</p>';
+          c.appendChild(en);
+        }
+        const meta=el("div","row",""); meta.style.flexWrap="wrap"; meta.style.marginTop="10px";
+        meta.appendChild(el("span","ref",ic(ICON.shield,11)+" "+esc(p.ref)));
+        const pl=el("button","btn soft sm",ic(ICON.play,13)+" "+esc(T("ask.play")));
+        pl.onclick=()=>speak(pSpk(p));
+        meta.appendChild(pl);
+        c.appendChild(meta);
+        const alt=(m.alt||[]).map(psg).filter(Boolean);
+        const foot=el("div","tiny","");
+        foot.style.marginTop="9px";
+        foot.innerHTML=esc(T("ask.retrieved",{n:PACK.passages.length,lesson:p.lesson}))
+          +(alt.length?" · also matched "+alt.map(a=>esc(a.ref)).join(", "):"");
+        c.appendChild(foot);
+        th.appendChild(c);
+      }
+      if(m.who==="refuse"){
+        const c=el("div","card pad refusal");
+        c.appendChild(el("div","eyebrow",esc(T("ask.norefsource"))));
+        c.appendChild(el("p","sub",esc(T("ask.refuse",{trade:tradeName()}))));
+        c.appendChild(el("p","tiny",esc(T("ask.refuseHint"))));
+        th.appendChild(c);
+      }
+      if(m.who==="flag"){
+        const f=S.flags.find(x=>x.id===m.fid); if(!f||f.deleted) return;
+        const r=RULES.find(x=>x.id===f.rule); if(!r) return;
+        const c=el("div","card pad safety "+(r.severity==="critical"?"":r.severity));
+        const hd=el("div","row");
+        hd.appendChild(el("span","pill "+(r.severity==="critical"?"crit":r.severity),ic(ICON.warn,11)+" "+r.severity.toUpperCase()));
+        hd.appendChild(el("span","h-sm",esc(sLabel(r))));
+        c.appendChild(hd);
+        c.appendChild(el("p","",esc(sCorr(r))));
+        const mr=el("div","row",""); mr.style.flexWrap="wrap"; mr.style.marginTop="8px";
+        mr.appendChild(el("span","ref",esc(r.ref)));
+        mr.appendChild(el("span","mono",esc(r.unit)));
+        if(f.via==="translated") mr.appendChild(el("span","pill idle","found via translation"));
+        c.appendChild(mr);
+        if(r.escalate){
+          c.appendChild(el("hr","sep"));
+          const n=el("div","stack-sm"); n.style.marginTop="10px";
+          n.appendChild(el("p","tiny",esc(T("ask.notified",{trainer:LEARNER.trainer}))));
+          const btns=el("div","row");
+          const vw=el("button","btn soft sm",esc(T("ask.seeSent")));
+          vw.onclick=()=>sheetFlag(f,r);
+          const dl=el("button","btn ghost sm",esc(T("ask.deleteRecord")));
+          dl.onclick=()=>{ f.deleted=true; save(); renderAsk(); renderTabs(); toast(T("ask.deleted")) };
+          btns.appendChild(vw); btns.appendChild(dl);
+          n.appendChild(btns);
+          c.appendChild(n);
+        }
+        th.appendChild(c);
+      }
+    });
+    v.appendChild(th);
+    const clr=el("button","btn ghost sm",esc(T("ask.clear")));
+    clr.onclick=()=>{ S.thread=[]; save(); renderAsk() };
+    v.appendChild(clr);
+  }
+
+  // examples
+  const exc=el("div","card pad stack-sm");
+  exc.appendChild(el("div","eyebrow",esc(T("ask.examples"))));
+  exc.appendChild(el("p","tiny",esc(T("ask.examplesSub"))));
+  const list=el("div","exlist");
+  const locEx=(LOC&&LOC.examples&&LOC.examples.length===PACK.examples.length)?LOC.examples:null;
+  PACK.examples.forEach((x,i)=>{
+    const text=locEx?locEx[i].text:x.text;
+    const note=locEx?locEx[i].note:x.note;
+    const b=el("button","ex");
+    b.innerHTML='<span style="color:var(--brand);flex:none;margin-top:1px">'+ic(ICON.play,14)+'</span>'+
+      '<span style="min-width:0">“'+esc(text)+'”<em>'+esc(note)+'</em></span>';
+    // With a locale loaded the examples are already in the current language, so stay in it.
+    b.onclick=async()=>{
+      if(!locEx && x.lang!==S.lang){ await setLang(x.lang); renderLangs() }
+      ask(text);
+    };
+    list.appendChild(b);
+  });
+  exc.appendChild(list);
+  v.appendChild(exc);
+}
+
+function sheetFlag(f,r){
+  const b=el("div","stack");
+  b.appendChild(el("div","banner quiet",esc(T("ask.sentNote"))));
+  const c=el("div","card pad stack-sm");
+  c.appendChild(el("div","eyebrow","To "+esc(LEARNER.trainer)));
+  c.appendChild(el("p","h-sm",esc(sLabel(r))));
+  c.appendChild(el("p","sub","<b>"+esc(LEARNER.name)+"</b>: “"+esc(f.said)+"”"));
+  c.appendChild(el("p","sub",esc(T("ask.needsSupervision",{unit:r.unit}))));
+  c.appendChild(el("span","ref",esc(r.ref)));
+  b.appendChild(c);
+  const d=el("button","btn ghost wide",esc(T("ask.withdraw")));
+  d.onclick=()=>{ f.deleted=true; save(); closeSheet(); renderAsk(); renderTabs(); toast(T("ask.deleted")) };
+  b.appendChild(d);
+  openSheet(T("ask.sentTitle"),b);
+}
+
+/* ════════ learn ════════ */
+function renderLearn(){
+  const v=$("#v-learn"); v.innerHTML="";
+  v.appendChild(el("div","stack-sm",
+    '<div class="eyebrow">'+esc(tradeName())+' · '+esc(PACK.nsqLevel)+'</div>'+
+    '<h1 class="h-lg">'+esc(T("learn.title"))+'</h1>'+
+    '<p class="sub">'+esc(T("learn.sub"))+'</p>'));
+
+  const done=PACK.lessons.filter(l=>L(l.n).read).length;
+  const dl=PACK.lessons.filter(l=>L(l.n).dl);
+  const kb=dl.reduce((a,l)=>a+l.audioKb,0);
+  const g=el("div","grid2");
+  g.appendChild(el("div","stat","<b>"+done+"/5</b><span>"+esc(T("learn.completed"))+"</span>"));
+  g.appendChild(el("div","stat","<b>"+dl.length+"/5</b><span>"+esc(T("learn.downloaded"))+" · "+kb+" KB</span>"));
+  v.appendChild(g);
+
+  if(dl.length<5){
+    const all=el("button","btn soft wide",ic(ICON.dl,15)+" "+esc(T("learn.downloadAll"))+" ("+PACK.lessons.reduce((a,l)=>a+l.audioKb,0)+" KB)");
+    all.onclick=()=>{ PACK.lessons.forEach(l=>L(l.n).dl=true); save(); renderLearn(); toast(T("learn.savedAll")) };
+    v.appendChild(all);
+  }
+
+  PACK.lessons.forEach(l=>{
+    const st=L(l.n);
+    const c=el("div","card");
+    const b=el("button","lesson");
+    b.innerHTML='<span class="lnum'+(st.read?" done":"")+'">'+(st.read?ic(ICON.check,15):l.n)+'</span>'+
+      '<span style="min-width:0;flex:1">'+
+        '<span class="h-sm" style="display:block">'+esc(lTitle(l))+'</span>'+
+        '<span class="tiny" style="display:block;margin-top:2px">'+esc(lSub(l))+'</span>'+
+        '<span class="row" style="margin-top:7px;flex-wrap:wrap;gap:7px">'+
+          '<span class="mono" style="color:var(--ink-3)">'+l.minutes+' '+esc(T("learn.min"))+' · '+l.audioKb+' KB</span>'+
+          (st.dl?'<span class="pill ok">'+ic(ICON.check,10)+' '+esc(T("learn.offline"))+'</span>':'')+
+          (st.practice?'<span class="pill earth">'+esc(T("practice.title"))+' '+st.practice.score+'/'+st.practice.total+'</span>':'')+
+        '</span>'+
+      '</span>';
+    b.onclick=()=>sheetLesson(l);
+    c.appendChild(b);
+    v.appendChild(c);
+  });
+}
+
+function sheetLesson(l){
+  const st=L(l.n);
+  const b=el("div","stack");
+
+  b.appendChild(el("div","stack-sm",
+    '<div class="eyebrow">'+esc(T("learn.lesson"))+' '+l.n+' · '+esc(l.unit)+'</div>'+
+    '<h2 class="h-md">'+esc(lTitle(l))+'</h2>'+
+    '<p class="sub">'+esc(lSub(l))+'</p>'));
+
+  const ar=el("div","row");
+  const lg=lang(S.lang);
+  const play=el("button","btn",ic(ICON.play,15)+" "+esc(T("learn.play"))+" · "+esc(lg.endonym||lg.name));
+  play.setAttribute("aria-label",T("learn.listen"));
+  play.onclick=()=>{
+    // The whole lesson, spoken: the key points then every source passage, all in this language.
+    const txt=lKeys(l).join(". ")+". "+l.passages.map(p=>{ const x=psg(p); return x?pSpk(x):"" }).join(" ");
+    speak(txt); st.read=true; save(); renderTabs();
+  };
+  ar.appendChild(play);
+  const dlb=el("button","btn soft",ic(ICON.dl,15)+" "+(st.dl?esc(T("learn.saved")):esc(T("learn.save"))+" "+l.audioKb+" KB"));
+  if(st.dl) dlb.disabled=true;
+  dlb.onclick=()=>{ st.dl=true; save(); closeSheet(); renderLearn(); toast(T("learn.lesson")+" "+l.n+" ✓") };
+  ar.appendChild(dlb);
+  b.appendChild(ar);
+
+  if(l.n===2||l.n===4){
+    const cc=el("div","card pad stack-sm");
+    cc.appendChild(el("div","eyebrow",esc(T("learn.conductors"))));
+    const r=el("div","row"); r.style.flexWrap="wrap"; r.style.gap="12px";
+    conductors().forEach(c=>{
+      r.appendChild(el("span","cond "+c.key,"<s></s>"+esc(c.role)+" — "+esc(c.colour)));
+    });
+    cc.appendChild(r);
+    cc.appendChild(el("p","tiny",esc(T("learn.conductorNote"))));
+    b.appendChild(cc);
+  }
+
+  const kp=el("div","card pad stack-sm");
+  kp.appendChild(el("div","eyebrow",esc(T("learn.mustDo"))));
+  lKeys(l).forEach(k=>kp.appendChild(el("div","kp","<span>"+esc(k)+"</span>")));
+  b.appendChild(kp);
+
+  const src=el("div","card pad stack-sm");
+  src.appendChild(el("div","eyebrow",esc(T("learn.sources"))));
+  l.passages.map(psg).filter(Boolean).forEach(p=>{
+    const row=el("div","stack-sm"); row.style.paddingBlock="7px";
+    row.appendChild(el("span","ref",esc(p.ref)));
+    row.appendChild(el("p","tiny",esc(pAns(p))));
+    src.appendChild(row);
+  });
+  b.appendChild(src);
+
+  b.appendChild(practiceCard(l));
+  openSheet(T("learn.lesson")+" "+l.n,b);
+}
+
+function practiceCard(l){
+  const st=L(l.n), pr=l.practice;
+  const c=el("div","card pad stack-sm");
+  c.appendChild(el("div","row",'<span class="eyebrow">'+esc(T("practice.title"))+'</span><span class="pill idle">'+
+    (pr.type==="voice-viva"?esc(T("practice.voiceViva")):esc(T("practice.photo")))+'</span>'));
+  c.appendChild(el("p","",esc(lPrompt(l))));
+  const sp=el("button","btn soft sm",ic(ICON.play,13)+" "+esc(T("practice.hear")));
+  sp.onclick=()=>speak(lSpokenP(l));
+  c.appendChild(sp);
+
+  if(pr.type==="voice-viva"){
+    const points=lRubric(l);
+    if(st.practice){
+      const res=el("div","stack-sm"); res.style.marginTop="6px";
+      res.appendChild(el("div","row",'<span class="eyebrow">'+esc(T("practice.result"))+'</span><span class="pill '+
+        (st.practice.score>=st.practice.total-1?"ok":"high")+'">'+
+        esc(T("practice.points",{score:st.practice.score,total:st.practice.total}))+"</span>"));
+      pr.rubric.forEach((r,i)=>{
+        const hit=st.practice.hits[i];
+        const row=el("div","rub");
+        row.innerHTML='<span class="tick '+(hit?"y":"n")+'">'+(hit?"✓":"—")+'</span>'+
+          '<span style="min-width:0"><span class="sub">'+esc(points[i]||r.point)+'</span></span>';
+        res.appendChild(row);
+      });
+      res.appendChild(el("p","tiny",esc(T("practice.youSaid"))+": “"+esc(st.practice.said)+"”"));
+      const again=el("button","btn ghost sm",esc(T("practice.again")));
+      again.onclick=()=>{ st.practice=null; save(); closeSheet(); sheetLesson(l) };
+      res.appendChild(again);
+      c.appendChild(res);
+    }else{
+      const rb=el("button","btn wide",ic(ICON.ask,15)+" "+(capAvailable()?esc(T("practice.record")):esc(T("ask.unavailable"))));
+      const ta=el("textarea");
+      ta.id="viva"+l.n; ta.rows=3; ta.placeholder=T("practice.typePlaceholder");
+      ta.style.cssText="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit;font-size:14px";
+      const submit=t=>{
+        const said=String(t||"").trim(); if(!said) return;
+        const nt=norm(said);
+        const hits=pr.rubric.map(r=>r.keywords.some(k=>nt.indexOf(norm(k))>-1));
+        const score=hits.filter(Boolean).length;
+        st.practice={said,hits,score,total:pr.rubric.length,at:now().toISOString()};
+        S.evidence.push({id:"e"+Date.now(),lesson:l.n,unit:l.unit,type:"voice-viva",
+          score,total:pr.rubric.length,at:now().toISOString(),said});
+        scheduleRecall(l.n);
+        save(); closeSheet(); sheetLesson(l); renderTabs();
+        const miss=points.filter((p,i)=>!hits[i]);
+        speak(T("practice.points",{score,total:pr.rubric.length})+(miss.length?". "+miss.join(". "):""));
+      };
+      const reset=()=>{ rb.innerHTML=ic(ICON.ask,15)+" Record your answer"; rb.classList.remove("ghost") };
+      rb.onclick=async()=>{
+        if(!capAvailable()){ ta.focus(); return }
+        if(capActive()){
+          capStop();
+          if(CAP.mode==="spitch") rb.innerHTML=ic(ICON.ask,15)+" Transcribing with "+provider()+"…";
+          return;
+        }
+        rb.innerHTML=ic(ICON.ask,15)+" Listening… tap to stop";
+        rb.classList.add("ghost");
+        await capStart((t,err)=>{
+          if(err){ reset(); toast(capErrMsg(err)); return }
+          submit(t);
+        });
+      };
+      c.appendChild(rb);
+      c.appendChild(ta);
+      const tb=el("button","btn soft sm",esc(T("practice.submitTyped")));
+      tb.onclick=()=>submit(ta.value);
+      c.appendChild(tb);
+      c.appendChild(el("p","tiny",esc(T("practice.noMcqNote"))));
+    }
+  }else{
+    if(st.practice&&st.practice.img){
+      c.appendChild(el("p","eyebrow",esc(T("practice.submitted"))));
+      const im=el("img","ev"); im.src=st.practice.img;
+      im.alt="Photograph of a changeover installation submitted as evidence by the learner";
+      c.appendChild(im);
+      c.appendChild(el("p","tiny",esc(T("practice.awaiting"))));
+      const d=el("button","btn ghost sm",esc(T("practice.deleteEvidence")));
+      d.onclick=()=>{ st.practice=null; S.evidence=S.evidence.filter(e=>e.lesson!==l.n); save(); closeSheet(); sheetLesson(l) };
+      c.appendChild(d);
+    }else{
+      const cl=el("div","stack-sm");
+      cl.appendChild(el("div","eyebrow",esc(T("practice.mustShow"))));
+      lCheck(l).forEach(k=>cl.appendChild(el("div","kp","<span>"+esc(k)+"</span>")));
+      c.appendChild(cl);
+      const inp=el("input"); inp.type="file"; inp.accept="image/*"; inp.hidden=true;
+      inp.id="photo"+l.n;
+      inp.onchange=()=>{
+        const f=inp.files&&inp.files[0]; if(!f) return;
+        const fr=new FileReader();
+        fr.onload=()=>{
+          st.practice={img:fr.result,at:now().toISOString(),total:pr.checklist.length,
+            score:pr.checklist.length,hits:pr.checklist.map(()=>true),said:"photo evidence"};
+          S.evidence.push({id:"e"+Date.now(),lesson:l.n,unit:l.unit,type:"photo-evidence",
+            at:now().toISOString(),score:1,total:1,said:"photo evidence submitted"});
+          scheduleRecall(l.n); save(); closeSheet(); sheetLesson(l); renderTabs();
+        };
+        fr.readAsDataURL(f);
+      };
+      const pb=el("button","btn wide",ic(ICON.cam,15)+" "+esc(T("practice.addPhoto")));
+      pb.onclick=()=>inp.click();
+      c.appendChild(inp); c.appendChild(pb);
+      c.appendChild(el("p","tiny",esc(T("practice.photoNote"))));
+    }
+  }
+  return c;
+}
+
+/* ════════ recall ════════ */
+/* A recall item is: step 0..2 through the 3/10/30-day ladder, a due day (null once
+   retained through all three), and a log of every attempt. */
+const STEPS=[3,10,30];
+function scheduleRecall(n){
+  if(S.recalls.some(r=>r.lesson===n)) return;
+  S.recalls.push({lesson:n,step:0,due:S.day+STEPS[0],log:[]});
+}
+const dueNow=r=>r.due!==null&&r.due<=S.day;
+
+function renderRecall(){
+  const v=$("#v-recall"); v.innerHTML="";
+  v.appendChild(el("div","stack-sm",
+    '<div class="eyebrow">'+esc(T("recall.eyebrow"))+'</div>'+
+    '<h1 class="h-lg">'+esc(T("recall.title"))+'</h1>'+
+    '<p class="sub">'+esc(T("recall.sub"))+'</p>'));
+
+  const dayc=el("div","card pad row");
+  dayc.innerHTML='<span style="min-width:0;flex:1"><span class="eyebrow">'+esc(T("recall.clock"))+'</span>'+
+    '<span class="h-sm" style="display:block">'+fmtDay(now())+' · day '+S.day+'</span></span>';
+  const ff=el("button","btn soft sm",ic(ICON.ff,13)+" "+esc(T("recall.forward")));
+  ff.onclick=()=>{ S.day+=3; save(); renderRecall(); renderTabs() };
+  dayc.appendChild(ff);
+  v.appendChild(dayc);
+  v.appendChild(el("p","tiny",esc(T("recall.clockNote"))));
+
+  const due=S.recalls.filter(dueNow);
+  const pend=S.recalls.filter(r=>r.due!==null&&r.due>S.day);
+  const done=S.recalls.filter(r=>r.log.length);
+
+  if(!S.recalls.length){
+    v.appendChild(el("div","card pad empty",esc(T("recall.empty"))));
+    return;
+  }
+
+  due.forEach(r=>{
+    const q=PACK.recall.find(x=>x.lesson===r.lesson); if(!q) return;
+    const opts=rOpts(q);
+    const wrap=el("div","stack");
+    const wa=el("div","wa");
+    wa.appendChild(el("div","tiny","WhatsApp · SabiPass · "+fmtDay(now())));
+    const msg=el("div","wa-msg");
+    msg.innerHTML='<div class="tiny" style="margin-bottom:6px">'+esc(T("recall.step",{lesson:r.lesson,step:r.step+1}))+'</div>';
+    const vn=el("div","wa-vn");
+    const pb=el("button","btn sm",ic(ICON.play,13));
+    pb.setAttribute("aria-label","Play the recall question");
+    pb.onclick=()=>speak(rSpk(q)+". 1 — "+opts[0]+". 2 — "+opts[1]+".");
+    vn.appendChild(pb);
+    const wv=el("div","wa-wave");
+    for(let i=0;i<28;i++){ const b=el("i"); b.style.height=(5+Math.abs(Math.sin(i*1.3))*16).toFixed(0)+"px"; wv.appendChild(b) }
+    vn.appendChild(wv);
+    vn.appendChild(el("span","mono","0:09"));
+    msg.appendChild(vn);
+    msg.appendChild(el("p","sub","<b>"+esc(rQ(q))+"</b>"));
+    msg.appendChild(el("p","tiny",esc(T("recall.reply"))));
+    wa.appendChild(msg);
+    wrap.appendChild(wa);
+
+    const kp=el("div","keypad");
+    opts.forEach((o,i)=>{
+      const k=el("button","key","<b>"+(i+1)+"</b><span>"+esc(o)+"</span>");
+      k.onclick=()=>{
+        const ok=i===q.correct;
+        r.log.push({ok,day:S.day,step:r.step});
+        if(ok){
+          r.step+=1;
+          r.due = r.step<STEPS.length ? S.day+STEPS[r.step] : null;  // null = retained
+        }else{
+          r.due = S.day+1;                                           // repeat the same step tomorrow
+          L(r.lesson).read=false;                                    // and the lesson returns to the list
+        }
+        S.evidence.push({id:"e"+Date.now(),lesson:r.lesson,unit:(lessonOf(r.lesson)||{}).unit,
+          type:"recall",correct:ok,at:now().toISOString(),score:ok?1:0,total:1,said:q.question});
+        save(); renderRecall(); renderTabs();
+        const p=psg(q.because);
+        speak((ok?"✓ ":"✕ ")+(p?pSpk(p):""));
+      };
+      kp.appendChild(k);
+    });
+    wrap.appendChild(kp);
+    wrap.appendChild(el("p","tiny",esc(T("recall.featurePhone"))));
+    v.appendChild(wrap);
+  });
+
+  if(done.length){
+    const c=el("div","card pad stack-sm");
+    c.appendChild(el("div","eyebrow",esc(T("recall.history"))));
+    done.forEach(r=>{
+      const q=PACK.recall.find(x=>x.lesson===r.lesson);
+      const last=r.log[r.log.length-1];
+      const row=el("div","rub");
+      row.innerHTML='<span class="tick '+(last.ok?"y":"n")+'">'+(last.ok?"✓":"✕")+'</span>'+
+        '<span style="min-width:0"><span class="sub">'+esc(q?rQ(q):"Lesson "+r.lesson)+'</span>'+
+        '<span class="tiny" style="display:block">'+esc(last.ok
+          ? (r.due===null?T("recall.retained"):T("recall.correctOn",{day:last.day,next:r.due}))
+          : T("recall.missed",{day:last.day}))+
+        '</span></span>';
+      c.appendChild(row);
+      if(!last.ok){
+        const p=psg((q||{}).because);
+        if(p) c.appendChild(el("span","ref",esc(p.ref)));
+      }
+    });
+    const hits=S.recalls.reduce((a,r)=>a+r.log.filter(x=>x.ok).length,0);
+    const tot=S.recalls.reduce((a,r)=>a+r.log.length,0);
+    if(tot) c.appendChild(el("p","tiny",esc(T("recall.outcome",{hits,total:tot}))));
+    v.appendChild(c);
+  }
+
+  if(pend.length){
+    const c=el("div","card pad stack-sm");
+    c.appendChild(el("div","eyebrow",esc(T("recall.scheduled"))));
+    pend.forEach(r=>c.appendChild(el("p","sub","Lesson "+r.lesson+" — day "+r.due+
+      " ("+fmtDay(new Date(DAY0.getTime()+r.due*864e5))+")")));
+    v.appendChild(c);
+  }
+}
+
+/* ════════ passport ════════ */
+function compStatus(n){
+  const ev=S.evidence.filter(e=>e.lesson===n);
+  if(S.signed[n]) return {k:"signed",t:T("passport.signed"),c:"ok"};
+  if(ev.some(e=>e.type==="voice-viva"||e.type==="photo-evidence")) return {k:"assessed",t:T("passport.assessed"),c:"high"};
+  if(ev.length) return {k:"started",t:T("passport.started"),c:"med"};
+  return {k:"none",t:T("passport.notStarted"),c:"idle"};
+}
+function vcode(){
+  const base=LEARNER.name+PACK.id+Object.keys(S.signed).filter(k=>S.signed[k]).sort().join("");
+  let h=0; for(let i=0;i<base.length;i++){ h=(h*31+base.charCodeAt(i))|0 }
+  const a="ABCDEFGHJKLMNPQRTUVWXY349", out=[];
+  let x=Math.abs(h);
+  for(let i=0;i<8;i++){ out.push(a[x%a.length]); x=Math.floor(x/a.length)+7 }
+  return "SP-"+out.slice(0,4).join("")+"-"+out.slice(4).join("");
+}
+function renderPassport(){
+  const v=$("#v-passport"); v.innerHTML="";
+  const signed=PACK.lessons.filter(l=>S.signed[l.n]).length;
+  const code=vcode();
+
+  const p=el("div","ppt");
+  p.innerHTML=
+    '<div class="eyebrow" style="color:rgba(255,255,255,.72)">'+esc(T("passport.record"))+'</div>'+
+    '<div class="h-lg" style="margin-top:3px">'+esc(LEARNER.name)+'</div>'+
+    '<p style="font-size:13.5px;opacity:.88;margin-top:2px">'+esc(T("learner.year"))+' · '+esc(LEARNER.place)+'</p>'+
+    '<p style="font-size:13.5px;opacity:.88">'+esc(tradeName())+'</p>'+
+    '<div class="row" style="margin-top:14px;gap:14px">'+
+      '<span><b style="font-family:var(--display);font-size:24px;font-weight:800" class="tnum">'+signed+'/5</b>'+
+      '<span style="display:block;font-size:11px;opacity:.75">'+esc(T("passport.countersigned"))+'</span></span>'+
+      '<span><b style="font-family:var(--display);font-size:24px;font-weight:800" class="tnum">'+S.evidence.length+'</b>'+
+      '<span style="display:block;font-size:11px;opacity:.75">'+esc(T("passport.evidenceItems"))+'</span></span>'+
+    '</div>'+
+    '<svg class="seal" width="40" height="40" viewBox="0 0 44 44" aria-hidden="true">'+
+      '<circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.4" stroke-dasharray="3 3"/>'+
+      '<path d="M22 11l-6 11h4.5l-1.4 8L28 20h-4.5z" fill="#C3DF14" opacity=".9"/></svg>';
+  v.appendChild(p);
+
+  v.appendChild(el("div","banner quiet",ic(ICON.shield,15)+"<div>"+esc(T("passport.notCert"))+"</div>"));
+
+  const c=el("div","card pad");
+  c.appendChild(el("div","eyebrow",esc(T("passport.competencies"))));
+  PACK.lessons.forEach(l=>{
+    const st=compStatus(l.n);
+    const ev=S.evidence.filter(e=>e.lesson===l.n);
+    const row=el("div","comp");
+    row.innerHTML='<span class="tick '+(st.k==="signed"?"y":"")+'">'+(st.k==="signed"?"✓":l.n)+'</span>'+
+      '<span style="min-width:0;flex:1">'+
+      '<span class="h-sm" style="display:block">'+esc(lTitle(l))+'</span>'+
+      '<span class="mono" style="color:var(--ink-3);display:block;margin-top:2px">'+esc(l.unit)+'</span>'+
+      '<span class="row" style="margin-top:6px;flex-wrap:wrap;gap:6px"><span class="pill '+st.c+'">'+esc(st.t)+'</span>'+
+      (ev.length?'<span class="tiny">'+ev.length+' · '+esc(T("passport.evidenceItems"))+'</span>':'')+'</span></span>';
+    c.appendChild(row);
+  });
+  v.appendChild(c);
+
+  const vc=el("div","card pad stack-sm");
+  vc.appendChild(el("div","eyebrow",esc(T("passport.verify"))));
+  vc.appendChild(el("div","vcode",esc(code)));
+  vc.appendChild(el("p","tiny",esc(T("passport.verifyNote"))));
+  const us=el("div","mono"); us.style.cssText="padding:9px;border-radius:8px;background:var(--surface-2);text-align:center;font-size:14px";
+  us.textContent="*347*8*"+code.replace(/[^A-Z0-9]/g,"")+"#";
+  vc.appendChild(us);
+  const qw=el("div"); qw.id="qrwrap";
+  vc.appendChild(qw);
+  const qb=el("button","btn soft sm",esc(T("passport.showQr")));
+  qb.onclick=()=>{
+    if(S.offline){ toast(T("passport.qrOffline")); return }
+    qw.innerHTML=""; const box=el("div"); box.id="qr"; qw.appendChild(box);
+    if(window.QRCode){
+      try{ new QRCode(box,{text:"https://verify.sabipass.ng/"+code,width:164,height:164,
+        colorDark:"#0F1A13",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M}) }
+      catch(e){ box.innerHTML='<p class="tiny">QR unavailable. Use the code above.</p>' }
+    } else box.innerHTML='<p class="tiny">QR library blocked. The code and USSD string above still work.</p>';
+    qb.remove();
+  };
+  vc.appendChild(qb);
+  v.appendChild(vc);
+
+  const ex=el("button","btn ghost wide",esc(T("passport.portfolio")));
+  ex.onclick=()=>sheetPortfolio();
+  v.appendChild(ex);
+}
+
+function sheetPortfolio(){
+  const b=el("div","stack");
+  b.appendChild(el("div","banner quiet",esc(T("passport.portfolioNote"))));
+  PACK.lessons.forEach(l=>{
+    const ev=S.evidence.filter(e=>e.lesson===l.n);
+    const c=el("div","card pad stack-sm");
+    c.appendChild(el("div","eyebrow",esc(l.unit)));
+    c.appendChild(el("p","h-sm",esc(lTitle(l))));
+    if(!ev.length){ c.appendChild(el("p","tiny",esc(T("passport.noEvidence")))); }
+    ev.forEach(e=>{
+      const r=el("div","rub");
+      r.innerHTML='<span class="tick '+(e.score>=(e.total||1)?"y":"n")+'">'+(e.score>=(e.total||1)?"✓":"—")+'</span>'+
+        '<span style="min-width:0"><span class="sub">'+esc(evLabel(e.type))+(e.total>1?" — "+e.score+"/"+e.total:"")+'</span>'+
+        '<span class="tiny" style="display:block">'+fmtDay(new Date(e.at))+' · “'+esc(String(e.said).slice(0,90))+'”</span></span>';
+      c.appendChild(r);
+    });
+    if(S.signed[l.n]) c.appendChild(el("span","pill ok",ic(ICON.check,10)+" "+esc(T("passport.signed"))+" — "+esc(LEARNER.trainer)));
+    b.appendChild(c);
+  });
+  const m=el("div","card pad stack-sm");
+  m.appendChild(el("div","eyebrow",esc(T("passport.manifest"))));
+  PACK.manifest.sources.forEach(s=>m.appendChild(
+    el("p","tiny","<b>"+esc(s.key)+"</b> — "+esc(s.title)+" · "+esc(s.authority))));
+  m.appendChild(el("p","tiny",esc(T("passport.reviewer"))+": "+(PACK.manifest.reviewer?esc(PACK.manifest.reviewer):"<b>"+esc(T("passport.notSignedOff"))+"</b>")));
+  if(LOC) m.appendChild(el("p","tiny",esc(LOC.name)+" locale — "+esc(LOC.reviewed?"reviewed":T("passport.notSignedOff"))+
+    " · generated "+esc(String(LOC.generated).slice(0,10))+" · source: English"));
+  b.appendChild(m);
+  openSheet(T("passport.portfolio"),b);
+}
+
+/* ════════ trainer ════════ */
+function renderTrainer(){
+  const v=$("#v-trainer"); v.innerHTML="";
+  const flags=S.flags.filter(f=>!f.deleted);
+  const pend=PACK.lessons.filter(l=>compStatus(l.n).k==="assessed");
+
+  v.appendChild(el("div","stack-sm",
+    '<div class="eyebrow">'+esc(T("trainer.eyebrow"))+'</div>'+
+    '<h1 class="h-lg">'+esc(LEARNER.trainer)+'</h1>'+
+    '<p class="sub">'+esc(T("trainer.role"))+' · '+esc(T("trainer.reviewing"))+'</p>'));
+
+  v.appendChild(el("div","banner quiet",esc(T("trainer.privacy"))));
+
+  const g=el("div","grid2");
+  g.appendChild(el("div","stat",'<b class="tnum">'+flags.length+'</b><span>'+esc(T("trainer.flags"))+'</span>'));
+  g.appendChild(el("div","stat",'<b class="tnum">'+pend.length+'</b><span>'+esc(T("trainer.awaiting"))+'</span>'));
+  v.appendChild(g);
+
+  const fc=el("div","card pad stack-sm");
+  fc.appendChild(el("div","eyebrow",esc(T("trainer.flags"))));
+  if(!flags.length) fc.appendChild(el("p","tiny",esc(T("trainer.noFlags"))));
+  flags.slice().reverse().forEach(f=>{
+    const r=RULES.find(x=>x.id===f.rule); if(!r) return;
+    const d=el("div","flag "+(r.severity==="critical"?"":r.severity));
+    d.innerHTML='<span class="sev"></span><span style="min-width:0;flex:1">'+
+      '<span class="row" style="flex-wrap:wrap;gap:6px"><span class="pill '+(r.severity==="critical"?"crit":r.severity)+'">'+r.severity.toUpperCase()+'</span>'+
+      '<span class="h-sm">'+esc(sLabel(r))+'</span></span>'+
+      '<span class="sub" style="display:block;margin-top:6px">'+esc(T("trainer.said",{name:LEARNER.name}))+': “'+esc(f.said)+'”</span>'+
+      '<span class="tiny" style="display:block;margin-top:4px">'+esc(T("ask.needsSupervision",{unit:r.unit}))+' · '+fmtDay(new Date(f.at))+'</span>'+
+      '<span class="ref" style="margin-top:7px">'+esc(r.ref)+'</span></span>';
+    fc.appendChild(d);
+  });
+  v.appendChild(fc);
+
+  const sc=el("div","card pad stack-sm");
+  sc.appendChild(el("div","eyebrow",esc(T("trainer.queue"))));
+  if(!pend.length) sc.appendChild(el("p","tiny",esc(T("trainer.noQueue"))));
+  pend.forEach(l=>{
+    const ev=S.evidence.filter(e=>e.lesson===l.n);
+    const c=el("div","stack-sm"); c.style.cssText="padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2)";
+    c.appendChild(el("p","h-sm",esc(lTitle(l))));
+    c.appendChild(el("span","mono",esc(l.unit)));
+    ev.forEach(e=>c.appendChild(el("p","tiny",esc(evLabel(e.type))+(e.total>1?" — "+e.score+"/"+e.total:"")+" · “"+esc(String(e.said).slice(0,80))+"”")));
+    const b=el("button","btn sm",ic(ICON.pen,13)+" "+esc(T("trainer.sign")));
+    b.onclick=()=>{ S.signed[l.n]=true; save(); renderTrainer(); renderTabs();
+      toast(T("trainer.signed",{name:LEARNER.name})) };
+    c.appendChild(b);
+    sc.appendChild(c);
+  });
+  v.appendChild(sc);
+}
+
+/* ════════ sheets, toast, chrome ════════ */
+function openSheet(title,body){
+  closeSheet();
+  const host=$("#sheetHost");
+  const sc=el("div","scrim"); sc.onclick=closeSheet;
+  const sh=el("div","sheet"); sh.setAttribute("role","dialog"); sh.setAttribute("aria-label",title);
+  const h=el("div","sheet-h");
+  h.appendChild(el("span","h-sm",esc(title)));
+  h.appendChild(el("span","bar-sp"));
+  const x=el("button","x",ic(ICON.x,15)); x.setAttribute("aria-label","Close"); x.onclick=closeSheet;
+  h.appendChild(x);
+  const b=el("div","sheet-b"); b.appendChild(body);
+  sh.appendChild(h); sh.appendChild(b);
+  host.appendChild(sc); host.appendChild(sh);
+  document.body.style.overflow="hidden";
+}
+function closeSheet(){ $("#sheetHost").innerHTML=""; document.body.style.overflow="" }
+let tt=null;
+function toast(msg){
+  clearTimeout(tt); let t=$("#toast");
+  if(!t){ t=el("div","card pad"); t.id="toast";
+    t.style.cssText="position:fixed;left:50%;translate:-50% 0;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:70;max-width:min(92vw,440px);font-size:13.5px;box-shadow:var(--shadow-lift)";
+    document.body.appendChild(t) }
+  t.textContent=msg;
+  tt=setTimeout(()=>{ t&&t.remove() },3400);
+}
+
+function renderLangs(){
+  const r=$("#langrow"); r.innerHTML="";
+  LANGS.languages.forEach(l=>{
+    const b=el("button","lang"+(l.code===S.lang?" sel":""));
+    b.innerHTML=esc(l.endonym||l.name)+(l.validated?"":"<b>preview</b>");
+    b.setAttribute("aria-pressed",String(l.code===S.lang));
+    b.onclick=async()=>{
+      if(l.code===S.lang) return;
+      b.innerHTML=esc(l.endonym||l.name)+" …";
+      await setLang(l.code);
+      renderLangs(); go(S.tab);
+      if(l.code!=="en"&&!LOC)
+        toast("No "+l.name+" pack on this device yet. Run `npm run localize`, or open this page once while online.");
+      else if(!l.validated) toast(T("common.preview"));
+    };
+    r.appendChild(b);
+  });
+}
+const TABS=[["ask","nav.ask",ICON.ask],["learn","nav.learn",ICON.learn],["recall","nav.recall",ICON.recall],
+  ["passport","nav.passport",ICON.pass],["trainer","nav.trainer",ICON.trainer]];
+function renderTabs(){
+  const t=$("#tabs"); t.innerHTML="";
+  const due=S.recalls.filter(dueNow).length;
+  const fl=S.flags.filter(f=>!f.deleted).length;
+  TABS.forEach(([k,key,icon])=>{
+    const b=el("button","tab"); b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",S.tab===k?"true":"false");
+    b.innerHTML=ic(icon,21)+"<span>"+esc(T(key))+"</span>"+
+      (k==="recall"&&due?'<span class="pip">'+due+'</span>':'')+
+      (k==="trainer"&&fl?'<span class="pip">'+fl+'</span>':'');
+    b.onclick=()=>go(k);
+    t.appendChild(b);
+  });
+}
+function go(k){
+  S.tab=k; save();
+  ["ask","learn","recall","passport","trainer"].forEach(n=>{ $("#v-"+n).hidden=(n!==k) });
+  ({ask:renderAsk,learn:renderLearn,recall:renderRecall,passport:renderPassport,trainer:renderTrainer}[k])();
+  renderTabs(); window.scrollTo({top:0});
+}
+
+$("#netBtn").onclick=()=>{
+  S.offline=!S.offline; save();
+  const b=$("#netBtn");
+  b.classList.toggle("warn",S.offline);
+  b.setAttribute("aria-pressed",String(S.offline));
+  $("#netLbl").textContent=S.offline?T("common.offline"):T("common.online");
+  toast(S.offline
+    ? "Offline. Questions, lessons you saved, recall checks and verification all still work — retrieval runs on your device."
+    : "Back online.");
+};
+$("#moreBtn").onclick=()=>{
+  const b=el("div","stack");
+  const s=el("div","card pad");
+  const t1=el("label","sw");
+  t1.innerHTML='<span style="min-width:0"><b>'+esc(T("settings.textOnly"))+'</b><span class="tiny" style="display:block">'+esc(T("settings.textOnlyNote"))+'</span></span>';
+  const c1=el("input"); c1.type="checkbox"; c1.className="sw-i"; c1.id="textonly"; c1.checked=!!S.textOnly;
+  c1.onchange=()=>{ S.textOnly=c1.checked; save(); if(S.textOnly) try{speechSynthesis.cancel()}catch(e){} };
+  t1.appendChild(c1); s.appendChild(t1);
+  b.appendChild(s);
+
+  const ab=el("div","card pad stack-sm");
+  ab.appendChild(el("div","eyebrow",esc(T("settings.why"))));
+  ab.appendChild(el("p","sub",esc(T("settings.whyBody"))));
+  ab.appendChild(el("p","sub",esc(T("settings.whyBody2"))));
+  ab.appendChild(el("hr","sep"));
+  ab.appendChild(el("div","eyebrow",esc(T("settings.notBuilt"))));
+  ab.appendChild(el("p","tiny",esc(T("settings.notBuiltBody"))));
+  ab.appendChild(el("div","eyebrow",esc(T("settings.data"))));
+  ab.appendChild(el("p","sub",'<b class="tnum">'+S.kb+' KB</b> in total. Finding the answer costs <b>0 KB</b> — retrieval runs on your device against the pack. The rest is the one-time pack download'+
+    (SPEECH.mode==="spitch"?", plus recorded audio in and spoken audio back. Spoken answers are cached, so replaying one is free.":". Speech is handled by the browser, so it sends nothing of ours.")));
+  ab.appendChild(el("div","eyebrow",esc(T("settings.engine"))));
+  ab.appendChild(el("p","sub",SPEECH.mode==="spitch"
+    ? "<b>Spitch</b> via your local server. The API key stays on the server and never reaches this page."
+    : SPEECH.server
+      ? "<b>Browser Web Speech.</b> The local server is running but has no Spitch key — see README.md."
+      : "<b>Browser Web Speech.</b> This is the published demo page. Run it locally with a Spitch key for real Nigerian-language speech — see README.md."));
+  b.appendChild(ab);
+
+  const rs=el("button","btn ghost wide",esc(T("settings.reset")));
+  rs.onclick=async()=>{ try{localStorage.removeItem(LS)}catch(e){}
+    S={lang:S.lang,tab:"ask",offline:false,trainer:false,kb:41,day:0,lessons:{},evidence:[],
+       flags:[],recalls:[],thread:[],signed:{},textOnly:false};
+    save(); closeSheet(); renderLangs(); go("ask"); toast(T("settings.resetDone")) };
+  b.appendChild(rs);
+  openSheet("SabiPass",b);
+};
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet() });
+try{ if(window.speechSynthesis) speechSynthesis.getVoices() }catch(e){}
+boot();
+})();
+</script>
