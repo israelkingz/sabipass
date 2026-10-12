@@ -167,7 +167,7 @@ tools/review-queue.js                   ranks translations by likelihood of erro
 Adding a language is a row in `config/languages.json`. Adding a trade is a folder under
 `content-packs/`. If either needs a code change, the abstraction is wrong — fix the abstraction.
 
-Project documents: [CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) (architecture, demo script),
+Project documents: [CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) (architecture), [DEMO.md](DEMO.md) (the three-minute script), [SKILLS.md](SKILLS.md) (reusable workflows),
 [PROPOSAL.md](PROPOSAL.md), [BUILD_PLAN.md](BUILD_PLAN.md) (scope and schedule),
 [CONCEPT.md](CONCEPT.md) (market thesis), [AGENTS.md](AGENTS.md) (the rules that count as bugs even
 when the tests pass).
