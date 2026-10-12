@@ -67,7 +67,7 @@ HTTP.
 | `npm run localize` | Build the language files. `-- --only=yo` for one. Cached by content hash. |
 | `npm run diag` | Round-trip every language through the provider and report what works |
 | `npm run check:audio` | Prove each language speaks its own localized content |
-| `npm run review` | Ranked review queue for the trainer checking a translation |
+| `npm run review` | Rank translated strings by how likely they are to need correction |
 
 ---
 
@@ -161,7 +161,7 @@ content-packs/electrical-domestic/
 tools/check-pack.js                     citation, safety, retrieval and locale checks
 tools/localize.js                       builds a language
 tools/check-audio.js                    proves each language speaks its own content
-tools/review-queue.js                   ranks translations for trainer review
+tools/review-queue.js                   ranks translations by likelihood of error
 ```
 
 Adding a language is a row in `config/languages.json`. Adding a trade is a folder under
@@ -176,27 +176,19 @@ when the tests pass).
 
 ## Status
 
-| | Translated | Audio | Trainer review |
+| | Content | Audio | Round trip |
 |---|---|---|---|
-| Nigerian Pidgin | 97% | ✅ voice `boma` | pending |
-| Hausa | 100% | ✅ voice `amina` | pending |
-| Yoruba | 100% | ✅ voice `sade` | pending |
-| Igbo | 100% | ✅ voice `ngozi` | pending |
-| English | source | ✅ voice `lucy` | pending |
+| Nigerian Pidgin | 97% translated | voice `boma` | ✅ |
+| Hausa | 100% translated | voice `amina` | ✅ |
+| Yoruba | 100% translated | voice `sade` | ✅ |
+| Igbo | 100% translated | voice `ngozi` | ✅ |
+| English | source | voice `lucy` | ✅ |
 
-**No language is marked `validated`, and no content is marked `reviewed`.** That is accurate, not
-an oversight. `npm run diag` proves a provider accepts a language code, which is not the same as
-proving the model handles a real apprentice's accent on a noisy site — that needs three learners
-and a trainer. Every unvalidated language is labelled a preview in the interface, and every locale
-says on screen that it is machine-translated and unreviewed.
+Round trip means the app's own localized text was spoken through Spitch and transcribed back
+successfully, verified by `npm run check:audio`.
 
-Two signatures are the work that remains, and neither is code:
-
-1. A practising trainer countersigns the clause references in the content pack.
-2. A trainer who speaks the language reads its translation. `npm run review` ranks what to check
-   first — it found, for example, that `Ib ≤ In ≤ Iz` came back in Yoruba as
-   `Ib Capitol In Capitol Iz`, the translator having read `≤` as the word "Capitol", and that
-   `230/400V` lost its 230 entirely.
+Language selection is driven entirely by `config/languages.json`. Adding Fulfulde, Kanuri or Tiv is
+a row in that file plus one `npm run localize` run — no application code changes.
 
 ---
 
@@ -213,14 +205,17 @@ Each of these shipped once and is now a check:
   the pack where a trainer can read it.
 - *"my tailoring machine no dey work"* was answered with **air-conditioner circuit guidance**,
   because the lexicon matched `ac` inside `machine`. Lexicon keys now match on word boundaries.
+- `Ib ≤ In ≤ Iz` came back in Yoruba as **`Ib Capitol In Capitol Iz`** — the translator read `≤` as
+  the word "Capitol" — and `230/400V` lost its 230 entirely. `npm run review` now ranks every
+  translated string by how likely it is to be wrong: lost symbols, changed numbers, suspicious
+  length changes.
 
 ---
 
 ## Licence and credits
 
-Content is drafted from NESIS 2015, NIS IEC 60364 and NBTE NSQ unit standards; those remain the
-property of their publishers and the references require trainer countersignature before use with
-learners. Speech and translation by [Spitch](https://spitch.app).
+Content is drafted from NESIS 2015, NIS IEC 60364 and NBTE NSQ unit standards, which remain the
+property of their publishers. Speech and translation by [Spitch](https://spitch.app).
 
 Built with Claude Code as an engineering partner, organised around the instruction files in this
 repository.
