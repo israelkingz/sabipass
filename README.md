@@ -1,79 +1,124 @@
 # SabiPass
 
-Voice-first skill recognition for Nigeria's informal trades. An apprentice asks about the work in
-their own language, gets an answer traceable to a national standard, proves competence by speaking
-and by photograph, and builds a progress record their own trainer countersigns.
+**Voice-first skill recognition for Nigeria's informal trades.**
 
-Read [CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) for the architecture and the demo script,
-[BUILD_PLAN.md](BUILD_PLAN.md) for scope, [CONCEPT.md](CONCEPT.md) for the market thesis, and
-[CLAUDE.md](CLAUDE.md) for the rules that are bugs even when the tests pass.
+An apprentice asks about the work by speaking, in their own language. They get an answer traceable
+to a national standard, with the clause shown. They prove competence by talking and by
+photographing their own work — never by multiple choice. And what they prove goes into a progress
+record their own trainer countersigns.
+
+Built for the *Learning That Stays With You* capstone. Track 3 (Guidance, Pathways & Opportunity)
+primary, with Track 2 (Engagement) and Track 1 (Access & Discovery).
 
 ---
 
-## Run it
+## Why
 
-Node 20 or newer. No dependencies to install.
+Nigeria's largest learning system is not school. It is the informal apprenticeship economy —
+*igba-boi*, auto-electrics, welding, phone repair, solar and inverter installation. Millions learn
+for years, orally, in Pidgin, Hausa, Yoruba and Igbo. They acquire real skills that stay invisible:
+no credential means no formal contract, no asset finance, no pricing power, no portability.
+
+The instrument to fix this already exists. Nigeria's **National Skills Qualifications Framework**
+recognises skills learned informally, through **Recognition of Prior Learning**, launched by NBTE
+in 2025. Roughly **500 artisans** have been assessed nationwide since then, because assessment is
+human, in-person and scarce.
+
+The framework exists. The throughput does not. SabiPass makes that assessment remote, voice-native
+and near-free.
+
+---
+
+## Quickstart
+
+**Requirements:** Node 20 or newer. Nothing to install — there are no dependencies.
 
 ```bash
+git clone https://github.com/israelkingz/sabipass.git
+cd sabipass
 npm start
 ```
 
-Open **http://localhost:8787**. Speech falls back to the browser's own engine until you add a key.
+Open **http://localhost:8787**. It runs immediately, using the browser's own speech engine.
 
 ### Add real Nigerian-language speech
 
 ```bash
-cp .env.example .env
+cp .env.example .env     # then put a Spitch key in SPITCH_API_KEY
+npm start
 ```
 
-Put a [Spitch](https://spitch.app) key in `SPITCH_API_KEY`, then `npm start` again. The console
-tells you which engine is live. The key stays on the server — the browser never sees it, and all
-speech goes through `/api/asr` and `/api/tts`.
+Get a key from [spitch.app](https://spitch.app). The console prints which engine is live. **The key
+stays on the server** — the browser never sees it; all speech goes through `/api/asr`, `/api/tts`
+and `/api/translate`.
 
-Use **Chrome or Edge on `localhost`**: the microphone needs a secure context, and `localhost`
-counts as one. Opening `index.html` as a `file://` URL will not work — the page fetches its
-registries over HTTP.
-
-### Build the languages
-
-```bash
-npm run localize              # all registry languages
-npm run localize -- --only=yo # just one
-```
-
-This translates the content pack and every UI string into Nigerian Pidgin, Hausa, Yoruba and Igbo,
-writing `content-packs/electrical-domestic/locales/<code>.json`. Takes roughly ten minutes per
-language — Spitch serialises translate calls — and caches by content hash, so a re-run after an
-edit only translates what changed.
-
-**It runs at build time on purpose.** A learner on a weak connection must be able to ask, read and
-listen in their own language without a translation round trip. The locale ships with the pack, so
-retrieval stays local and the 0 KB promise stays honest.
-
-### Check what your key actually supports
-
-```bash
-npm run diag
-```
-
-Round-trips every language: generates speech, transcribes it back, reports what worked. Use it to
-decide which language gets `validated: true`. Set that flag from evidence, never from a vendor's
-language list.
-
-### Check everything
-
-```bash
-npm run check
-```
-
-Citations resolve, safety rules compile and fire on the right utterances, retrieval answers what it
-should and refuses what it should, no more than one non-English language claims to be validated,
-and **every locale is actually translated** — a translate call that silently falls back leaves a
-file that is structurally perfect and entirely English, which happened once and is now a test.
+Use **Chrome or Edge on `localhost`**: the microphone needs a secure context, and `localhost` is
+one. Opening `index.html` as a `file://` URL will not work — the page fetches its registries over
+HTTP.
 
 ---
 
-## How speech is wired
+## Commands
+
+| Command | What it does |
+|---|---|
+| `npm start` | Run the app at http://localhost:8787 |
+| `npm run check` | Citations, safety rules, retrieval behaviour, locale completeness. No API calls, no key needed. |
+| `npm run localize` | Build the language files. `-- --only=yo` for one. Cached by content hash. |
+| `npm run diag` | Round-trip every language through the provider and report what works |
+| `npm run check:audio` | Prove each language speaks its own localized content |
+| `npm run review` | Ranked review queue for the trainer checking a translation |
+
+---
+
+## What it does
+
+**Asks and answers by voice, in five languages.** Nigerian Pidgin, Hausa, Yoruba, Igbo and English
+through [Spitch](https://spitch.app). Switching language changes everything with it: the question
+you speak, the answer you read, the voice reading it back, the lessons, the practice prompts, the
+recall questions and the safety corrections.
+
+**Answers are traceable, and refusals are deliberate.** Twenty passages from NESIS 2015, NIS IEC
+60364 and NBTE unit standards — the documents an assessor marks against, not scraped web pages.
+Every answer carries a clause reference. Below a confidence threshold it refuses and says why:
+asked how to fix a generator carburettor, it declines rather than guessing.
+
+**Finding the answer costs no data.** Retrieval is lexical and runs on the device against the
+shipped pack: zero bytes of network per question, working with the radio off. Translation happens
+once at build time and ships with the pack. The app shows its own real byte count.
+
+**Retrieval works in the learner's language, offline.** The build step translates each passage's
+search cues as well as its text, and the matcher searches English and localized cues *together* —
+Nigerian artisans code-switch constantly, keeping technical nouns in English inside a Yoruba or
+Hausa sentence.
+
+**Competence is assessed by speaking and by photograph.** A voice viva is scored against the unit
+standard's rubric points and names the one you missed. No reading or typing is required anywhere,
+which is the accessibility argument: an apprentice literate in Hausa but not English is assessed on
+their trade, not their English.
+
+**Multiple choice is for recall only.** Day 3, 10 and 30, a question arrives as audio and is
+answered with one keypress — works on a feature phone, costs almost nothing. Miss one and the
+lesson returns to the list.
+
+**Describing unsafe practice notifies the trainer.** When an apprentice says what they actually did
+— *"for the AC socket I just run 1.5, and I join the earth to the neutral"* — SabiPass corrects it
+with the clause and **privately tells that apprentice's own trainer they need supervision on that
+unit.** The learner never asked for it; it is a side effect of talking about real work, which is
+why no exam-prep bot can copy it. It also keeps the *trainer* engaged, and the trainer is what
+keeps the learner engaged.
+
+A question never raises a flag — only a description of practice does. The learner is always told,
+can see exactly what was sent, and can delete it. Nothing goes to any third party.
+
+**The output is a progress record, not a certificate.** Five competencies with their evidence,
+countersigned by the trainer, verifiable offline by short code or USSD and online by QR. It exports
+as an NSQF-aligned evidence portfolio, which collapses an assessor's job from running a day-long
+centre to reviewing and endorsing. An accredited assessor still signs.
+
+---
+
+## How the speech is wired
 
 ```
 browser                          server (node)                    Spitch
@@ -81,84 +126,101 @@ browser                          server (node)                    Spitch
 MediaRecorder
   └─ decode → 16 kHz mono WAV
        └─ POST /api/asr ────────► + lexicon as special_words ────► POST /v1/transcriptions
-                                                                    └─► { text }
   speak(text)
-       └─ POST /api/tts ────────► + voice from the registry ──────► POST /v1/speech
-                                                                    └─► audio/wav
-       └─ cached per phrase, so replaying a lesson costs nothing
+       └─ POST /api/tts ────────► + voice from the registry ─────► POST /v1/speech
+       └─ cached per phrase, so replaying a lesson is free
+build step
+       └─ POST /api/translate ──► pack + UI strings ─────────────► POST /v1/translate
+                                   └─► locales/<code>.json
 ```
 
-Three things worth knowing:
-
 **The pack's trade lexicon is the ASR bias list.** `change over`, `earth leakage`, `2.5`, `soka`,
-`megger` — the words a general model mishears are exactly the words that carry the meaning. The
-server pulls them from `content-packs/*/pack.json` and sends them as `special_words` on every
-transcription. The lexicon is not decorative.
+`megger` — the words a general model mishears are the words that carry the meaning. The server
+sends them as `special_words` on every transcription.
 
-**Audio is re-encoded to 16 kHz mono WAV in the browser.** Spitch accepts wav/mp3/m4a/ogg and
-MediaRecorder produces webm, so the page decodes and resamples before upload. 16 kHz mono is about
-32 KB per second — small enough for a weak connection, and the app shows you the real byte count.
+**Audio is re-encoded in the browser.** Spitch takes wav/mp3/m4a/ogg and MediaRecorder produces
+webm, so the page decodes and resamples to 16 kHz mono first. About 32 KB per second.
 
-**Retrieval never touches the network.** Finding the answer and its clause reference is local,
-lexical, and runs against the embedded pack. That is an architectural choice for a low-bandwidth
-context, not a prototype shortcut. Only speech crosses the wire.
+**Pidgin's provider codes are asymmetric.** Translate takes `pcm`, speech takes `pi`. `pcm`, `npe`,
+`en-NG` and `pidgin` are all rejected by the speech endpoint. Both codes are in the registry.
 
 ---
 
-## How the languages work
-
-Pick a language and everything changes with it: the question you speak, the answer you read, the
-voice that reads it back, the lessons, the practice prompts, the recall questions and the safety
-corrections.
-
-**Retrieval works in-language, offline.** The localizer translates each passage's *cues* as well as
-its text, and the matcher searches the English cues **and** the localized ones together. Nigerian
-artisans code-switch constantly — the technical nouns stay English inside a Yoruba or Hausa
-sentence — so matching both is what actually works on site.
-
-**English is the authority.** Every other locale is a machine translation of it, each file is
-marked `reviewed: false`, and the app says so on screen. Any answer shown in another language keeps
-the English original one tap away.
-
-**Pidgin's codes are asymmetric**, which cost an hour to discover: translate takes `pcm`, speech
-takes `pi`. `pcm`, `npe`, `en-NG` and `pidgin` are all rejected by the speech endpoint. Both codes
-are recorded in `config/languages.json`.
-
-### Known limit: safety detection is not fully multilingual
-
-The safety rules are regexes over English and Pidgin. For Yoruba, Hausa and Igbo they catch only
-code-switched English terms, so when a server is reachable the app re-scans the utterance through
-translation and adds any flag it finds. The learner already has their answer by then, so this only
-ever adds a flag, never delays one. Offline, in those three languages, detection is weaker than in
-Pidgin — the app says so, and this is the next thing to fix.
-
----
-
-## Repository
+## Layout
 
 ```
 index.html                              the whole app — no framework, no build step
-server/serve.js                         static files + /api/health, /api/asr, /api/tts
+server/serve.js                         static files + /api/health, /api/asr, /api/tts, /api/translate
 server/spitch.js                        the only file that knows about Spitch
 server/diag.js                          language round-trip probe
 config/languages.json                   language registry — add a language by adding a row
-content-packs/electrical-domestic/      passages, lessons, rubrics, recall MCQs, safety rules, lexicon
-tools/check-pack.js                     citation, safety, retrieval and registry checks
+config/ui-en.json                       source-of-truth UI strings
+content-packs/electrical-domestic/
+  pack.json                             passages, lessons, rubrics, recall, safety rules, lexicon
+  locales/<code>.json                   built by npm run localize
+tools/check-pack.js                     citation, safety, retrieval and locale checks
+tools/localize.js                       builds a language
+tools/check-audio.js                    proves each language speaks its own content
+tools/review-queue.js                   ranks translations for trainer review
 ```
 
 Adding a language is a row in `config/languages.json`. Adding a trade is a folder under
 `content-packs/`. If either needs a code change, the abstraction is wrong — fix the abstraction.
 
+Project documents: [CAPSTONE_SPEC.md](CAPSTONE_SPEC.md) (architecture, demo script),
+[PROPOSAL.md](PROPOSAL.md), [BUILD_PLAN.md](BUILD_PLAN.md) (scope and schedule),
+[CONCEPT.md](CONCEPT.md) (market thesis), [CLAUDE.md](CLAUDE.md) (the rules that count as bugs even
+when the tests pass).
+
 ---
 
-## Current state
+## Status
 
-The content pack is marked `reviewed: false` and the app says so on screen. The technical content
-is drafted from NESIS 2015, NIS IEC 60364 and NBTE unit standards, but the clause references need
-a practising trainer to countersign them before any learner is served.
+| | Translated | Audio | Trainer review |
+|---|---|---|---|
+| Nigerian Pidgin | 97% | ✅ voice `boma` | pending |
+| Hausa | 100% | ✅ voice `amina` | pending |
+| Yoruba | 100% | ✅ voice `sade` | pending |
+| Igbo | 100% | ✅ voice `ngozi` | pending |
+| English | source | ✅ voice `lucy` | pending |
 
-No non-English language is marked validated. That is accurate, not an oversight: `npm run diag`
-proves the provider accepts a language code, which is not the same as proving the model handles a
-real apprentice's accent on a noisy site. That needs three learners and a trainer.
+**No language is marked `validated`, and no content is marked `reviewed`.** That is accurate, not
+an oversight. `npm run diag` proves a provider accepts a language code, which is not the same as
+proving the model handles a real apprentice's accent on a noisy site — that needs three learners
+and a trainer. Every unvalidated language is labelled a preview in the interface, and every locale
+says on screen that it is machine-translated and unreviewed.
 
-Those two signatures are the highest-value work left, and neither of them is code.
+Two signatures are the work that remains, and neither is code:
+
+1. A practising trainer countersigns the clause references in the content pack.
+2. A trainer who speaks the language reads its translation. `npm run review` ranks what to check
+   first — it found, for example, that `Ib ≤ In ≤ Iz` came back in Yoruba as
+   `Ib Capitol In Capitol Iz`, the translator having read `≤` as the word "Capitol", and that
+   `230/400V` lost its 230 entirely.
+
+---
+
+## Tests exist because of mistakes
+
+Each of these shipped once and is now a check:
+
+- A Yoruba build came back **100% English** — structurally perfect, every key present, entirely
+  untranslated, because the batch separator did not survive the translation API and every list fell
+  back silently. `npm run check` now fails a locale whose full sentences are more than 40%
+  identical to English.
+- A learner asking *"socket — 1.5 or 2.5?"* was **reported to their trainer** for a safety
+  violation. Questions and descriptions of practice are now distinguished by a guard that lives in
+  the pack where a trainer can read it.
+- *"my tailoring machine no dey work"* was answered with **air-conditioner circuit guidance**,
+  because the lexicon matched `ac` inside `machine`. Lexicon keys now match on word boundaries.
+
+---
+
+## Licence and credits
+
+Content is drafted from NESIS 2015, NIS IEC 60364 and NBTE NSQ unit standards; those remain the
+property of their publishers and the references require trainer countersignature before use with
+learners. Speech and translation by [Spitch](https://spitch.app).
+
+Built with Claude Code as an engineering partner, organised around the instruction files in this
+repository.

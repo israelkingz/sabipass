@@ -1,0 +1,43 @@
+# SabiPass — requirements
+#
+# NOTE: this is a Node.js project, not a Python one. There is nothing for `pip install`
+# to do here, and there is nothing for `npm install` to do either — the app has ZERO
+# package dependencies by design, so it runs on a cheap machine with a weak connection
+# and nothing to download. The dependency manifest is package.json.
+#
+# This file lists what you actually need, for anyone checking a submission checklist.
+
+# ── Runtime ───────────────────────────────────────────────────────────────────
+Node.js >= 20            # built-in fetch, FormData, Blob and --env-file-if-exists
+                         # verified on Node 24.21.0
+npm                      # ships with Node; used only to run the scripts below
+
+# ── Package dependencies ──────────────────────────────────────────────────────
+(none)                   # no runtime dependencies, no dev dependencies,
+                         # no build step, no node_modules
+
+# ── Browser ───────────────────────────────────────────────────────────────────
+Chrome or Edge           # served over http://localhost — the microphone needs a
+                         # secure context, and localhost counts as one.
+                         # Opening index.html as a file:// URL will not work.
+
+# ── External services ─────────────────────────────────────────────────────────
+Spitch API key           # https://spitch.app — speech-to-text, text-to-speech and
+                         # translation for Nigerian Pidgin, Hausa, Yoruba and Igbo.
+                         # OPTIONAL: without it the app still runs and falls back to
+                         # the browser's own Web Speech engine, and says so on screen.
+                         # Needs credits for `npm run localize` and for live speech.
+
+# ── Environment variables ─────────────────────────────────────────────────────
+SPITCH_API_KEY           # required only for real Nigerian-language speech.
+                         # Copy .env.example to .env and put it there. .env is
+                         # gitignored. The key stays server-side and is never sent
+                         # to the browser.
+SPITCH_BASE_URL          # optional, defaults to https://api.spitch.app
+PORT                     # optional, defaults to 8787
+
+# ── Install and run ───────────────────────────────────────────────────────────
+#   npm start            # http://localhost:8787
+#   npm run check        # offline checks, no API key needed
+#
+# Full instructions: README.md

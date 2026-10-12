@@ -1,0 +1,12 @@
+# Normalise line endings so the repo is identical on Windows, macOS and Linux.
+* text=auto eol=lf
+
+# Locale and pack files hold Yoruba, Hausa, Igbo and Pidgin text with diacritics.
+# Mark them explicitly so no tool treats them as binary or rewrites the encoding.
+*.json text eol=lf working-tree-encoding=UTF-8
+*.md   text eol=lf working-tree-encoding=UTF-8
+*.html text eol=lf working-tree-encoding=UTF-8
+
+*.wav binary
+*.png binary
+*.jpg binary
